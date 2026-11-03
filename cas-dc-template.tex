@@ -1,0 +1,217 @@
+﻿%%
+%% Copyright 2019-2024 Elsevier Ltd
+%%
+%% This file is part of the 'CAS Bundle'.
+%% --------------------------------------
+%%
+%% It may be distributed under the conditions of the LaTeX Project Public
+%% License, either version 1.3c of this license or (at your option) any
+%% later version.  The latest version of this license is in
+%%    http://www.latex-project.org/lppl.txt
+%% and version 1.3c or later is part of all distributions of LaTeX
+%% version 1999/12/01 or later.
+%%
+%% The list of all files belonging to the 'CAS Bundle' is
+%% given in the file `manifest.txt'.
+%%
+%% Template article for cas-dc documentclass for
+%% double column output.
+
+\documentclass[a4paper,fleqn]{cas-dc}
+\usepackage[numbers]{natbib}
+\usepackage{placeins}
+
+% If the frontmatter runs over more than one page
+% use the longmktitle option.
+
+%\documentclass[a4paper,fleqn,longmktitle]{cas-dc}
+
+%\usepackage[authoryear]{natbib}
+
+%%%Author macros
+\def\tsc#1{\csdef{#1}{\textsc{\lowercase{#1}}\xspace}}
+\tsc{WGM}
+\tsc{QE}
+%%%
+
+% Uncomment and use as if needed
+%\newtheorem{theorem}{Theorem}
+%\newtheorem{lemma}[theorem]{Lemma}
+%\newdefinition{rmk}{Remark}
+%\newproof{pf}{Proof}
+%\newproof{pot}{Proof of Theorem \ref{thm}}
+
+% Marks used in the comparison table
+\newcommand{\cmyes}{$\checkmark$}
+\newcommand{\cmno}{$\times$}
+\newcommand{\cmpart}{$\circ$}
+
+\begin{document}
+\let\WriteBookmarks\relax
+\def\floatpagepagefraction{1}
+\def\textpagefraction{.001}
+
+% Short title
+\shorttitle{SLO-Aware Chaos Engineering for Cloud-Native Applications}
+
+% Short author
+\shortauthors{Khan and Khalid}
+
+% Main title of the paper
+\title [mode = title]{SLO-Aware Chaos Engineering for Cloud-Native Applications}
+
+% Title footnote mark
+% eg: %% No title footnote required.
+% No title footnote required.
+
+% Title footnote 1.
+% eg: \tnotetext[1]{Title footnote text}
+%\tnotetext[1]{}
+
+\author[1]{Muhammad Awwab Khan}%[<options>]
+
+% Corresponding author indication
+\cormark[1]
+
+% Footnote of the first author
+\fnmark[1]
+
+% Email id of the first author
+\ead{khan4600966@cloud.neduet.edu.pk}
+
+% Credit authorship
+% Contributor roles to be added when finalized.
+
+% Address/affiliation
+\affiliation[1]{organization={Department of Software Engineering, NED University of Engineering and Technology},
+            city={Karachi},
+            state={Sindh},
+            country={Pakistan}}
+
+\author[2]{Muhammad Abyaz Khalid}%[]
+
+% Footnote of the second author
+\fnmark[2]
+
+% Email id of the second author
+\ead{khalid4600054@cloud.neduet.edu.pk}
+
+% Credit authorship
+% Contributor roles to be added when finalized.
+
+% Address/affiliation
+\affiliation[2]{organization={Department of Software Engineering, NED University of Engineering and Technology},
+            city={Karachi},
+            state={Sindh},
+            country={Pakistan}}
+
+% Corresponding author text
+\cortext[1]{Corresponding author}
+
+% Footnote text
+\fntext[1]{Roll Number: SE-23051}
+\fntext[2]{Roll Number: SE-23053}
+
+% Here goes the abstract
+\begin{abstract}
+Abstract to be added    
+\end{abstract}
+% Keywords
+% Each keyword is seperated by \sep
+% \begin{keywords}
+% % Chaos engineering \sep Service level objectives \sep Error budget \sep Fault injection \sep Cloud native applications \sep Microservices \sep Kubernetes \sep Site reliability engineering
+% \end{keywords}
+
+
+\maketitle
+
+%% ===========================================================================
+\section{Introduction}\label{sec:intro}
+%% ===========================================================================
+
+Cloud native applications are built from many loosely coupled microservices that run in containers on platforms such as Kubernetes \citep{kratzke2017understanding,burns2016borg}. This design supports independent deployment and elastic scaling, but it also creates deep chains of network dependencies. Failures propagate across these dependencies, and the many service interactions make them harder to detect and to localize \citep{soldani2023anomaly}. Rare slow responses in individual services dominate the tail latency that users experience \citep{dean2013tail}. Distributed concurrency bugs, which untimely interactions between nodes trigger, cause data loss and service outages \citep{lu2022cloudraid}, and gray failures keep a component operational but degraded, which makes them difficult to handle with static alarms \citep{ye2026a3sm}.
+
+Chaos engineering addresses these problems by injecting controlled faults into a running system and checking whether its steady state holds \citep{basiri2016chaos}. It is now widely applied to microservice systems and supported by many tools \citep{owotogbe2026chaos,esen2026chaos}. In parallel, site reliability engineering defines reliability through service level objectives (SLOs). In this paper, the error budget is the gap between an SLO target and perfect reliability over a time window, and the burn rate is the rate at which this budget is consumed relative to the rate that would exhaust it exactly at the end of the window. Recent work treats the error budget as a dynamic resource that a controller can consume in a controlled way to reach other objectives \citep{souza2026bahya}.
+
+A chaos experiment in a production or production representative environment consumes the same error budget that protects users. In current practice, the experiment designer sets the fault intensity before the experiment, for example as fixed injected delays \citep{ahmad2024exploring} or as increases in predefined steps \citep{botros2024towards}, and fault injection frameworks treat the choice of faults as design decisions made before testing \citep{yu2025systematic}. If the intensity is too high, one experiment can consume a large part of the budget within minutes. If it is too low, the experiment ends without revealing any weakness. In addition, the measured service level indicator mixes failures caused by the experiment with organic failures, so a rule that stops the experiment cannot tell which of the two consumed the budget. SLO-aware control exists for timeout configuration in microservices \citep{hanada2025slo}, and error budget aware control exists for application placement \citep{souza2026bahya}, but neither controls fault injection. A search of the Web of Science Core Collection on 27 September 2026 for journal articles and reviews that combine chaos engineering, fault injection, chaos experiments or resilience testing with error budgets, SLOs or burn rates returned one article, which mitigates gray failures by workload migration and does not control fault injection \citep{ye2026a3sm}. To the best of our knowledge, no journal study controls the intensity of chaos experiments from the attributed consumption of SLO error budgets.
+
+The main objective of this study is to develop and evaluate a chaos engineering framework whose fault intensity is governed by the error budget that the experiment consumes. Specifically, the study aims to (i) keep the budget consumed by an experiment within an allocation set by the operator, (ii) separate experiment induced consumption from organic consumption, and (iii) support both availability and tail latency SLOs.
+
+To achieve these objectives, we propose a framework of four modules. A \emph{Budget Accountant} computes the remaining error budget and the multi window burn rate of each SLO. An \emph{Attribution Engine} estimates the consumption caused by the experiment through request tagging and control groups. An \emph{Intensity Controller} adjusts the fault intensity in a closed loop within the allocation and stops the experiment at a safety limit. A \emph{Budget Oracle} reports each failure mode as the budget it consumes per unit of fault intensity. The framework will be implemented on Kubernetes with Istio, Chaos Mesh and Prometheus and evaluated on open source microservice benchmarks such as Online Boutique, which prior SLO-aware microservice research also uses \citep{hanada2025slo}, against static injection, threshold based abort and an open loop budget rate policy.
+
+The main contributions of this work are:
+\begin{itemize}
+\item a formulation of chaos experimentation as a budget constrained control problem;
+\item an attribution method that separates experiment induced error budget consumption from organic consumption;
+\item a closed loop intensity controller for availability and tail latency SLOs, with a planned evaluation on open source microservice benchmarks.
+\end{itemize}
+
+The rest of this paper is organized as follows. Section~\ref{sec:lit} reviews related work and identifies the research gap. Section~3 presents the framework, Section~4 the experimental setup, Section~5 the results, and Section~6 concludes the paper.
+
+%% ===========================================================================
+\section{Literature Review}\label{sec:lit}
+%% ===========================================================================
+
+This section reviews chaos engineering and fault injection for microservices, adaptive and SLO-aware control in cloud systems, and the use of error budgets as a control resource, and then states the research gap.
+
+\begin{table*}[width=\textwidth,cols=7,pos=t]
+\caption{Comparison of related work with the proposed framework. \cmyes: supported; \cmpart: partially supported, or supported for a control variable other than fault intensity; \cmno: not supported. The marks are based on the abstracts indexed in the Web of Science Core Collection.}\label{tbl:compare}
+\small
+\begin{tabular*}{\tblwidth}{@{\extracolsep{\fill}}>{\raggedright\arraybackslash}p{3.4cm}>{\raggedright\arraybackslash}p{2.2cm}ccccc@{}}
+\toprule
+Study & Controlled variable & Closed loop & Remaining budget & Attribution & Latency & Empirical \\
+ & & control & or burn rate & of burn & SLO & evaluation \\
+\midrule
+\citet{chen2024microfi} & Fault injection & \cmno & \cmno & \cmno & \cmno & \cmyes \\
+\citet{wu2023enhancing} & Fault injection & \cmno & \cmno & \cmno & \cmno & \cmyes \\
+\citet{ahmad2024exploring} & Fault injection & \cmno & \cmno & \cmno & \cmpart & \cmyes \\
+\citet{botros2024towards} & Fault tolerance & \cmno & \cmno & \cmno & \cmpart & \cmyes \\
+\citet{hanada2025slo} & Timeout & \cmpart & \cmno & \cmno & \cmyes & \cmyes \\
+\citet{ye2026a3sm} & Migration & \cmpart & \cmno & \cmno & \cmno & \cmyes \\
+\citet{souza2026bahya} & Placement & \cmpart & \cmyes & \cmno & \cmpart & \cmpart \\
+\midrule
+Proposed framework & Fault injection & \cmyes & \cmyes & \cmyes & \cmyes & \cmyes \\
+\bottomrule
+\end{tabular*}
+\end{table*}
+
+\subsection{Chaos engineering and fault injection}\label{sec:lit:ce}
+
+The need for resilience testing in cloud native systems is well documented. A review of microservice adoption reports new difficulties in testing and monitoring the many interactions between services \citep{soldani2018pains}, and a survey of anomaly detection and root cause analysis shows that failures propagate across services, which makes their causes hard to identify \citep{soldani2023anomaly}. Distributed concurrency bugs are triggered by unexpected message orderings between nodes and are notoriously difficult to find \citep{lu2022cloudraid}, and gray failures degrade a component without stopping it \citep{ye2026a3sm}.
+
+\citet{basiri2016chaos} defined chaos engineering through four principles: a hypothesis about steady state behavior, real world events, experiments in production, and continuous automation. Their method compares a control group with an experimental group and treats a difference in the steady state metric as a weakness. A multivocal review of 96 academic and grey literature sources derives a unified definition of chaos engineering and a taxonomy of chaos engineering platforms \citep{owotogbe2026chaos}, and a systematic review of 31 studies identifies 38 tools for fault injection in microservice systems \citep{esen2026chaos}. A retrospective of ten years of chaos engineering names large language model assisted test automation, hybrid testing frameworks and integration with compliance and governance workflows as next directions \citep{owotogbe2026ten}.
+
+Research on fault injection has made experiments more systematic. A systematic review of fault injection testing for microservice systems summarizes a general framework of five components, each of which represents a design decision that the tester must determine \citep{yu2025systematic}. FBFI iteratively infers and injects fault-tolerance bottlenecks to test redundant components \citep{wu2023enhancing}, and MicroFI restricts faults to selected requests and prioritizes high impact faults \citep{chen2024microfi}. Other work makes injected faults more realistic by deriving them from system call errors observed in production \citep{zhang2022maximizing}, analyzes exception handling in the JVM through chaos experiments \citep{zhang2021chaos}, and provides a configurable chaos platform for hybrid cloud systems \citep{camacho2022chaos}. An empirical study injects delays of different lengths into cloud native applications under different user loads and observes that availability problems appear suddenly at a particular delay \citep{ahmad2024exploring}. In all of these studies, the faults and their intensity are chosen by the experiment designer, and none of them adjusts the intensity during an experiment from the consumption of reliability objectives.
+
+\subsection{Adaptive and SLO-aware control}\label{sec:lit:adaptive}
+
+Recent work makes cloud systems react to faults and SLOs in a closed loop. UNFRAGILE increases latency faults in predefined steps and adapts the fault tolerance strategies of the application, such as asynchronous requests, timeouts and adaptive concurrency limits, but it does not adapt the experiment itself \citep{botros2024towards}. A load-adaptive timeout mechanism adjusts timeout values in microservices to keep failure rate and latency SLOs, and it is evaluated on Online Boutique \citep{hanada2025slo}. A3SM uses hierarchical reinforcement learning to decide when and where to migrate workloads under gray failures, and it attributes anomaly impact to tasks, nodes and groups before it acts \citep{ye2026a3sm}. These approaches control timeouts, migration or fault tolerance mechanisms. None of them controls the intensity of fault injection, and none tracks the remaining error budget during an experiment.
+
+\subsection{Error budgets as a control resource}\label{sec:lit:slo}
+
+SLOs, error budgets and burn rates are the basis of reliability management in site reliability engineering practice. In research, BAHYA treats the SLA error budget of an application as a dynamic, manageable resource: a deep reinforcement learning agent consumes a controlled portion of the budget to trade latency, energy efficiency and resilience in application placement, and it is evaluated in simulation \citep{souza2026bahya}. This work shows that an error budget can govern a closed loop controller. However, it controls placement and not fault injection, and it does not separate the budget consumed by the controller's own actions from organic consumption.
+
+\subsection{Research gap}\label{sec:lit:gap}
+
+Table~\ref{tbl:compare} compares the closest journal studies with the proposed work. Three gaps follow. First, fault injection studies fix the fault intensity before the experiment, and closed loop, SLO-aware or budget-aware controllers exist only for other control variables, such as timeouts, migration and placement. Second, no study separates the budget consumed by an experiment from organic consumption, although a controller that must respect a budget allocation requires this separation. Third, latency objectives, which are strongly affected by tail latency \citep{dean2013tail}, are not used as budgets that constrain chaos experiments. This work addresses these three gaps.
+
+
+\FloatBarrier
+
+
+%% ===========================================================================
+%% Remaining sections (to be written)
+%% ===========================================================================
+% \section{Proposed Framework}\label{sec:method}
+% \section{Implementation and Experimental Setup}\label{sec:impl}
+% \section{Results}\label{sec:results}
+% \section{Threats to Validity}\label{sec:threats}
+% \section{Conclusion}\label{sec:conclusion}
+
+%% Loading bibliography style file
+%\bibliographystyle{model1-num-names}
+% Loading bibliography database
+\bibliography{cas-refs}
+\bibliographystyle{cas-model2-names}
+
+\end{document}

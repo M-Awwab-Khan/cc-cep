@@ -1,0 +1,37 @@
+﻿# LaTeX build outputs
+*.aux
+*.bbl
+*.bcf
+*.blg
+*.fdb_latexmk
+*.fls
+*.log
+*.out
+*.run.xml
+*.synctex.gz
+*.toc
+*.lof
+*.lot
+*.abs
+*.spl
+cas-dc-template.pdf
+
+# Local environments and credentials
+.env
+.env.*
+!.env.example
+.venv/
+__pycache__/
+*.py[cod]
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+kubeconfig*
+*.key
+*.pem
+.DS_Store
+Thumbs.db
+
+# Local generated artifacts; preserve curated evidence separately
+results/raw/
+results/tmp/
