@@ -1,0 +1,8 @@
+{
+  "mode": "controller-crash-integration",
+  "created_utc": 1793678282.178291,
+  "passed": true,
+  "controller_exit": -9,
+  "fault_removed_after_kill_seconds": 6.9729915390053065,
+  "cleanup_verified": true
+}

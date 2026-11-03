@@ -1,0 +1,40 @@
+{
+  "mode": "cluster-integration",
+  "checks": {
+    "baseline_healthy": true,
+    "abort_treatment_only": [
+      {
+        "total": 20,
+        "availability": 0,
+        "latency": 0
+      },
+      {
+        "total": 20,
+        "availability": 20,
+        "latency": 20
+      }
+    ],
+    "abort_api_cleanup_seconds": 0.535546636005165,
+    "delay_treatment_only": [
+      {
+        "total": 20,
+        "availability": 0,
+        "latency": 0
+      },
+      {
+        "total": 20,
+        "availability": 0,
+        "latency": 20
+      }
+    ],
+    "delay_api_cleanup_seconds": 0.4118492950074142,
+    "unrenewed_fault_expired_seconds": 3.9459801420016447,
+    "recovery_healthy": true
+  },
+  "created_utc": 1793678046.7596612,
+  "context": "kind-cc-cep",
+  "namespace": "cc-cep",
+  "limitation": "Separate pods/services, shared node; no causal guarantee.",
+  "passed": true,
+  "cleanup_verified": true
+}

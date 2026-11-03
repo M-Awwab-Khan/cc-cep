@@ -1,0 +1,27 @@
+[
+  {
+    "path": "results/raw/cluster-smoke-01",
+    "valid": false,
+    "reason": "Initial check passed weak assertions but watchdog log showed concurrent write race and premature removal; superseded by stronger check"
+  },
+  {
+    "path": "results/raw/cluster-smoke-02",
+    "valid": false,
+    "reason": "Concurrent resourceVersion write conflict; cleanup recorded in raw integration.json"
+  },
+  {
+    "path": "results/raw/cluster-pilot-01",
+    "valid": false,
+    "reason": "Metadata serialization failed before fault admission"
+  },
+  {
+    "path": "results/raw/cluster-pilot-02",
+    "valid": false,
+    "reason": "Superseded engineering run: initial exposure integral omitted API overhead and post-stop client tail was not drained. Do not use as final outcome."
+  },
+  {
+    "path": "results/raw/cluster-pilot-delay-01",
+    "valid": false,
+    "reason": "Superseded engineering run before post-stop tail accounting. Do not use as final outcome."
+  }
+]

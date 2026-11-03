@@ -1,0 +1,32 @@
+{
+  "kind": {
+    "version": "v0.33.0",
+    "url": "https://github.com/kubernetes-sigs/kind/releases/download/v0.33.0/kind-linux-amd64",
+    "archive_sha256": "aee6151561422756b764a4ae28e7f44cda5af5a9eead3cc9985112b1de8d8e0d",
+    "binary_sha256": "aee6151561422756b764a4ae28e7f44cda5af5a9eead3cc9985112b1de8d8e0d"
+  },
+  "istioctl": {
+    "version": "1.31.3",
+    "url": "https://github.com/istio/istio/releases/download/1.31.3/istioctl-1.31.3-linux-amd64.tar.gz",
+    "archive_sha256": "382c3004ce2e9c5ed3064b092ae0da7f6bbe30c766a1be282f45725add004860",
+    "binary_sha256": "c46acad9975e694e503aad476ce8730db991cfd56232e88118d9440c38a5be05"
+  },
+  "kubectl": {
+    "version": "v1.36.0",
+    "url": "https://dl.k8s.io/release/v1.36.0/bin/linux/amd64/kubectl",
+    "archive_sha256": "123d8c8844f46b1244c547fffb3c17180c0c26dac9890589fe7e67763298748e",
+    "binary_sha256": "123d8c8844f46b1244c547fffb3c17180c0c26dac9890589fe7e67763298748e"
+  },
+  "helm": {
+    "version": "v4.3.1",
+    "url": "https://get.helm.sh/helm-v4.3.1-linux-amd64.tar.gz",
+    "archive_sha256": "0403a88ae20913d11b10a2467b50087721fea7581736da6b9d3992f5357fe54b",
+    "binary_sha256": "b66cb19f2b31f9d427632ea6c4b4a1ff89b74ecaeaee323cd166da41a7af53bd"
+  },
+  "k6": {
+    "version": "v2.3.0",
+    "url": "https://github.com/grafana/k6/releases/download/v2.3.0/k6-v2.3.0-linux-amd64.tar.gz",
+    "archive_sha256": "39c3117b6af817592dcd0ce4242105c0a7af10948c2a425306f0be8f7a8a8ab1",
+    "binary_sha256": "e001bbf39ba67424a85c9c8516440ba5c73ecf7a6021be96c76194380c15f260"
+  }
+}

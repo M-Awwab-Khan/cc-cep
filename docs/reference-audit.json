@@ -1,0 +1,450 @@
+[
+  {
+    "key": "basiri2016chaos",
+    "manuscript_title": "Chaos Engineering",
+    "doi": "10.1109/MS.2016.60",
+    "checked_utc": "2026-11-03T03:41:35.616406+00:00",
+    "status": "metadata_found",
+    "title": [
+      "Chaos Engineering"
+    ],
+    "publisher": "Institute of Electrical and Electronics Engineers (IEEE)",
+    "year": {
+      "date-parts": [
+        [
+          2016,
+          5
+        ]
+      ]
+    },
+    "url": "https://doi.org/10.1109/ms.2016.60",
+    "type": "journal-article"
+  },
+  {
+    "key": "owotogbe2026chaos",
+    "manuscript_title": "Chaos Engineering: A Multi-Vocal Literature Review",
+    "doi": "10.1145/3777375",
+    "checked_utc": "2026-11-03T03:47:16.673188+00:00",
+    "status": "metadata_found",
+    "title": [
+      "Chaos Engineering: A Multi-Vocal Literature Review"
+    ],
+    "publisher": "Association for Computing Machinery (ACM)",
+    "year": {
+      "date-parts": [
+        [
+          2025,
+          12,
+          10
+        ]
+      ]
+    },
+    "url": "https://doi.org/10.1145/3777375",
+    "type": "journal-article"
+  },
+  {
+    "key": "owotogbe2026ten",
+    "manuscript_title": "Ten Years of Chaos Engineering\\ldots{} Now What?",
+    "doi": "10.1109/MIC.2026.3687071",
+    "checked_utc": "2026-11-03T03:41:35.618266+00:00",
+    "status": "metadata_found",
+    "title": [
+      "Ten Years of Chaos Engineering \u2026 Now What?"
+    ],
+    "publisher": "Institute of Electrical and Electronics Engineers (IEEE)",
+    "year": {
+      "date-parts": [
+        [
+          2026,
+          5
+        ]
+      ]
+    },
+    "url": "https://doi.org/10.1109/mic.2026.3687071",
+    "type": "journal-article"
+  },
+  {
+    "key": "esen2026chaos",
+    "manuscript_title": "Chaos Experiments in Microservice Architectures: A Systematic Literature Review",
+    "doi": "10.1016/j.csi.2025.104116",
+    "checked_utc": "2026-11-03T03:47:19.867463+00:00",
+    "status": "metadata_found",
+    "title": [
+      "Chaos experiments in microservice architectures: A systematic literature review"
+    ],
+    "publisher": "Elsevier BV",
+    "year": {
+      "date-parts": [
+        [
+          2026,
+          4
+        ]
+      ]
+    },
+    "url": "https://doi.org/10.1016/j.csi.2025.104116",
+    "type": "journal-article"
+  },
+  {
+    "key": "yu2025systematic",
+    "manuscript_title": "A Systematic Literature Review on Fault Injection Testing of Microservice Systems",
+    "doi": "10.1109/TSC.2025.3621564",
+    "checked_utc": "2026-11-03T03:41:36.543251+00:00",
+    "status": "metadata_found",
+    "title": [
+      "A Systematic Literature Review on Fault Injection Testing of Microservice Systems"
+    ],
+    "publisher": "Institute of Electrical and Electronics Engineers (IEEE)",
+    "year": {
+      "date-parts": [
+        [
+          2025,
+          11
+        ]
+      ]
+    },
+    "url": "https://doi.org/10.1109/tsc.2025.3621564",
+    "type": "journal-article"
+  },
+  {
+    "key": "wu2023enhancing",
+    "manuscript_title": "Enhancing Fault Injection Testing of Service Systems via Fault-Tolerance Bottleneck",
+    "doi": "10.1109/TSE.2023.3285357",
+    "checked_utc": "2026-11-03T03:41:36.544572+00:00",
+    "status": "metadata_found",
+    "title": [
+      "Enhancing Fault Injection Testing of Service Systems via Fault-Tolerance Bottleneck"
+    ],
+    "publisher": "Institute of Electrical and Electronics Engineers (IEEE)",
+    "year": {
+      "date-parts": [
+        [
+          2023,
+          8
+        ]
+      ]
+    },
+    "url": "https://doi.org/10.1109/tse.2023.3285357",
+    "type": "journal-article"
+  },
+  {
+    "key": "chen2024microfi",
+    "manuscript_title": "{MicroFI}: Non-Intrusive and Prioritized Request-Level Fault Injection for Microservice Applications",
+    "doi": "10.1109/TDSC.2024.3363902",
+    "checked_utc": "2026-11-03T03:41:36.549076+00:00",
+    "status": "metadata_found",
+    "title": [
+      "MicroFI: Non-Intrusive and Prioritized Request-Level Fault Injection for Microservice Applications"
+    ],
+    "publisher": "Institute of Electrical and Electronics Engineers (IEEE)",
+    "year": {
+      "date-parts": [
+        [
+          2024,
+          9
+        ]
+      ]
+    },
+    "url": "https://doi.org/10.1109/tdsc.2024.3363902",
+    "type": "journal-article"
+  },
+  {
+    "key": "zhang2022maximizing",
+    "manuscript_title": "Maximizing Error Injection Realism for Chaos Engineering With System Calls",
+    "doi": "10.1109/TDSC.2021.3069715",
+    "checked_utc": "2026-11-03T03:41:36.570907+00:00",
+    "status": "metadata_found",
+    "title": [
+      "Maximizing Error Injection Realism for Chaos Engineering With System Calls"
+    ],
+    "publisher": "Institute of Electrical and Electronics Engineers (IEEE)",
+    "year": {
+      "date-parts": [
+        [
+          2022,
+          7,
+          1
+        ]
+      ]
+    },
+    "url": "https://doi.org/10.1109/tdsc.2021.3069715",
+    "type": "journal-article"
+  },
+  {
+    "key": "zhang2021chaos",
+    "manuscript_title": "A Chaos Engineering System for Live Analysis and Falsification of Exception-Handling in the {JVM}",
+    "doi": "10.1109/TSE.2019.2954871",
+    "checked_utc": "2026-11-03T03:41:37.407192+00:00",
+    "status": "metadata_found",
+    "title": [
+      "A Chaos Engineering System for Live Analysis and Falsification of Exception-Handling in the JVM"
+    ],
+    "publisher": "Institute of Electrical and Electronics Engineers (IEEE)",
+    "year": {
+      "date-parts": [
+        [
+          2021,
+          11,
+          1
+        ]
+      ]
+    },
+    "url": "https://doi.org/10.1109/tse.2019.2954871",
+    "type": "journal-article"
+  },
+  {
+    "key": "camacho2022chaos",
+    "manuscript_title": "Chaos as a Software Product Line---A Platform for Improving Open Hybrid-Cloud Systems Resiliency",
+    "doi": "10.1002/spe.3076",
+    "checked_utc": "2026-11-03T03:41:37.541291+00:00",
+    "status": "metadata_found",
+    "title": [
+      "Chaos as a Software Product Line\u2014A platform for improving open hybrid\u2010cloud systems resiliency"
+    ],
+    "publisher": "Wiley",
+    "year": {
+      "date-parts": [
+        [
+          2022,
+          2,
+          15
+        ]
+      ]
+    },
+    "url": "https://doi.org/10.1002/spe.3076",
+    "type": "journal-article"
+  },
+  {
+    "key": "ahmad2024exploring",
+    "manuscript_title": "Exploring the Impact of Chaos Engineering with Various User Loads on Cloud Native Applications: An Exploratory Empirical Study",
+    "doi": "10.1007/s00607-024-01292-z",
+    "checked_utc": "2026-11-03T03:41:37.588511+00:00",
+    "status": "metadata_found",
+    "title": [
+      "Exploring the impact of chaos engineering with various user loads on cloud native applications: an exploratory empirical study"
+    ],
+    "publisher": "Springer Science and Business Media LLC",
+    "year": {
+      "date-parts": [
+        [
+          2024,
+          5,
+          5
+        ]
+      ]
+    },
+    "url": "https://doi.org/10.1007/s00607-024-01292-z",
+    "type": "journal-article"
+  },
+  {
+    "key": "botros2024towards",
+    "manuscript_title": "Towards Antifragility of Cloud Systems: An Adaptive Chaos Driven Framework",
+    "doi": "10.1016/j.infsof.2024.107519",
+    "checked_utc": "2026-11-03T03:41:37.910878+00:00",
+    "status": "metadata_found",
+    "title": [
+      "Towards antifragility of cloud systems: An adaptive chaos driven framework"
+    ],
+    "publisher": "Elsevier BV",
+    "year": {
+      "date-parts": [
+        [
+          2024,
+          10
+        ]
+      ]
+    },
+    "url": "https://doi.org/10.1016/j.infsof.2024.107519",
+    "type": "journal-article"
+  },
+  {
+    "key": "hanada2025slo",
+    "manuscript_title": "Service-Level Objective-Aware Load-Adaptive Timeout: Balancing Failure Rate and Latency in Microservices Communication",
+    "doi": "10.1109/ACCESS.2025.3596118",
+    "checked_utc": "2026-11-03T03:41:38.176860+00:00",
+    "status": "metadata_found",
+    "title": [
+      "Service-Level Objective-Aware Load-Adaptive Timeout: Balancing Failure Rate and Latency in Microservices Communication"
+    ],
+    "publisher": "Institute of Electrical and Electronics Engineers (IEEE)",
+    "year": {
+      "date-parts": [
+        [
+          2025
+        ]
+      ]
+    },
+    "url": "https://doi.org/10.1109/access.2025.3596118",
+    "type": "journal-article"
+  },
+  {
+    "key": "ye2026a3sm",
+    "manuscript_title": "{A3SM}: Closed-Loop Anomaly-Aware Migration Scheduling for Gray Failure Mitigation in Cloud Clusters",
+    "doi": "10.1007/s10586-026-06594-9",
+    "checked_utc": "2026-11-03T03:41:38.466700+00:00",
+    "status": "metadata_found",
+    "title": [
+      "A3SM: Closed-loop anomaly-aware migration scheduling for gray failure mitigation in cloud clusters"
+    ],
+    "publisher": "Springer Science and Business Media LLC",
+    "year": {
+      "date-parts": [
+        [
+          2026,
+          9
+        ]
+      ]
+    },
+    "url": "https://doi.org/10.1007/s10586-026-06594-9",
+    "type": "journal-article"
+  },
+  {
+    "key": "souza2026bahya",
+    "manuscript_title": "Navigating the Performance-Resilience Trilemma: {BAHYA} ({Budget-Aware Hybrid DRL Approach}) for Mission-Critical Application Placement in the Computing Continuum",
+    "doi": "10.1016/j.future.2026.108620",
+    "checked_utc": "2026-11-03T03:41:38.475349+00:00",
+    "status": "metadata_found",
+    "title": [
+      "Navigating the Performance-Resilience Trilemma: BAHYA (Budget-Aware Hybrid DRL Approach) for Mission-Critical Application Placement in the Computing Continuum"
+    ],
+    "publisher": "Elsevier BV",
+    "year": {
+      "date-parts": [
+        [
+          2026,
+          11
+        ]
+      ]
+    },
+    "url": "https://doi.org/10.1016/j.future.2026.108620",
+    "type": "journal-article"
+  },
+  {
+    "key": "kratzke2017understanding",
+    "manuscript_title": "Understanding Cloud-Native Applications after 10 Years of Cloud Computing---A Systematic Mapping Study",
+    "doi": "10.1016/j.jss.2017.01.001",
+    "checked_utc": "2026-11-03T03:41:38.706102+00:00",
+    "status": "metadata_found",
+    "title": [
+      "Understanding cloud-native applications after 10 years of cloud computing - A systematic mapping study"
+    ],
+    "publisher": "Elsevier BV",
+    "year": {
+      "date-parts": [
+        [
+          2017,
+          4
+        ]
+      ]
+    },
+    "url": "https://doi.org/10.1016/j.jss.2017.01.001",
+    "type": "journal-article"
+  },
+  {
+    "key": "burns2016borg",
+    "manuscript_title": "Borg, {Omega}, and {Kubernetes}",
+    "doi": "10.1145/2890784",
+    "checked_utc": "2026-11-03T03:41:38.805356+00:00",
+    "status": "metadata_found",
+    "title": [
+      "Borg, Omega, and Kubernetes"
+    ],
+    "publisher": "Association for Computing Machinery (ACM)",
+    "year": {
+      "date-parts": [
+        [
+          2016,
+          4,
+          26
+        ]
+      ]
+    },
+    "url": "https://doi.org/10.1145/2890784",
+    "type": "journal-article"
+  },
+  {
+    "key": "soldani2018pains",
+    "manuscript_title": "The Pains and Gains of Microservices: A Systematic Grey Literature Review",
+    "doi": "10.1016/j.jss.2018.09.082",
+    "checked_utc": "2026-11-03T03:41:39.303428+00:00",
+    "status": "metadata_found",
+    "title": [
+      "The pains and gains of microservices: A Systematic grey literature review"
+    ],
+    "publisher": "Elsevier BV",
+    "year": {
+      "date-parts": [
+        [
+          2018,
+          12
+        ]
+      ]
+    },
+    "url": "https://doi.org/10.1016/j.jss.2018.09.082",
+    "type": "journal-article"
+  },
+  {
+    "key": "soldani2023anomaly",
+    "manuscript_title": "Anomaly Detection and Failure Root Cause Analysis in (Micro) Service-Based Cloud Applications: A Survey",
+    "doi": "10.1145/3501297",
+    "checked_utc": "2026-11-03T03:41:39.323232+00:00",
+    "status": "metadata_found",
+    "title": [
+      "Anomaly Detection and Failure Root Cause Analysis in (Micro) Service-Based Cloud Applications: A Survey"
+    ],
+    "publisher": "Association for Computing Machinery (ACM)",
+    "year": {
+      "date-parts": [
+        [
+          2022,
+          2,
+          3
+        ]
+      ]
+    },
+    "url": "https://doi.org/10.1145/3501297",
+    "type": "journal-article"
+  },
+  {
+    "key": "lu2022cloudraid",
+    "manuscript_title": "{CloudRaid}: Detecting Distributed Concurrency Bugs via Log Mining and Enhancement",
+    "doi": "10.1109/TSE.2020.2999364",
+    "checked_utc": "2026-11-03T03:41:39.415147+00:00",
+    "status": "metadata_found",
+    "title": [
+      "CloudRaid: Detecting Distributed Concurrency Bugs via Log Mining and Enhancement"
+    ],
+    "publisher": "Institute of Electrical and Electronics Engineers (IEEE)",
+    "year": {
+      "date-parts": [
+        [
+          2022,
+          2,
+          1
+        ]
+      ]
+    },
+    "url": "https://doi.org/10.1109/tse.2020.2999364",
+    "type": "journal-article"
+  },
+  {
+    "key": "dean2013tail",
+    "manuscript_title": "The Tail at Scale",
+    "doi": "10.1145/2408776.2408794",
+    "checked_utc": "2026-11-03T03:41:39.521302+00:00",
+    "status": "metadata_found",
+    "title": [
+      "The tail at scale"
+    ],
+    "publisher": "Association for Computing Machinery (ACM)",
+    "year": {
+      "date-parts": [
+        [
+          2013,
+          2
+        ]
+      ]
+    },
+    "url": "https://doi.org/10.1145/2408776.2408794",
+    "type": "journal-article"
+  }
+]

@@ -1,0 +1,20 @@
+{
+  "checked_utc": "2026-11-03T04:04:14.777391+00:00",
+  "unit_evidence_tests": 35,
+  "test_result": "passed",
+  "lint": "passed",
+  "docker_build": "passed",
+  "cluster_safety": "passed; earlier invalid trials retained",
+  "controller_crash": "passed; independent watchdog removed fault",
+  "prometheus_targets_up": 4,
+  "grafana_health": "ok",
+  "fault_absence_verified": true,
+  "model_trials_latest_matrix": 80,
+  "model_execution_failures": 0,
+  "cluster_closed_loop_pilot_families": [
+    "abort",
+    "delay"
+  ],
+  "research_claim": "No confirmed novelty, comparative superiority, or causal guarantee",
+  "deadline": "2026-11-16"
+}

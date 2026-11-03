@@ -1,6 +1,10 @@
-﻿# Complete CEP delivery plan
+# Complete CEP delivery plan
 
-Status: **Planning draft after workspace initialization**. Implementation has not started.
+Status: **Prototype implemented; local cluster and engineering validation in progress** (3 November 2026).
+Deadline: **16 November 2026**, supplied by the user; no rubric supplied. The eight-week
+schedule below is historical planning, superseded by the 13-day schedule in IMPLEMENTATION.md.
+See IMPLEMENTATION.md for completed checks, limitations, and the remaining research gates.
+Simulation checks and short cluster pilots are not final comparative evaluation.
 Scope: a reproducible course demonstrator plus an evidence-backed two-column report.
 Schedule: provisional eight weeks for two students; adapt to the actual deadline and rubric.
 

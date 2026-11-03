@@ -1,0 +1,28 @@
+[build-system]
+requires = ["hatchling==1.33.0"]
+build-backend = "hatchling.build"
+
+[project]
+name = "cc-cep"
+version = "0.1.0"
+description = "Research prototype for attributed dual-SLO chaos control"
+requires-python = ">=3.12"
+dependencies = ["httpx", "prometheus-client", "fastapi", "uvicorn", "matplotlib", "pyyaml"]
+
+[project.scripts]
+cc-cep = "cc_cep.cli:main"
+
+[dependency-groups]
+dev = ["pytest", "ruff"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+
+[tool.ruff]
+line-length = 100
+
+[tool.hatch.build.targets.wheel]
+packages = ["src/cc_cep"]
+
+[tool.ruff.lint]
+select = ["E4", "E7", "E9", "F", "I"]

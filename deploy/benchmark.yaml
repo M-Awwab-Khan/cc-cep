@@ -1,0 +1,351 @@
+apiVersion: v1
+kind: Namespace
+metadata:
+  name: cc-cep
+  labels:
+    istio-injection: enabled
+    cc-cep.local/disposable: 'true'
+---
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: cc-cep-safety
+  namespace: cc-cep
+  labels:
+    cc-cep.local/disposable: 'true'
+data:
+  purpose: Disposable CC-CEP lab
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: frontend-control
+  namespace: cc-cep
+spec:
+  selector:
+    app: frontend-control
+    cohort: control
+    tier: frontend
+  ports:
+  - name: http
+    port: 8000
+    targetPort: 8000
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: frontend-control
+  namespace: cc-cep
+spec:
+  replicas: 1
+  selector:
+    matchLabels: &id001
+      app: frontend-control
+      cohort: control
+      tier: frontend
+  template:
+    metadata:
+      labels: *id001
+    spec:
+      automountServiceAccountToken: false
+      securityContext:
+        runAsNonRoot: true
+        runAsUser: 10001
+      containers:
+      - name: app
+        image: cc-cep:0.1.0
+        imagePullPolicy: Never
+        env:
+        - name: CC_COHORT
+          value: control
+        - name: CC_DEPENDENCY_URL
+          value: http://dependency-control:8000
+        ports:
+        - containerPort: 8000
+        resources:
+          requests:
+            cpu: 100m
+            memory: 96Mi
+          limits:
+            cpu: '1'
+            memory: 256Mi
+        securityContext:
+          allowPrivilegeEscalation: false
+          capabilities:
+            drop:
+            - ALL
+        readinessProbe:
+          httpGet:
+            path: /health
+            port: 8000
+        livenessProbe:
+          httpGet:
+            path: /health
+            port: 8000
+          initialDelaySeconds: 10
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: dependency-control
+  namespace: cc-cep
+spec:
+  selector:
+    app: dependency-control
+    cohort: control
+    tier: dependency
+  ports:
+  - name: http
+    port: 8000
+    targetPort: 8000
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: dependency-control
+  namespace: cc-cep
+spec:
+  replicas: 1
+  selector:
+    matchLabels: &id001
+      app: dependency-control
+      cohort: control
+      tier: dependency
+  template:
+    metadata:
+      labels: *id001
+    spec:
+      automountServiceAccountToken: false
+      securityContext:
+        runAsNonRoot: true
+        runAsUser: 10001
+      containers:
+      - name: app
+        image: cc-cep:0.1.0
+        imagePullPolicy: Never
+        env:
+        - name: CC_COHORT
+          value: control
+        ports:
+        - containerPort: 8000
+        resources:
+          requests:
+            cpu: 100m
+            memory: 96Mi
+          limits:
+            cpu: '1'
+            memory: 256Mi
+        securityContext:
+          allowPrivilegeEscalation: false
+          capabilities:
+            drop:
+            - ALL
+        readinessProbe:
+          httpGet:
+            path: /health
+            port: 8000
+        livenessProbe:
+          httpGet:
+            path: /health
+            port: 8000
+          initialDelaySeconds: 10
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: frontend-treatment
+  namespace: cc-cep
+spec:
+  selector:
+    app: frontend-treatment
+    cohort: treatment
+    tier: frontend
+  ports:
+  - name: http
+    port: 8000
+    targetPort: 8000
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: frontend-treatment
+  namespace: cc-cep
+spec:
+  replicas: 1
+  selector:
+    matchLabels: &id001
+      app: frontend-treatment
+      cohort: treatment
+      tier: frontend
+  template:
+    metadata:
+      labels: *id001
+    spec:
+      automountServiceAccountToken: false
+      securityContext:
+        runAsNonRoot: true
+        runAsUser: 10001
+      containers:
+      - name: app
+        image: cc-cep:0.1.0
+        imagePullPolicy: Never
+        env:
+        - name: CC_COHORT
+          value: treatment
+        - name: CC_DEPENDENCY_URL
+          value: http://dependency-treatment:8000
+        ports:
+        - containerPort: 8000
+        resources:
+          requests:
+            cpu: 100m
+            memory: 96Mi
+          limits:
+            cpu: '1'
+            memory: 256Mi
+        securityContext:
+          allowPrivilegeEscalation: false
+          capabilities:
+            drop:
+            - ALL
+        readinessProbe:
+          httpGet:
+            path: /health
+            port: 8000
+        livenessProbe:
+          httpGet:
+            path: /health
+            port: 8000
+          initialDelaySeconds: 10
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: dependency-treatment
+  namespace: cc-cep
+spec:
+  selector:
+    app: dependency-treatment
+    cohort: treatment
+    tier: dependency
+  ports:
+  - name: http
+    port: 8000
+    targetPort: 8000
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: dependency-treatment
+  namespace: cc-cep
+spec:
+  replicas: 1
+  selector:
+    matchLabels: &id001
+      app: dependency-treatment
+      cohort: treatment
+      tier: dependency
+  template:
+    metadata:
+      labels: *id001
+    spec:
+      automountServiceAccountToken: false
+      securityContext:
+        runAsNonRoot: true
+        runAsUser: 10001
+      containers:
+      - name: app
+        image: cc-cep:0.1.0
+        imagePullPolicy: Never
+        env:
+        - name: CC_COHORT
+          value: treatment
+        ports:
+        - containerPort: 8000
+        resources:
+          requests:
+            cpu: 100m
+            memory: 96Mi
+          limits:
+            cpu: '1'
+            memory: 256Mi
+        securityContext:
+          allowPrivilegeEscalation: false
+          capabilities:
+            drop:
+            - ALL
+        readinessProbe:
+          httpGet:
+            path: /health
+            port: 8000
+        livenessProbe:
+          httpGet:
+            path: /health
+            port: 8000
+          initialDelaySeconds: 10
+---
+apiVersion: networking.istio.io/v1
+kind: VirtualService
+metadata:
+  name: cc-cep-fault
+  namespace: cc-cep
+  labels:
+    cc-cep.local/managed: 'true'
+  annotations:
+    cc-cep.local/expires: '0'
+spec:
+  hosts:
+  - dependency-treatment.cc-cep.svc.cluster.local
+  exportTo:
+  - .
+  http:
+  - route:
+    - destination:
+        host: dependency-treatment.cc-cep.svc.cluster.local
+        port:
+          number: 8000
+---
+apiVersion: v1
+kind: ServiceAccount
+metadata:
+  name: cc-cep-controller
+  namespace: cc-cep
+---
+apiVersion: rbac.authorization.k8s.io/v1
+kind: Role
+metadata:
+  name: fault-editor
+  namespace: cc-cep
+rules:
+- apiGroups:
+  - ''
+  resources:
+  - configmaps
+  resourceNames:
+  - cc-cep-safety
+  verbs:
+  - get
+  - patch
+- apiGroups:
+  - networking.istio.io
+  resources:
+  - virtualservices
+  resourceNames:
+  - cc-cep-fault
+  verbs:
+  - get
+  - patch
+---
+apiVersion: rbac.authorization.k8s.io/v1
+kind: RoleBinding
+metadata:
+  name: fault-editor
+  namespace: cc-cep
+roleRef:
+  apiGroup: rbac.authorization.k8s.io
+  kind: Role
+  name: fault-editor
+subjects:
+- kind: ServiceAccount
+  name: cc-cep-controller
+  namespace: cc-cep

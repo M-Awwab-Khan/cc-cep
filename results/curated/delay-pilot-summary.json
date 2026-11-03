@@ -1,0 +1,30 @@
+{
+  "mode": "cluster-pilot",
+  "run_id": "e64dddb2-296d-45f7-b000-46d5b47422b5",
+  "policy": "closed-loop",
+  "family": "delay",
+  "seed": 101,
+  "state": "COMPLETE",
+  "stop_reason": "duration",
+  "cleanup_verified": true,
+  "cleanup_errors": [],
+  "exposure_fraction_seconds": 1.045578434259951,
+  "ledgers": {
+    "availability": {
+      "allocation": 1800.0000000000016,
+      "service_budget": 3600.000000000003,
+      "signed": 0.0,
+      "enforced": 48.323814652869295,
+      "total_bad": 0,
+      "treatment_requests": 1641
+    },
+    "latency": {
+      "allocation": 1800.0000000000016,
+      "service_budget": 18000.000000000015,
+      "signed": 47.0,
+      "enforced": 118.40481457104332,
+      "total_bad": 47,
+      "treatment_requests": 1641
+    }
+  }
+}

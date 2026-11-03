@@ -1,0 +1,59 @@
+{
+  "mode": "local-http-integration",
+  "checks": {
+    "control_rejects_fault": true,
+    "healthy_baseline": [
+      {
+        "total": 120,
+        "availability": 0,
+        "latency": 0
+      },
+      {
+        "total": 120,
+        "availability": 0,
+        "latency": 0
+      }
+    ],
+    "abort_isolated_and_removed": [
+      {
+        "total": 20,
+        "availability": 0,
+        "latency": 0
+      },
+      {
+        "total": 20,
+        "availability": 20,
+        "latency": 20
+      }
+    ],
+    "delay_isolated_and_removed": [
+      {
+        "total": 20,
+        "availability": 0,
+        "latency": 0
+      },
+      {
+        "total": 20,
+        "availability": 0,
+        "latency": 20
+      }
+    ],
+    "controller_stopped_and_cleanup_verified": "severe total burn: availability",
+    "killed_renewer_fault_expired_seconds": 1.0657644890015945,
+    "recovery": [
+      {
+        "total": 20,
+        "availability": 0,
+        "latency": 0
+      },
+      {
+        "total": 20,
+        "availability": 0,
+        "latency": 0
+      }
+    ]
+  },
+  "created_utc": 1793677228.995078,
+  "passed": true,
+  "cleanup_verified": true
+}

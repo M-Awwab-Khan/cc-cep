@@ -1,0 +1,9 @@
+{
+  "archive": "results/archives/implementation-2026-11-03.tar.gz",
+  "created_utc": "2026-11-03T04:04:17.985193+00:00",
+  "files": 784,
+  "bytes": 2886710,
+  "sha256": "3c67212ac35e5b879d716a9eb157f02ea91ff687c277fe27dbb5e7349edafafe",
+  "contains": "Current source/configuration and all local development trial evidence",
+  "limitation": "Not every superseded intermediate source version was snapshotted; see results/README.md"
+}

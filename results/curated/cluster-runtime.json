@@ -1,0 +1,242 @@
+{
+  "created_utc": 1793678306.1260767,
+  "version": {
+    "clientVersion": {
+      "major": "1",
+      "minor": "36",
+      "gitVersion": "v1.36.0",
+      "gitCommit": "ecf6decece6a6de25a57aad9ba90b6ce580f6f78",
+      "gitTreeState": "clean",
+      "buildDate": "2026-04-22T13:54:45Z",
+      "goVersion": "go1.26.2",
+      "compiler": "gc",
+      "platform": "linux/amd64"
+    },
+    "kustomizeVersion": "v5.8.1",
+    "serverVersion": {
+      "major": "1",
+      "minor": "36",
+      "emulationMajor": "1",
+      "emulationMinor": "36",
+      "minCompatibilityMajor": "1",
+      "minCompatibilityMinor": "35",
+      "gitVersion": "v1.36.4",
+      "gitCommit": "bb826b1d48562f110659e64e8ec444327433db95",
+      "gitTreeState": "clean",
+      "buildDate": "2026-08-20T03:06:28Z",
+      "goVersion": "go1.26.5",
+      "compiler": "gc",
+      "platform": "linux/amd64"
+    }
+  },
+  "pods": [
+    {
+      "name": "dependency-control-5c8c95f76b-8zclr",
+      "uid": "3dce4a4c-a062-47d1-94b7-e6c98ab02177",
+      "containers": [
+        {
+          "name": "app",
+          "image": "docker.io/library/cc-cep:0.1.0",
+          "imageID": "docker.io/library/import-2026-11-03@sha256:e536459356fc8a4cde2edb62d5c4b6637cc3bf63ade1a30536ba6d0170350173",
+          "ready": true
+        }
+      ]
+    },
+    {
+      "name": "dependency-treatment-69b78b7cf5-7pgpp",
+      "uid": "0f769a52-da87-41eb-85aa-91afadfd40d6",
+      "containers": [
+        {
+          "name": "app",
+          "image": "docker.io/library/cc-cep:0.1.0",
+          "imageID": "docker.io/library/import-2026-11-03@sha256:e536459356fc8a4cde2edb62d5c4b6637cc3bf63ade1a30536ba6d0170350173",
+          "ready": true
+        }
+      ]
+    },
+    {
+      "name": "frontend-control-7cbcfcd58b-nxrm6",
+      "uid": "bf552ffc-c86d-4393-89d4-71ffbbcbc071",
+      "containers": [
+        {
+          "name": "app",
+          "image": "docker.io/library/cc-cep:0.1.0",
+          "imageID": "docker.io/library/import-2026-11-03@sha256:e536459356fc8a4cde2edb62d5c4b6637cc3bf63ade1a30536ba6d0170350173",
+          "ready": true
+        }
+      ]
+    },
+    {
+      "name": "frontend-treatment-576c549fc4-d2647",
+      "uid": "123b9213-fd01-4881-8d00-4070bafc1806",
+      "containers": [
+        {
+          "name": "app",
+          "image": "docker.io/library/cc-cep:0.1.0",
+          "imageID": "docker.io/library/import-2026-11-03@sha256:e536459356fc8a4cde2edb62d5c4b6637cc3bf63ade1a30536ba6d0170350173",
+          "ready": true
+        }
+      ]
+    },
+    {
+      "name": "grafana-797bd6d688-zntz9",
+      "uid": "dffc5498-26b3-449a-814d-ea9151073b9e",
+      "containers": [
+        {
+          "name": "grafana",
+          "image": "sha256:6afa1ab7f6e662c739a45a1d458598d7eb6ab70fc7c0ab45af64864e1503d4b6",
+          "imageID": "docker.io/grafana/grafana@sha256:488984b716c0862639f91a698adbe2862677a5a07bad42da5f03f3030883b205",
+          "ready": true
+        }
+      ]
+    },
+    {
+      "name": "prometheus-79bdf54668-v78nt",
+      "uid": "27e96611-07af-4930-87bf-a7cdddb8192d",
+      "containers": [
+        {
+          "name": "prometheus",
+          "image": "sha256:876ae6bcb0d6c9190d799e82c996fbe5faecdaaa0ec84f5e7dd272c0542ea63c",
+          "imageID": "docker.io/prom/prometheus@sha256:fa3302279710be2f21a8301ec17a8b4f2301fd829bd113839b3b6b02b6f191a2",
+          "ready": true
+        }
+      ]
+    }
+  ],
+  "prometheus": {
+    "status": "success",
+    "data": {
+      "activeTargets": [
+        {
+          "discoveredLabels": {
+            "__address__": "frontend-treatment:8000",
+            "__always_scrape_classic_histograms__": "false",
+            "__convert_classic_histograms_to_nhcb__": "false",
+            "__metrics_path__": "/metrics/",
+            "__scheme__": "http",
+            "__scrape_interval__": "1s",
+            "__scrape_native_histograms__": "false",
+            "__scrape_timeout__": "1s",
+            "cohort": "treatment",
+            "job": "benchmark",
+            "tier": "frontend"
+          },
+          "labels": {
+            "cohort": "treatment",
+            "instance": "frontend-treatment:8000",
+            "job": "benchmark",
+            "tier": "frontend"
+          },
+          "scrapePool": "benchmark",
+          "scrapeUrl": "http://frontend-treatment:8000/metrics/",
+          "globalUrl": "http://frontend-treatment:8000/metrics/",
+          "lastError": "",
+          "lastScrape": "2026-11-03T03:58:25.483004182Z",
+          "lastScrapeDuration": 0.003945456,
+          "health": "up",
+          "scrapeInterval": "1s",
+          "scrapeTimeout": "1s"
+        },
+        {
+          "discoveredLabels": {
+            "__address__": "dependency-treatment:8000",
+            "__always_scrape_classic_histograms__": "false",
+            "__convert_classic_histograms_to_nhcb__": "false",
+            "__metrics_path__": "/metrics/",
+            "__scheme__": "http",
+            "__scrape_interval__": "1s",
+            "__scrape_native_histograms__": "false",
+            "__scrape_timeout__": "1s",
+            "cohort": "treatment",
+            "job": "benchmark",
+            "tier": "dependency"
+          },
+          "labels": {
+            "cohort": "treatment",
+            "instance": "dependency-treatment:8000",
+            "job": "benchmark",
+            "tier": "dependency"
+          },
+          "scrapePool": "benchmark",
+          "scrapeUrl": "http://dependency-treatment:8000/metrics/",
+          "globalUrl": "http://dependency-treatment:8000/metrics/",
+          "lastError": "",
+          "lastScrape": "2026-11-03T03:58:25.726914809Z",
+          "lastScrapeDuration": 0.003803178,
+          "health": "up",
+          "scrapeInterval": "1s",
+          "scrapeTimeout": "1s"
+        },
+        {
+          "discoveredLabels": {
+            "__address__": "frontend-control:8000",
+            "__always_scrape_classic_histograms__": "false",
+            "__convert_classic_histograms_to_nhcb__": "false",
+            "__metrics_path__": "/metrics/",
+            "__scheme__": "http",
+            "__scrape_interval__": "1s",
+            "__scrape_native_histograms__": "false",
+            "__scrape_timeout__": "1s",
+            "cohort": "control",
+            "job": "benchmark",
+            "tier": "frontend"
+          },
+          "labels": {
+            "cohort": "control",
+            "instance": "frontend-control:8000",
+            "job": "benchmark",
+            "tier": "frontend"
+          },
+          "scrapePool": "benchmark",
+          "scrapeUrl": "http://frontend-control:8000/metrics/",
+          "globalUrl": "http://frontend-control:8000/metrics/",
+          "lastError": "",
+          "lastScrape": "2026-11-03T03:58:25.644973177Z",
+          "lastScrapeDuration": 0.003963659,
+          "health": "up",
+          "scrapeInterval": "1s",
+          "scrapeTimeout": "1s"
+        },
+        {
+          "discoveredLabels": {
+            "__address__": "dependency-control:8000",
+            "__always_scrape_classic_histograms__": "false",
+            "__convert_classic_histograms_to_nhcb__": "false",
+            "__metrics_path__": "/metrics/",
+            "__scheme__": "http",
+            "__scrape_interval__": "1s",
+            "__scrape_native_histograms__": "false",
+            "__scrape_timeout__": "1s",
+            "cohort": "control",
+            "job": "benchmark",
+            "tier": "dependency"
+          },
+          "labels": {
+            "cohort": "control",
+            "instance": "dependency-control:8000",
+            "job": "benchmark",
+            "tier": "dependency"
+          },
+          "scrapePool": "benchmark",
+          "scrapeUrl": "http://dependency-control:8000/metrics/",
+          "globalUrl": "http://dependency-control:8000/metrics/",
+          "lastError": "",
+          "lastScrape": "2026-11-03T03:58:26.133932892Z",
+          "lastScrapeDuration": 0.003516484,
+          "health": "up",
+          "scrapeInterval": "1s",
+          "scrapeTimeout": "1s"
+        }
+      ],
+      "droppedTargets": [],
+      "droppedTargetCounts": {
+        "benchmark": 0
+      }
+    }
+  },
+  "grafana": {
+    "database": "ok",
+    "version": "13.3.0",
+    "commit": "6f8ce3c693b493043ebcd4787566d2b6b118b0f0"
+  }
+}

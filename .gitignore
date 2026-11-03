@@ -35,3 +35,8 @@ Thumbs.db
 # Local generated artifacts; preserve curated evidence separately
 results/raw/
 results/tmp/
+
+# Local downloaded tools
+.tools/
+
+results/archives/

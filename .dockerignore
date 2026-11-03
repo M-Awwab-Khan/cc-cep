@@ -1,0 +1,7 @@
+*
+!src/
+!src/cc_cep/
+!src/cc_cep/*.py
+!deploy/
+!deploy/requirements.txt
+!deploy/Dockerfile
