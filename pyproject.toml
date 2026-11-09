@@ -7,7 +7,7 @@ name = "cc-cep"
 version = "0.1.0"
 description = "Research prototype for attributed dual-SLO chaos control"
 requires-python = ">=3.12"
-dependencies = ["httpx", "prometheus-client", "fastapi", "uvicorn", "matplotlib", "pyyaml"]
+dependencies = ["httpx", "prometheus-client", "fastapi", "uvicorn", "matplotlib", "numpy", "pyyaml"]
 
 [project.scripts]
 cc-cep = "cc_cep.cli:main"

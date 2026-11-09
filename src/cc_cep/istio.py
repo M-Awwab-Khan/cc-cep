@@ -104,11 +104,15 @@ class IstioFault:
             "json",
         )
 
-    def apply(self, intensity, ttl=5):
+    def apply(self, intensity, ttl=5, telemetry_deadline=None):
         if not math.isfinite(intensity) or not 0 <= intensity <= 1 or not 0 < ttl <= 10:
             raise ValueError("invalid finite fault intensity/TTL")
+        if telemetry_deadline is not None and not math.isfinite(telemetry_deadline):
+            raise ValueError("telemetry deadline must be finite")
         resource = self.inspect()
         now = self.clock()
+        if telemetry_deadline is not None and now >= telemetry_deadline:
+            raise RuntimeError("client telemetry expired before fault write")
         heartbeat = self.last_watchdog
         if not 0 <= now - heartbeat <= 2:
             raise RuntimeError("independent watchdog heartbeat missing/stale")

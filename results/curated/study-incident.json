@@ -1,0 +1,33 @@
+{
+  "observed_utc": "2026-11-03T08:47:30.172089+00:00",
+  "study": "full-study-v3",
+  "verified_complete": 2,
+  "failed_jobs": 1,
+  "failed_attempts": 2,
+  "full_queue_running": false,
+  "fault_removed": true,
+  "evidence": [
+    "attempt-0: dropped_iterations before admission",
+    "attempt-1: 262 dropped iterations; health probe timeouts and frontend restarts"
+  ],
+  "cause_status": "Stalls recurred in v4 warmup before any fault injection; stopped safely. Instrumented no-fault diagnosis now running.",
+  "diagnostic": "results/raw/high-load-diagnosis-01",
+  "previous_finish_estimates": "Invalid after halted queue",
+  "recovery_study": "results/raw/full-study-v4",
+  "recovery_amendment": "One additional attempt for invalid third trial; all evidence retained; measurement code unchanged",
+  "fault_on_diagnostic": "COMPLETE, raw replay passed; 47051 post-baseline treatment requests, zero availability failures, 214 latency-bad requests",
+  "recovery_study_state": "STOPPED",
+  "current_diagnostic": "results/raw/sustained-qualification-01",
+  "current_stage": "Sustained qualification before conditional fresh v5",
+  "superseded_studies": [
+    "full-study-v3",
+    "full-study-v4"
+  ],
+  "proposed_loads": [
+    32,
+    64
+  ],
+  "qualification_repetitions_each": 2,
+  "earlier_completed_trials_pooled": false,
+  "unit_tests_passed": 51
+}

@@ -1,0 +1,38 @@
+{
+  "purpose": "Real HTTP validation of declared synthetic organic labels, no injection",
+  "reservation_horizon_seconds": 7200,
+  "family": "abort",
+  "workload_seed": 101,
+  "rps_per_cohort": 50,
+  "warmup_seconds": 120,
+  "interval_seconds": 2,
+  "controller": {
+    "slos": [
+      {
+        "name": "availability",
+        "target": 0.99,
+        "allocation_fraction": 0.5
+      },
+      {
+        "name": "latency",
+        "target": 0.95,
+        "allocation_fraction": 0.1
+      }
+    ],
+    "expected_treatment_requests": 360000,
+    "duration": 30,
+    "max_age": 5,
+    "min_requests": 50,
+    "max_rps": 100,
+    "reserve_seconds": 15,
+    "max_intensity": 0.1,
+    "step": 0.005,
+    "severe_burn": 20,
+    "policy": "closed-loop",
+    "pilot_cost": 1.0,
+    "background_model": "iid-bernoulli"
+  },
+  "no_fault": true,
+  "recovery_seconds": 5,
+  "background_probability": 0.005
+}

@@ -1,0 +1,26 @@
+\begin{table*}[width=\textwidth,cols=6,pos=t]
+\caption{Means across five blocks for the latency ledger. Exposure is integrated commanded fault fraction in fraction-seconds. Abort failures are also latency-bad, so their availability and latency counts coincide. Full-allocation overshoot was zero for every selected run.}\label{tbl:means}
+\small
+\begin{tabular*}{\tblwidth}{@{\extracolsep{\fill}}lllr rr@{}}
+\toprule
+Fault & Requests/s & Policy & Bad requests & Guard overshoot & Exposure \\
+\midrule
+abort & 32 & closed-loop & 142.0 & 0.0 & 4.46 \\
+abort & 32 & open-loop & 422.0 & 0.0 & 13.42 \\
+abort & 32 & static & 484.6 & 4.6 & 16.03 \\
+abort & 32 & threshold & 9.4 & 0.0 & 0.26 \\
+abort & 64 & closed-loop & 277.2 & 0.0 & 4.21 \\
+abort & 64 & open-loop & 856.2 & 0.0 & 13.40 \\
+abort & 64 & static & 981.6 & 21.6 & 15.42 \\
+abort & 64 & threshold & 18.0 & 0.0 & 0.26 \\
+delay & 32 & closed-loop & 446.6 & 0.4 & 14.05 \\
+delay & 32 & open-loop & 414.2 & 0.0 & 13.24 \\
+delay & 32 & static & 489.6 & 9.6 & 15.25 \\
+delay & 32 & threshold & 24.4 & 0.0 & 0.82 \\
+delay & 64 & closed-loop & 898.6 & 0.0 & 14.05 \\
+delay & 64 & open-loop & 838.0 & 0.0 & 13.25 \\
+delay & 64 & static & 976.2 & 16.2 & 15.08 \\
+delay & 64 & threshold & 51.0 & 0.0 & 0.86 \\
+\bottomrule
+\end{tabular*}
+\end{table*}

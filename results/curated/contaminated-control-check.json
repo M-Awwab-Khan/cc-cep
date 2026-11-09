@@ -1,0 +1,8 @@
+{
+  "mode": "configured-contamination-negative-check",
+  "admission_refused": true,
+  "fault_applied": false,
+  "cleanup_verified": true,
+  "source": "results/raw/revision-contaminated-control-01",
+  "limitation": "Configured gate, not automatic causal-contamination detection"
+}

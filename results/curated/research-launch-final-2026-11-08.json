@@ -1,0 +1,18 @@
+{
+  "supervisor_pid": 464557,
+  "launched_utc": "2026-11-08T09:47:49.254948+00:00",
+  "launched_karachi": "2026-11-08T14:47:49.254948+05:00",
+  "qualification_directory": "/home/muhammad-abyaz/workspace/personal/cc/cc-cep/results/raw/sustained-qualification-03",
+  "study_directory": "/home/muhammad-abyaz/workspace/personal/cc/cc-cep/results/raw/full-study-v7",
+  "pipeline_log": "/home/muhammad-abyaz/workspace/personal/cc/cc-cep/results/tmp/sustained-qualification-03.log",
+  "minimum_finish_karachi": "2026-11-09T08:03:19.254948+05:00",
+  "estimate_note": "Minimum phase time; setup, safety checks, replay and packaging add time. Any invalid execution may halt.",
+  "script_sha256": "1a8c6bac3994e76128d8be3d23c82e48cdc3930a84267d1055ab54037f0a8873",
+  "phases_seconds": [
+    120,
+    300,
+    120
+  ],
+  "source_tests_passed": 59,
+  "research_complete": false
+}

@@ -5,6 +5,7 @@ controller cannot extend a fault. Separate instances provide independent cohort 
 """
 
 import asyncio
+import hashlib
 import os
 import random
 import secrets
@@ -19,6 +20,7 @@ from pydantic import BaseModel, Field
 COHORT = os.environ.get("CC_COHORT", "control")
 TOKEN = os.environ.get("CC_LOCAL_FAULT_TOKEN", "")
 DEPENDENCY = os.environ.get("CC_DEPENDENCY_URL", "")
+SYNTHETIC = os.environ.get("CC_SYNTHETIC_ENABLED") == "true"
 REQUESTS = Counter("cc_requests", "Eligible server responses", ["cohort", "outcome"])
 LATENCY = Histogram(
     "cc_duration_seconds",
@@ -84,11 +86,26 @@ async def health():
     return {"ok": True, "cohort": COHORT}
 
 
+def organic_event(seed, key, cohort, probability):
+    if not 0 <= probability <= 0.1:
+        raise ValueError("synthetic probability must be in [0, .1]")
+    value = int.from_bytes(hashlib.sha256(f"{seed}:{cohort}:{key}".encode()).digest()[:8], "big")
+    return value / 2**64 < probability
+
+
 @app.get("/work")
-async def work():
+async def work(
+    x_cc_seed: str = Header(default="0"),
+    x_cc_key: str = Header(default=""),
+    x_cc_background: float = Header(default=0),
+):
+
     started = time.perf_counter()
     failed = False
     try:
+        if SYNTHETIC and organic_event(x_cc_seed, x_cc_key, COHORT, x_cc_background):
+            failed = True
+            raise HTTPException(503, "synthetic organic error", headers={"X-CC-Organic": "1"})
         if time.monotonic() < lease["expires"] and random.random() < lease["intensity"]:
             if lease["family"] == "abort":
                 failed = True

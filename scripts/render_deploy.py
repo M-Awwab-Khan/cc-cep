@@ -7,7 +7,7 @@ import yaml
 
 ROOT = Path(__file__).resolve().parents[1]
 NS = "cc-cep"
-IMAGE = "cc-cep:0.1.0"  # local build, pullPolicy Never; build ID recorded before trials
+IMAGE = "cc-cep:0.2.0"  # local build, pullPolicy Never; build ID recorded before trials
 PREFIX = "cc-cep.local/"
 
 
@@ -40,6 +40,7 @@ def render():
             labels = {"app": name, "cohort": cohort, "tier": tier}
             env = [{"name": "CC_COHORT", "value": cohort}]
             if tier == "frontend":
+                env.append({"name": "CC_SYNTHETIC_ENABLED", "value": "true"})
                 env.append(
                     {"name": "CC_DEPENDENCY_URL", "value": f"http://dependency-{cohort}:8000"}
                 )

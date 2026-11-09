@@ -1,3 +1,11 @@
+# Protocol history and current version
+
+**Superseded for new runs:** this file preserves the original pilot design and its
+known interval-Wilson defect. The current accountant is described in docs/ACCOUNTING-V2.md.
+The user selected the full-duration study in FULL-STUDY.md on 3 November 2026. Its
+immutable plan.json, pilot costs and source snapshot are authoritative for evaluation.
+Historical simulations/pilots remain evidence of that earlier version, not final cluster data.
+
 # Pilot and evaluation protocol
 
 Deadline: **16 November 2026** (user supplied). No rubric supplied.

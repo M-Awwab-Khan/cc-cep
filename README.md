@@ -3,13 +3,18 @@
 Cloud Computing Course CEP by Muhammad Awwab Khan (SE-23051) and Muhammad Abyaz Khalid (SE-23053), NED University of Engineering and Technology.
 
 ## Current state
-Implementation prototype is available: count-based dual-SLO accountant, matched-cohort
-attribution, four policies, conservative admission/stopping, short/long burn windows,
-cooldown, checkpointing, local HTTP benchmark, restricted Istio adapter, independent
-watchdog, k6 orchestration, checksummed evidence, descriptive analysis, and empirical
-cost summaries. Local and disposable-cluster safety checks and engineering pilots have
-been run. These are not final comparative research results. Existing Introduction and
-Literature Review are preserved. Novelty is provisional; see docs/NOVELTY.md.
+The full-duration cluster study completed on **9 November 2026**: 80 core comparisons,
+10 no-fault controls and 20 background-error ablations, with 110 verified selected runs.
+All 96 core paired metric comparisons and 16 background comparisons are available.
+One sleep-interrupted attempt failed and its declared retry passed; both are retained.
+See [final findings](docs/FINAL-RESULTS.md) and [research status](docs/RESEARCH-STATUS.md).
+
+The implementation provides separate count-based SLO ledgers, matched-cohort estimates,
+four policies, bounded Istio faults, an independent watchdog and evidence replay. The
+manuscript reports mixed findings: adaptive control reduces usable-guard overshoot versus
+static injection, but calibrated open-loop delivers substantially more abort exposure.
+Broad SLO-driven injection has close prior art; this is an empirical course contribution.
+See docs/NOVELTY.md. Student authors and vendor layout files are preserved.
 
 Deadline: **16 November 2026**. No course rubric supplied.
 
@@ -34,6 +39,47 @@ packages; project-local CLI versions and publisher/binary checksums are recorded
 
 The dedicated local cluster is `kind-cc-cep`; its kubeconfig is ignored and local.
 No cloud resources or spending are used.
+
+The full-study metadata archive is distributed as four `.part-*` files to fit GitHub's
+regular-file limit. Keep all indexed parts together. The current portable verifier
+checks each part and reassembles the original archive automatically; Git LFS is not
+required. Reassembly preserves the archive's original SHA-256. Packaging checks add
+three tests to the original 59-test suite, for 62 passing tests.
+
+## Review corrections and full study
+
+The interval-Wilson consumption defect is fixed in `realized-cumulative-v2`: zero bad
+requests consume zero budget. Conditional background credit uses a separate sequential
+calculation; the default grants no credit without the declared model. Cleanup exhaustion
+sets a sticky failed flag. A later successful removal cannot mark that execution successful.
+
+The original development archive is now included under `results/evidence/` with an
+external SHA-256 file. Verify its 169 internal manifests without third-party packages:
+
+```sh
+python scripts/reproduce_evidence.py --archive results/evidence/implementation-2026-11-03.tar.gz --destination results/tmp/original-evidence-new
+```
+
+See [accounting details](docs/ACCOUNTING-V2.md), [full-duration frozen protocol](experiments/FULL-STUDY.md),
+[demonstration](docs/DEMONSTRATION.md), and [long-run operation](docs/FULL-STUDY-RUNBOOK.md).
+The user explicitly retained 120/300/120-second phases. The main 90 trials need roughly
+14 hours; 20 background ablations add roughly three hours. Statistical code is ready;
+cluster inference and measured conclusions are now available in the final findings.
+
+Native Windows unit-test collection no longer imports `fcntl` unconditionally. Install
+the locked dependencies with `uv sync --frozen` before testing. A Windows/Linux CI workflow
+is provided, but Windows execution has not been performed in this session. Cluster setup,
+crash/recovery supervision and the current binary installer still require Linux/WSL.
+
+The correction archive `results/evidence/revision-2026-11-03.tar.gz` retains source,
+revised pilots, and the stopped v2 admission failures. Its portable verification checked
+195 internal manifests and replayed revised successful ledgers against raw client counts.
+It deliberately excludes the actively changing v3 study, which receives its own bundles
+after collection. The 8 November audit suite has 59 passing tests.
+
+The final report, editable 12-slide deck and labelled recorded-trace demonstration are
+under ignored `output/`. Earlier interim artifacts remain for provenance; use the
+paths in docs/FINAL-RESULTS.md for the final study deliverables.
 
 ## Overleaf
 Upload the project source and choose **cas-dc-template.tex** as the Main document in Overleaf settings. Use **pdfLaTeX** and BibTeX with an available current TeX Live release. The manuscript uses Elsevier's two-column CAS class.
@@ -64,4 +110,8 @@ Do not commit generated PDF/build files. The vendor .cls/.sty/.bst files retain 
 - [Complete CEP plan](docs/CEP-PLAN.md)
 - [Decisions and assumptions](docs/DECISIONS.md)
 
-The deadline is 16 November 2026. No course rubric or brief has been supplied. The local Docker VM has approximately 8 GiB of RAM; host memory was freed for cluster provisioning. Final comparison parameters remain provisional pending pilots.
+The qualification-03 / full-study-v7 process finished successfully on 9 November.
+Source, runtime pins and all failed attempts remain in the evidence. No experiment
+process remains active. The disposable cluster is left available with fault-free routing.
+See docs/FINAL-RESULTS.md for reproduction commands and limitations. Earlier runbook
+commands are historical; do not restart a completed study or overwrite its observations.

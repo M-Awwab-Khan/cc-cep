@@ -40,3 +40,10 @@ results/tmp/
 .tools/
 
 results/archives/
+
+# Generated presentation/PDF artifacts and helper staging
+output/
+.chart-data*/
+
+# Reconstructed from the indexed, committed chunks; exceeds GitHub's file limit.
+results/evidence/full-study-v7/study-metadata.tar.gz

@@ -50,3 +50,164 @@ At initialization, no deployment or cloud spend had been initiated.
   preserve cleanup errors rather than treating a stop command as removal proof.
 - Preserve all manuscript text and vendor assets. DOI metadata audit is separate from
   claim verification. No final novelty, statistical advantage, or causal claim yet.
+
+
+## Review-driven corrections and evaluation — 3 November 2026
+
+- Treat the review as a correction list, not confirmation that the CEP is complete.
+- Replace accumulated interval-Wilson charges with realized cumulative debit. Default
+  enforcement charges observed treatment bad events; background credit requires the
+  declared iid/monotonicity assumptions and sequential lower-bound calculation.
+- Preserve cleanup failure as sticky even after recovery. Retain every failed attempt.
+- Include the original raw archive and checksum in results/evidence. New evidence has
+  source snapshots, baseline snapshots, raw organic labels, pod identity/image inventory,
+  full ledger replay and client-count reconciliation.
+- User explicitly chose the full experiment durations and confirmed machine availability.
+  Freeze 80 core runs, 10 controls and 20 subsequent background/debit-mode ablations;
+  120/300/120-second phases, randomized blocks 1001–1005, order seed 20261103.
+- Capacity-path calibration selected 48 and 112 RPS from a 160 RPS healthy tested level.
+  Preserve the failed rollout probe and failed 320 RPS probe. They are not favorable
+  data selections hidden from the archive.
+- Use pilot seed 21 and independently measured abort/delay costs before freezing. The
+  open-loop percentage divides usable budget by fault-window traffic, not reservation traffic.
+- Freeze source in a separate local snapshot and detach the one-off sequential process
+  from the interactive command session. Runtime links to kubeconfig/tools are excluded
+  from archives. A target lock prevents concurrent fault controllers.
+- Use paired block bootstrap intervals and preserve missing/failed blocks explicitly.
+  Predeclare full-allocation and usable-guard overshoot separately; never represent
+  a large reserve as demonstrated tight control of the full allocation.
+- Paper revisions now remove the unverified WOS search/gap claim and prototype promises
+  about Online Boutique/Chaos Mesh. Those remain optional future extensions.
+- Add native Windows lock support and a pinned-actions CI matrix. No Windows execution
+  result is claimed; cluster tooling/supervision still uses Linux/WSL.
+- Automatic post-study artifacts remain review-required. Do not label data collection,
+  report compilation, or plausible novelty as completion of the entire CEP.
+
+### Native-sidecar admission correction (2026-11-03)
+
+The initial full-study-v2 driver was stopped after readiness admission repeatedly
+failed before baseline/load generation: Istio 1.31 uses a native sidecar under
+initContainerStatuses, while the new provenance check inspected only regular
+containerStatuses. All failed attempts and the stopped status are retained. No
+measurement-window outcomes were collected. The corrected inventory includes the
+named istio-proxy from either location, excluding the completed istio-init. A
+regression test checks both layouts. The queue now halts after any trial exhausts
+its single invalid-execution retry, so systematic failures cannot consume the
+whole plan. Full-study-v3 freezes the correction; its loads, order, seeds, budgets,
+phase durations and statistical design are identical to v2. No frozen v2 code was
+changed, and no failed trial was relabelled successful.
+
+### Explicit recovery amendment after v3's invalid high-load trial
+
+The v3 study retains two completed comparisons and two invalid attempts of the third
+job (core-delay-112-threshold-1001). Missing client iterations invalidate the workload;
+health probe timeouts and frontend restarts were also observed. The underlying transient
+cause remains unresolved: neither logs nor passing subsequent diagnostics prove a fix.
+Independent full-length no-fault (seed 9001) and fault-on (seed 9002) diagnostics at
+112 requests/s per cohort completed; both must pass manifest verification and ledger/raw
+replay before continuation. They are qualification evidence, not extra comparison runs.
+
+Recovery creates a separate full-study-v4 directory and source freeze. It copies every
+prior attempt and carries forward the two valid trials without repeating them. It permits
+exactly one additional attempt of the invalid exhausted job, and records this as an
+explicit post-failure amendment to the original one-retry rule. A valid unfavorable
+result cannot be retried through this path. Other jobs retain the original retry limit.
+The measurement/controller/workload/deployment files must match v3 byte-for-byte;
+loads, budgets, phases, randomized order and planned analysis are unchanged. A recurrent
+invalid trial still halts the batch for diagnosis. No failed outcome is relabelled.
+
+Read-only host memory/load, kind-node resource use, and benchmark container state are
+recorded every 30 seconds for diagnosis. Progress distinguishes completed from attempted
+jobs. Portable metadata bundles now include resource logs, isolation safety evidence,
+prior source/plan/matrix/status, diagnostics and the recovery amendment. The final report
+must disclose the amendment and the first-trial concurrent artifact activity; these are
+limitations even if the remaining collection succeeds.
+
+The first v4 launch found the project kind node stopped: Docker reported exit 137,
+OOMKilled=false, finished at 2026-11-03 15:27:05 UTC. No trial was admitted in that
+launch. Only the project-owned node was restarted; all four benchmark pods recovered
+to 2/2 Ready. The resumed driver is wrapped by systemd-inhibit (idle:sleep, block),
+which releases automatically on process exit and cannot prevent an explicit Docker
+shutdown. The failed launch status/log and restart record remain in recovery-evidence.
+
+### Sustained-load replacement after the recovery also failed
+
+The amended v4 retry reproduced frontend health failures during warmup with no fault.
+It was stopped with verified cleanup and retained as a failed interrupted attempt.
+Temporary SIGUSR1 stack tracing in a separate diagnostic showed active Python request
+processing and cgroup CPU throttling; the no-fault load again dropped iterations.
+The normal deployment commands were restored and both restorations verified. These
+observations support treating the prior capacity qualification as inadequate, without
+claiming that CPU throttling is the only proven cause.
+
+The v4 continuation is superseded. A fresh v5 comparison may begin only after four
+predeclared full-length no-fault qualifications at conservative 32/64 requests/s pass
+health, throughput, identity and CPU-headroom gates. All four must pass once; no adaptive
+search or retry-until-success is allowed. Two earlier completed comparisons are retained
+as prior engineering evidence, not pooled with v5. Each study phase remains 120/300/120
+seconds. The independent 48 requests/s cost pilots remain between the proposed loads.
+The one-off qualification/study process runs with sleep inhibition and resource context;
+a qualification failure or recurrent invalid study execution halts for diagnosis.
+
+### 8 November audit and fresh qualification amendment
+
+The 3 November qualification stopped after one availability-bad control request in
+27,117, with zero treatment bad requests and frontend CPU about 0.46 cores. This failed
+the predeclared zero-event gate but not either SLO. The old decision and raw data remain
+unchanged. Replacement qualification-02 uses fresh seeds 9201–9204 and per-stream 99%
+Wilson upper screening limits <=0.5% availability-bad and <=2.5% latency-bad (half the
+SLO bad fractions), plus unchanged traffic, identity, cleanup and resource gates. These
+are operational screens, not joint/time-uniform or causal coverage guarantees. All four
+fresh runs must pass; the old runs are not reclassified as new qualification evidence.
+
+The audit also corrected exception shutdown ordering: fault removal precedes workload
+termination and the guardian remains alive through evidence draining. If cleanup cannot
+be verified, its bounded independent process remains available; a clearly declared live
+watchdog log is excluded from sealing while an immutable failure snapshot is hashed.
+Resume likewise verifies removal before stopping orphan guardians. Runtime templates
+and resolved app/proxy images are pinned across the study; raw per-trial pod identity
+checks remain. Inference cannot count a run with missing effective metadata as verified.
+Attempts.csv independently lists every retained attempt, including unselected failures.
+NumPy is now a direct locked dependency; the lock update changes no package versions.
+
+A one-off sleep-inhibited qualification-02/full-study-v6 process will run the original
+120/300/120-second phases. Code is snapshotted before qualification and guarded against
+changes before freezing evaluation. It emits a best-effort local desktop notice on
+failure or exit, and preserves every stopped/superseded run. Completion still requires
+110 verified comparisons/controls/ablations, interpretation and final artifact review.
+
+### Final decision-clock correction before replacement comparisons
+
+Qualification-02's first full run passed ledger replay, cleanup and SLO/resource screens.
+The second was explicitly interrupted before any comparison began so the final live
+freshness correction could be qualified on a consistent source version. Old outcomes
+and the interruption remain unchanged. Qualification-03 uses fresh seeds 9301–9304;
+full-study-v7 is the sole proposed replacement, with no older trial pooled.
+
+Live observation time was previously also supplied as decision time, hiding API-read
+latency in freshness checks. Decisions now use the actual post-inspection clock and
+reject stale/future timestamps from either client cohort or the guardian. The adapter
+rechecks client telemetry expiry after its own inspection, immediately before fault
+writes. New events retain observation/decision times, client latest times and guardian
+heartbeat; replay checks these gates for the new clock contract. Manual emergency
+interruption is failed/censored, not a completed comparison. These changes improve the
+software gate; API outages and Envoy propagation still preclude unconditional safety.
+
+### 9 November: completed measurements and final interpretation
+
+The replacement matrix completed all110 selected runs (80core,10controls,20background).
+There are111 retained attempts: host sleep interrupted open-loop abort32/block1003,
+its original invalid-execution retry completed, and both verified cleanup. No valid
+unfavorable outcome was retried. All96 core paired metric contrasts are complete.
+
+Final interpretation is mixed: guard overshoot improves versus static, while calibrated
+open-loop retains substantially more abort exposure. Background point estimates improve
+against synthetic tagged residuals without a clear exposure benefit from conservative
+credit. No controller tuning or matrix amendment followed these outcomes.
+
+The final paper/deck/demo derive from frozen data and keep the close prior art, shared
+host, sequential-block precision, conditional background model and unmeasured cluster
+ablations explicit. Single-SLO and injected-telemetry-delay cluster ablations were not
+collected and are not presented as completed experiments. A separate independent
+portable extraction/replay check and final document QA accompany handoff. Students
+still need to review authorship and rehearse; no rubric or remote submission is implied.

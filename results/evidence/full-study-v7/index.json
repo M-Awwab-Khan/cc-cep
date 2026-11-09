@@ -1,0 +1,477 @@
+{
+  "schema": 2,
+  "archives": [
+    {
+      "file": "core-delay-32-open-loop-1001-a0.tar.gz",
+      "sha256": "6f191c0bdb90ddbe1af9390bbecbc376a87bee8a17df50a33cf6cb23db93786b"
+    },
+    {
+      "file": "core-abort-32-threshold-1001-a0.tar.gz",
+      "sha256": "2078a14aa832f679eba59d044bf84164190a4c6139c06a2dfb30c913e878b181"
+    },
+    {
+      "file": "core-delay-64-threshold-1001-a0.tar.gz",
+      "sha256": "806851c18206a00f219f3d0db39a77af10d5ea60111fd30c76f5ed1d3ce17cc8"
+    },
+    {
+      "file": "core-delay-32-closed-loop-1001-a0.tar.gz",
+      "sha256": "35ff65d87808ff69259bdb84e6e17acbca68c3206d030481748c48b02cff3024"
+    },
+    {
+      "file": "core-abort-64-open-loop-1001-a0.tar.gz",
+      "sha256": "5c0f1d480587a43873743daf36c3dd4490ff7d4ad008a135c0fe631f7a53a0d4"
+    },
+    {
+      "file": "core-delay-64-closed-loop-1001-a0.tar.gz",
+      "sha256": "1b3ac5e4828b8d706c50e1067840bf133023afa0365bc262846f494095c8bd96"
+    },
+    {
+      "file": "core-abort-64-closed-loop-1001-a0.tar.gz",
+      "sha256": "034aaa7767b8da5b1c3796a22613792dfd1c311ca9fa950ad0a366655f2511e4"
+    },
+    {
+      "file": "control-32-1001-a0.tar.gz",
+      "sha256": "110cfc3888b641cf8fd51ce9c276e9b6614c18af7902f207ec248eeafd9ae1a7"
+    },
+    {
+      "file": "core-delay-32-static-1001-a0.tar.gz",
+      "sha256": "c1c831711dd9d10ef7ba251c657a44a3f4406678197e9b2d057a1d1847e3c338"
+    },
+    {
+      "file": "core-abort-32-static-1001-a0.tar.gz",
+      "sha256": "d1994bea18b098695457d9af80667cd8218b4618b3d053900fcd80a44117bea4"
+    },
+    {
+      "file": "core-delay-64-open-loop-1001-a0.tar.gz",
+      "sha256": "dba063a7e323b2cf78797eb89fb9d3cab874edb9519a1fe55a9026413b66cd3d"
+    },
+    {
+      "file": "core-delay-64-static-1001-a0.tar.gz",
+      "sha256": "992b8fd2a81fc2d47be83d0174d8c4bc09a3f7a7114664719f7255f44a0ca7cd"
+    },
+    {
+      "file": "core-delay-32-threshold-1001-a0.tar.gz",
+      "sha256": "6034ebb6456bb6ac05b74b12500c3f94dc64686943931b8a44204c851f0e9f4f"
+    },
+    {
+      "file": "core-abort-32-closed-loop-1001-a0.tar.gz",
+      "sha256": "c951e8f60eb7e0bdbbb32d8241ab954a87082b943ef1ebb215ae0ff99798bdcc"
+    },
+    {
+      "file": "control-64-1001-a0.tar.gz",
+      "sha256": "b6074699dd8e2761413824594dc469f6a3a072acfff958df22e9de6bc0ad8215"
+    },
+    {
+      "file": "core-abort-64-threshold-1001-a0.tar.gz",
+      "sha256": "7da4a9ffe9d0350aba2142bc3ca3c6c4fbb6e3a68ff6dbec1091c9d7aa8b2728"
+    },
+    {
+      "file": "core-abort-64-static-1001-a0.tar.gz",
+      "sha256": "60344af62385f1bc1d825f2daeb558854402569a575e1651b1bb2a0c317c0648"
+    },
+    {
+      "file": "core-abort-32-open-loop-1001-a0.tar.gz",
+      "sha256": "1560e4b2126d104572089f51cfa52be57cc629420cb9fe3b8ac6975d266f2fd7"
+    },
+    {
+      "file": "core-abort-32-open-loop-1002-a0.tar.gz",
+      "sha256": "3ba30adcc8f6e1b05676e94b967c20eeb5c847cedbaa5a699c1f2e3d8c815efc"
+    },
+    {
+      "file": "core-delay-32-threshold-1002-a0.tar.gz",
+      "sha256": "55f8e0b3635523bc8626d51f048c7d893a5518658d19e8ae2ad264debd426f09"
+    },
+    {
+      "file": "core-abort-32-threshold-1002-a0.tar.gz",
+      "sha256": "180643c56fcb354e794b26847b68704fe4202a9c3e52588c630ea22dc6f129cc"
+    },
+    {
+      "file": "control-64-1002-a0.tar.gz",
+      "sha256": "ed94e0be77c7f82e234c5f115de14f2e98fa24d4a1581e9c80f5c201df00e7ec"
+    },
+    {
+      "file": "control-32-1002-a0.tar.gz",
+      "sha256": "e8aa1b354f7079ad82a6aa182718a5482ab31880ea96c24a4a7fc1e710c448ef"
+    },
+    {
+      "file": "core-abort-32-static-1002-a0.tar.gz",
+      "sha256": "12e02d2a5e72d79657dbb17a5add91e91e7b4d795f1806b56a69843fa3cc847d"
+    },
+    {
+      "file": "core-abort-64-static-1002-a0.tar.gz",
+      "sha256": "2ee08b3eb8580b81e70e4e131ac02a02146d4408ae81e284d5a5b48e99ba20a3"
+    },
+    {
+      "file": "core-delay-32-static-1002-a0.tar.gz",
+      "sha256": "f39bf9e6ffe073a8a9082121e8114b33aa844e82812a47a0a4311fc9fbb88140"
+    },
+    {
+      "file": "core-abort-32-closed-loop-1002-a0.tar.gz",
+      "sha256": "b1ef0511443026d8834df20d5e24ef3dee5cba03832d1a1a3f0c74c49a244bde"
+    },
+    {
+      "file": "core-delay-64-static-1002-a0.tar.gz",
+      "sha256": "32c74297ce6b16ebf8f54814f3c46b83c2e5f86d5708a78109761b5ef2b9add4"
+    },
+    {
+      "file": "core-delay-64-threshold-1002-a0.tar.gz",
+      "sha256": "8f282393916e9d2a94af334dce6e8d25c6a899309e543341d098ca57f643fec9"
+    },
+    {
+      "file": "core-delay-32-closed-loop-1002-a0.tar.gz",
+      "sha256": "4ce0a1b0b6c8b037dab5144fde6c400f9343eef02c9a5c465badc61ffa2bdd30"
+    },
+    {
+      "file": "core-abort-64-closed-loop-1002-a0.tar.gz",
+      "sha256": "11ebb41d67308b7158bf5b3f4088688fb3aa3c7d3cc086b4109598d5e49ad3f6"
+    },
+    {
+      "file": "core-delay-64-open-loop-1002-a0.tar.gz",
+      "sha256": "bd53da05bc16c9c533762979dd16eee7a405321a81b3f6a9072ae25a282103e9"
+    },
+    {
+      "file": "core-delay-64-closed-loop-1002-a0.tar.gz",
+      "sha256": "d86380b665899a682e4c57bd4b29b82596ccb0727c3b609395171ecce12fb7cc"
+    },
+    {
+      "file": "core-abort-64-threshold-1002-a0.tar.gz",
+      "sha256": "33cd7b3417229c700274d02c33f71544007e35b90dce47598d3dc3f021659b65"
+    },
+    {
+      "file": "core-delay-32-open-loop-1002-a0.tar.gz",
+      "sha256": "c9e48cd46acd74d59d96857f662f5f8171095aa232d3b472ee7a3aad1936215f"
+    },
+    {
+      "file": "core-abort-64-open-loop-1002-a0.tar.gz",
+      "sha256": "11f66385d8621e731c05de73a7743830deb268a74f49de5359c8104518dd3ddb"
+    },
+    {
+      "file": "core-delay-32-open-loop-1003-a0.tar.gz",
+      "sha256": "b8b72d62316894eab8cf95b0291543746f7890b5b8886f86656145f75bd422e0"
+    },
+    {
+      "file": "core-delay-32-threshold-1003-a0.tar.gz",
+      "sha256": "373cb80bfac8d3e08ae005bc5fde911866534a8e299f0d7edeb2cba0d2e1124d"
+    },
+    {
+      "file": "core-delay-64-threshold-1003-a0.tar.gz",
+      "sha256": "5d22388692e25b49dc6a1cfc63b6a2e8885aa469db5f6b221c81cd668f0bda37"
+    },
+    {
+      "file": "core-delay-32-closed-loop-1003-a0.tar.gz",
+      "sha256": "8b500cc39b5b72ed7440bfeb83d2148cdea56caed6c8a12400e0f5528e222c99"
+    },
+    {
+      "file": "core-delay-64-static-1003-a0.tar.gz",
+      "sha256": "146b375dbe278df45b6faa9e25b2a0d71b43c9ae5c6b575866bcc1a868293b2f"
+    },
+    {
+      "file": "core-delay-32-static-1003-a0.tar.gz",
+      "sha256": "52c0ce60559b84a7ae5e92beb16c282a62c242c034e9cdaf19a52ea65ab82948"
+    },
+    {
+      "file": "core-abort-64-static-1003-a0.tar.gz",
+      "sha256": "767f27bdc463e9f1c059791d6f0e60e0b110182d4c37407386e3d92f600c8c97"
+    },
+    {
+      "file": "core-abort-32-closed-loop-1003-a0.tar.gz",
+      "sha256": "63c19fe32df4415682bab4eeb33659ad7cba226c96f6d5ce7268ccff5eb40678"
+    },
+    {
+      "file": "core-abort-32-open-loop-1003-a0.tar.gz",
+      "sha256": "2051e35317e958938fd632d18d36351c340d6530ec9cfa9eb20830ba99984aa4"
+    },
+    {
+      "file": "core-abort-32-open-loop-1003-a1.tar.gz",
+      "sha256": "b6e87eeeabf78fe244d67865c79885b0a5e126d73980cc12c3c65e4717b325d6"
+    },
+    {
+      "file": "control-64-1003-a0.tar.gz",
+      "sha256": "7dee4e103cb94bb6ad313375d7f2e0b394babdd6deb79b7e6330bfca0b21ced3"
+    },
+    {
+      "file": "core-delay-64-open-loop-1003-a0.tar.gz",
+      "sha256": "704aaf285596574bd4a6bd20eeff8337178a3cc92a6af73f5741c1deca95ba38"
+    },
+    {
+      "file": "core-abort-32-static-1003-a0.tar.gz",
+      "sha256": "8adb1d7fa91095011e48e9db27679883b551a91772569a85ba3bfd998517217e"
+    },
+    {
+      "file": "core-abort-64-threshold-1003-a0.tar.gz",
+      "sha256": "f695c13c07bb47e6d52d508ac9be0159d6d53a5772577e1116d6ff13c99abb9c"
+    },
+    {
+      "file": "core-abort-64-open-loop-1003-a0.tar.gz",
+      "sha256": "f07de66d781ca2cf5bd6157dc9e30e698906d6899f510807cb7da1e5c7eed8dc"
+    },
+    {
+      "file": "core-abort-32-threshold-1003-a0.tar.gz",
+      "sha256": "9bc29ffc5b386bd0fe950bb5b9e4085812c0ca1e97afd308a6f1935d24a4c707"
+    },
+    {
+      "file": "core-abort-64-closed-loop-1003-a0.tar.gz",
+      "sha256": "0fb5e805100968f33a998d546d721edea8d0e71e81bd51b35958fe9c6beabf67"
+    },
+    {
+      "file": "core-delay-64-closed-loop-1003-a0.tar.gz",
+      "sha256": "9b0a786748d3a1cd062fd7895f512330ac83d007abfa19a2524b2a2279556146"
+    },
+    {
+      "file": "control-32-1003-a0.tar.gz",
+      "sha256": "039e16dea2bc475d373bdbcf278e42a3350c0afd60645eb167847ca9f72be343"
+    },
+    {
+      "file": "core-delay-64-open-loop-1004-a0.tar.gz",
+      "sha256": "ef75304557c8254ca699b4881d2ddb424c2ce053839a4fe416d3bc84570e80ae"
+    },
+    {
+      "file": "core-abort-64-static-1004-a0.tar.gz",
+      "sha256": "c6a8d0680bffb0ceee466d702a6fc78fa92d172f858522394cd1d787068f93c1"
+    },
+    {
+      "file": "core-delay-32-static-1004-a0.tar.gz",
+      "sha256": "129989a746447b86d99fa09b4c6c5dae28d68a9d986a8b507dcdf4f68794ce16"
+    },
+    {
+      "file": "control-32-1004-a0.tar.gz",
+      "sha256": "3ef35e162d5bb90c4bb06492e330b672c0286896b57e16fb53dc8dfe057580ea"
+    },
+    {
+      "file": "core-abort-32-threshold-1004-a0.tar.gz",
+      "sha256": "ec8177692d29f20fc7ca38274214682e429b0a562d9c40e8aa7ed53fad9379d0"
+    },
+    {
+      "file": "control-64-1004-a0.tar.gz",
+      "sha256": "fef95c1a6c13ca4946bb903080d84ccfff82ca7422386ff14670be8f3298ab86"
+    },
+    {
+      "file": "core-abort-64-threshold-1004-a0.tar.gz",
+      "sha256": "8709d910e9e46d7a62e0197258095f1e2232f7329c8ec5321a03d3c5a8f3ad68"
+    },
+    {
+      "file": "core-abort-32-open-loop-1004-a0.tar.gz",
+      "sha256": "676b81c895f13e7e299adec524327411794671038f10ed1bd63cb892812378e4"
+    },
+    {
+      "file": "core-delay-32-closed-loop-1004-a0.tar.gz",
+      "sha256": "700f16ff87bef8b5dce026783dd24c558d75c18853a9dc0ca36ffc877262d1c1"
+    },
+    {
+      "file": "core-delay-32-threshold-1004-a0.tar.gz",
+      "sha256": "758a472e0e469a7575f619d74d975b89128ff86956639796012f40db48af0a62"
+    },
+    {
+      "file": "core-abort-32-static-1004-a0.tar.gz",
+      "sha256": "5eaee6deeebbc62d5fd73842678fe835bb43802bd31fa5f97a14bb37acaf47e6"
+    },
+    {
+      "file": "core-abort-64-closed-loop-1004-a0.tar.gz",
+      "sha256": "da7085986cbefcc366134c13f76a1363d31af0287538867798780ea30ad07653"
+    },
+    {
+      "file": "core-abort-32-closed-loop-1004-a0.tar.gz",
+      "sha256": "b291dd34af279efac06d520a1953bf8080261d873dbd97dbe5faca6ad172537a"
+    },
+    {
+      "file": "core-delay-64-closed-loop-1004-a0.tar.gz",
+      "sha256": "75db5616c84edfb4bb4d09b692305ee6edfc0535338a5fbfabaac2e3bbed406b"
+    },
+    {
+      "file": "core-delay-64-static-1004-a0.tar.gz",
+      "sha256": "70d07c845a371abe888849616bf15e6149b2d580013f5e0e83f205311e1f744a"
+    },
+    {
+      "file": "core-delay-64-threshold-1004-a0.tar.gz",
+      "sha256": "c77e923da1d08328c7bb17ddccab633ea0cc32ef7cef23fba81f38223c0c09b6"
+    },
+    {
+      "file": "core-abort-64-open-loop-1004-a0.tar.gz",
+      "sha256": "e458c9411e3fbe6acab05078271747612ada0c905a1bc5e5fb5c72ef5eeae920"
+    },
+    {
+      "file": "core-delay-32-open-loop-1004-a0.tar.gz",
+      "sha256": "f88c26a8d911a03b4ce9585424955f57776576a3ed8f9e6c7256c91ea0bd4c44"
+    },
+    {
+      "file": "core-delay-64-static-1005-a0.tar.gz",
+      "sha256": "0e2a1f713b2d2da5bc2e0d7f5bf313bf2d730471c3366d6d72725d0e2caf75f4"
+    },
+    {
+      "file": "core-delay-64-open-loop-1005-a0.tar.gz",
+      "sha256": "22f7192fd3f23eac4c25ee88c20f029c0e7374fb11d099b723a5d3f21f094d5d"
+    },
+    {
+      "file": "core-abort-64-closed-loop-1005-a0.tar.gz",
+      "sha256": "6c43caaf96223abbfd65ab818a002397bfba5cf89a0d3068cbb8f67f9ac837b4"
+    },
+    {
+      "file": "core-delay-64-closed-loop-1005-a0.tar.gz",
+      "sha256": "8fbe105accc803b18bb95584aaf764fce94d416ba9fe7ec554c33901818a18bd"
+    },
+    {
+      "file": "core-abort-64-static-1005-a0.tar.gz",
+      "sha256": "24bde5f552d69a340d21c47bde1480ee00d6c72ce9661d88ab29f1cbda76cf67"
+    },
+    {
+      "file": "core-abort-64-open-loop-1005-a0.tar.gz",
+      "sha256": "274e11ee869a6ad11595c40683396499bafe61b462f547ea1ca8c17d592527a6"
+    },
+    {
+      "file": "core-abort-32-threshold-1005-a0.tar.gz",
+      "sha256": "31dcd073f1d88cbf22a8422ca5aca74ad737632afa5e36dcb79ea898a7e85172"
+    },
+    {
+      "file": "core-delay-32-static-1005-a0.tar.gz",
+      "sha256": "08279221ff7387602ea2c9bbe59a8ab85d9ff112f53d4c3ec7330b00db782966"
+    },
+    {
+      "file": "core-abort-32-static-1005-a0.tar.gz",
+      "sha256": "217e8dea81e87dd459d57258dd778ce68939e3cb3ea0ef2c5b07e923fcee4127"
+    },
+    {
+      "file": "core-delay-64-threshold-1005-a0.tar.gz",
+      "sha256": "f9fb9e461c6db6ca97b386b86d931fd5064ef70bb0908324977a36c882846514"
+    },
+    {
+      "file": "core-delay-32-closed-loop-1005-a0.tar.gz",
+      "sha256": "bf39e959a673e9808edd01ffb8457f5d26e729d13ee2e9f2ae33c266ec5464aa"
+    },
+    {
+      "file": "core-abort-32-open-loop-1005-a0.tar.gz",
+      "sha256": "bb31328a60e3c22b7580f429d3fdb96e50437fedeac2657862f98d74b3d3fa03"
+    },
+    {
+      "file": "core-delay-32-open-loop-1005-a0.tar.gz",
+      "sha256": "b4c06db0b14e9dbbcbd9863f627194193b1f43316b2a62211d743652b091e3f4"
+    },
+    {
+      "file": "core-abort-64-threshold-1005-a0.tar.gz",
+      "sha256": "84121d2249a19515eeef93d08c9f230e7271503e5ec97680fba495e5e5195088"
+    },
+    {
+      "file": "core-delay-32-threshold-1005-a0.tar.gz",
+      "sha256": "8e987282cae2f48b228aa0004157316e16a1e72c71b3e56875ff74aa068f53bb"
+    },
+    {
+      "file": "control-64-1005-a0.tar.gz",
+      "sha256": "36ab6014ae4fe7a7b21dcc67f56923f082ad8a74ada9c917ad8dbf54a7c69745"
+    },
+    {
+      "file": "control-32-1005-a0.tar.gz",
+      "sha256": "cfc292280a648a8e7369fd82e62a71fbf657fadb1e2d2ce341ac04a2a764899d"
+    },
+    {
+      "file": "core-abort-32-closed-loop-1005-a0.tar.gz",
+      "sha256": "081e783d423a4ae01764618c8875cf35453992014e4b01116733acf6caf41240"
+    },
+    {
+      "file": "background-32-total-1001-a0.tar.gz",
+      "sha256": "055cdec2ae1cf679b5466e4e8325c5a708e898fbe37dd00a483a96d08941f980"
+    },
+    {
+      "file": "background-32-attributed-1001-a0.tar.gz",
+      "sha256": "584f419279571af94d675cca3483b687945f9001fa2a698c1e6f89449aec3d6e"
+    },
+    {
+      "file": "background-64-total-1001-a0.tar.gz",
+      "sha256": "a4715247f056493a585b9a02088c48c3bfef54cf10c93ed34628a0dca2d074e0"
+    },
+    {
+      "file": "background-64-attributed-1001-a0.tar.gz",
+      "sha256": "bf5c5da00c9809424629530cf2e5851487d741575a25cdfcc32b358864a089a5"
+    },
+    {
+      "file": "background-32-attributed-1002-a0.tar.gz",
+      "sha256": "6ab636509d0918fcc8533466c763c563876b190850561bb8eea481df5e66a764"
+    },
+    {
+      "file": "background-32-total-1002-a0.tar.gz",
+      "sha256": "4727d1caed11b5c8ff9a805d280661cf59c19894ad4f40359cf7ccdd567ea29d"
+    },
+    {
+      "file": "background-64-total-1002-a0.tar.gz",
+      "sha256": "aae6c75ac624e6c44b65585e5c7d21a22dccc0cf79844c341222a4db09018ac4"
+    },
+    {
+      "file": "background-64-attributed-1002-a0.tar.gz",
+      "sha256": "601e5dee498e722b7a4ab3ad223b1092b0c13a83b7493d84a0fbfcbd83fabb36"
+    },
+    {
+      "file": "background-32-attributed-1003-a0.tar.gz",
+      "sha256": "0509f35656ed324ddb96f17ac4c5bc995311d001fc0d40455af06ecc48afcc8d"
+    },
+    {
+      "file": "background-32-total-1003-a0.tar.gz",
+      "sha256": "ce0c5f5d7616682840dd26a42d7a98bb0910c3534e978b93d8a1b820c94d33c2"
+    },
+    {
+      "file": "background-64-attributed-1003-a0.tar.gz",
+      "sha256": "cbda1520faeed4db88a816f7c67e29005013c574d2e10ef8513276fdd72d7632"
+    },
+    {
+      "file": "background-64-total-1003-a0.tar.gz",
+      "sha256": "6fcd24a65c402d648ff72e7e5d6d65fad62c0b8ec9a7c8de4e4b3043ce5b0a9a"
+    },
+    {
+      "file": "background-64-attributed-1004-a0.tar.gz",
+      "sha256": "6fa9247defbc3485dba3b8f7b6fbed89e6c0596b8c560facf3d2730fdcdd91d7"
+    },
+    {
+      "file": "background-32-total-1004-a0.tar.gz",
+      "sha256": "ad2d82b92ef33f320b1a54e66cbf5cf9f7b46ca8da81d6b44d6bcad95771bb2e"
+    },
+    {
+      "file": "background-32-attributed-1004-a0.tar.gz",
+      "sha256": "01d21106ac928801e5a12dcfb726a3f813fb23359cea1130ad1ee75de028e09b"
+    },
+    {
+      "file": "background-64-total-1004-a0.tar.gz",
+      "sha256": "a8712b46ff57a14a75a63fd2589cd548a30544887e53ab40d79f74d8d68c79f4"
+    },
+    {
+      "file": "background-32-total-1005-a0.tar.gz",
+      "sha256": "67fbcebc01d1b6ce7477118050e45b6234467db565e1972668c52c2be81968e8"
+    },
+    {
+      "file": "background-64-total-1005-a0.tar.gz",
+      "sha256": "def2c04012e872ae39a1324aab9a53fded440edb19666471b3a0f80a03308661"
+    },
+    {
+      "file": "background-64-attributed-1005-a0.tar.gz",
+      "sha256": "99559dd2bdc8b2550bb2572a85b5733a3d75303b926f41c203a2c46782eff8ae"
+    },
+    {
+      "file": "background-32-attributed-1005-a0.tar.gz",
+      "sha256": "11820ad180f5e32f807d618be9864110f57183174ba3b0437a285377dd88c0ec"
+    },
+    {
+      "file": "study-metadata.tar.gz",
+      "sha256": "752b9ea7be7e11c1f885a7b21e19f9c3f00c6b56bb8568e8ac71394deb977de7",
+      "parts": [
+        {
+          "file": "study-metadata.tar.gz.part-001",
+          "sha256": "5ddfcbf4dfa3705d22a767ced6ede98d6a90ee9c89d465cffa0a023ef24b3924",
+          "bytes": 47185920
+        },
+        {
+          "file": "study-metadata.tar.gz.part-002",
+          "sha256": "3e1ea5601a7cba89aec7de05a01d864fc697e08a25329b40d57a2eaee15a5700",
+          "bytes": 47185920
+        },
+        {
+          "file": "study-metadata.tar.gz.part-003",
+          "sha256": "4408e0c1b343f76d25dded4313ac1cc5dee6ba6af5b30c09264a9090ea3155bf",
+          "bytes": 47185920
+        },
+        {
+          "file": "study-metadata.tar.gz.part-004",
+          "sha256": "0deae9c88cd33c1ad3e73f5b4b71ede0f5e77eeee6c1182ecc08da9022e53f99",
+          "bytes": 45743578
+        }
+      ]
+    }
+  ],
+  "study": "full-study-v7",
+  "description": "Every selected and failed attempt, raw observations, source snapshots, and analysis tables; oversized metadata is stored as checksum-verified ordered chunks"
+}

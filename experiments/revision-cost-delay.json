@@ -1,0 +1,35 @@
+{
+  "purpose": "Independent v2 cost pilot; fit open-loop cost before freezing final study",
+  "reservation_horizon_seconds": 7200,
+  "family": "delay",
+  "workload_seed": 21,
+  "rps_per_cohort": 48,
+  "warmup_seconds": 10,
+  "interval_seconds": 2,
+  "controller": {
+    "slos": [
+      {
+        "name": "availability",
+        "target": 0.99,
+        "allocation_fraction": 0.5
+      },
+      {
+        "name": "latency",
+        "target": 0.95,
+        "allocation_fraction": 0.1
+      }
+    ],
+    "expected_treatment_requests": 360000,
+    "duration": 30,
+    "max_age": 5,
+    "min_requests": 50,
+    "max_rps": 100,
+    "reserve_seconds": 15,
+    "max_intensity": 0.1,
+    "step": 0.005,
+    "severe_burn": 20,
+    "policy": "static",
+    "pilot_cost": 1.0
+  },
+  "recovery_seconds": 5
+}

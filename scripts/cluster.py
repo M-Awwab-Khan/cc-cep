@@ -63,20 +63,25 @@ def main():
             "-f",
             "deploy/benchmark.yaml",
         )
-        run(
-            "kubectl",
-            "--kubeconfig",
-            str(ROOT / "kubeconfig.local"),
-            "--context",
-            "kind-cc-cep",
-            "-n",
-            "cc-cep",
-            "wait",
-            "--for=condition=available",
-            "deployment",
-            "--all",
-            "--timeout=180s",
-        )
+        for name in (
+            "frontend-control",
+            "frontend-treatment",
+            "dependency-control",
+            "dependency-treatment",
+        ):
+            run(
+                "kubectl",
+                "--kubeconfig",
+                str(ROOT / "kubeconfig.local"),
+                "--context",
+                "kind-cc-cep",
+                "-n",
+                "cc-cep",
+                "rollout",
+                "status",
+                "deployment/" + name,
+                "--timeout=180s",
+            )
         run(
             "kubectl",
             "--kubeconfig",

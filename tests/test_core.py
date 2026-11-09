@@ -141,7 +141,7 @@ def test_cooldown_and_burn_window_counts():
     controller.tick(next_snapshot(), 1)
     assert controller.intensity == initial  # no actuation inside cooldown
     controller.tick(next_snapshot(timestamp=2, n=400), 2)
-    assert controller.intensity < initial  # conservative projected consumption reduces intensity
+    assert controller.intensity > initial  # healthy observations permit useful exposure
     controller.tick(next_snapshot(timestamp=3, n=600), 3)
     assert controller.window_burn(2) == {"availability": 0, "latency": 0}
     assert len(controller.history) == 3
@@ -181,3 +181,45 @@ def test_stop_still_accounts_cleanup_tail_without_restarting_faults():
     assert controller.state == State.STOPPING and controller.intensity == 0
     with pytest.raises(Unsafe):
         controller.account_tail(next_snapshot(3, 5, timestamp=2, n=220), 2)
+
+
+def test_healthy_run_does_not_spend_uncertainty_or_stop_early():
+    controller = Controller(Config())
+    controller.admit(base(), 0)
+    for tick in range(1, 301):
+        controller.tick(next_snapshot(timestamp=tick, n=200 * tick), tick)
+        assert all(
+            ledger.enforced == ledger.total_bad == 0 for ledger in controller.ledgers.values()
+        )
+        if tick < 300:
+            assert controller.state == State.RUNNING
+    assert controller.reason == "duration"
+    assert controller.intensity == 0
+
+
+def test_cleanup_failure_stays_failed_after_successful_recovery():
+    class Broken:
+        def clear(self):
+            raise OSError("outage")
+
+    class Recovered:
+        def clear(self):
+            pass
+
+        def active(self):
+            return False
+
+    controller = Controller(Config())
+    assert not controller.cleanup(Broken())
+    assert controller.cleanup(Recovered())
+    assert controller.failed
+    assert len(controller.cleanup_errors) == 3
+
+
+def test_enforcement_never_exceeds_observed_losses():
+    controller = Controller(replace(Config(), background_model="iid-bernoulli"))
+    controller.admit(base(), 0)
+    for tick in range(1, 5):
+        controller.tick(next_snapshot(tick, tick, timestamp=tick, n=200 * tick), tick)
+        for ledger in controller.ledgers.values():
+            assert 0 <= ledger.enforced <= ledger.total_bad
