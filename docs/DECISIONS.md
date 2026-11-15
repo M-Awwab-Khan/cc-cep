@@ -50,3 +50,11 @@ At initialization, no deployment or cloud spend had been initiated.
   preserve cleanup errors rather than treating a stop command as removal proof.
 - Preserve all manuscript text and vendor assets. DOI metadata audit is separate from
   claim verification. No final novelty, statistical advantage, or causal claim yet.
+
+## Interactive learning visualizer
+
+- Added a separate static website under visualizer/ using the Sites plugin. It has its own Sites source repository and hosting identity; it does not modify the CEP controller or deploy cluster resources.
+- The browser simulation uses seeded synthetic requests, a fixed 120-second reservation, and up to 60 simulated seconds. Default point-estimate accounting and simplified feedback are teaching choices, not proposed fixes or verified research results.
+- An optional Wilson-screen mode reproduces the prototype's per-interval formula to explain zero-error enforcement spending. No causal, safety, or superiority guarantee is implied.
+- Includes a live sandbox, independent SLO ledgers, four-policy comparison, glossary, guided explanations, quiz, accessible chart data, and JSON export.
+- Verified nine model checks plus Chrome interactions and desktop/mobile layout. Publication defaults to owner-private.

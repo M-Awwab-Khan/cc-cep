@@ -65,3 +65,7 @@ Do not commit generated PDF/build files. The vendor .cls/.sty/.bst files retain 
 - [Decisions and assumptions](docs/DECISIONS.md)
 
 The deadline is 16 November 2026. No course rubric or brief has been supplied. The local Docker VM has approximately 8 GiB of RAM; host memory was freed for cluster provisioning. Final comparison parameters remain provisional pending pilots.
+
+## Interactive CEP learning lab
+
+The separate [visualizer](visualizer/README.md) explains SLOs, budgets, attribution, fault injection, and adaptive control through a browser-only teaching simulation. Start locally with `node visualizer/serve.mjs`, then visit http://127.0.0.1:4173. It does not run the real CEP or provide experimental evidence.
