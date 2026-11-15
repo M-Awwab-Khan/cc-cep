@@ -1,0 +1,84 @@
+% Title page and grading rubric required on top of the CEP report (course brief, SE-490).
+% Compile separately and place these pages before the report PDF.
+\documentclass[11pt,a4paper]{article}
+\IfFileExists{newtxtext.sty}{\usepackage{newtxtext}}{\renewcommand{\rmdefault}{ptm}}
+\usepackage[margin=2cm]{geometry}
+\usepackage{array,tabularx}
+\renewcommand{\arraystretch}{1.25}
+\newcolumntype{Y}{>{\raggedright\arraybackslash}X}
+\pagestyle{empty}
+
+\begin{document}
+
+\begin{center}
+{\fontsize{14pt}{17pt}\selectfont\bfseries DEPARTMENT OF SOFTWARE ENGINEERING\\[2pt]
+BACHELORS IN SOFTWARE ENGINEERING\par}
+\vspace{2.5cm}
+{\fontsize{14pt}{17pt}\selectfont\bfseries Course Code: SE-490\\[2pt] Course Title: Cloud Computing\par}
+\vspace{6pt}
+{\fontsize{12pt}{15pt}\selectfont Complex Engineering Problem (CEP)\\ BE Batch 2023, Fall Semester 2026\par}
+\vspace{2.5cm}
+{\fontsize{14pt}{17pt}\selectfont\bfseries SLO-Aware Chaos Engineering for\\ Cloud-Native Applications\par}
+\vspace{2.5cm}
+\begin{tabular}{|l|l|l|}
+\hline
+\textbf{Student No.} & \textbf{Name} & \textbf{Roll No.} \\ \hline
+S1 & Muhammad Awwab Khan & SE-23051 \\ \hline
+S2 & Muhammad Abyaz Khalid & SE-23053 \\ \hline
+\end{tabular}
+\vfill
+NED University of Engineering and Technology, Karachi\\
+November 2026
+\end{center}
+
+\newpage
+\begin{center}
+{\fontsize{14pt}{17pt}\selectfont\bfseries Grading Rubric\par}
+\vspace{4pt}
+SE-490 Cloud Computing --- Complex Engineering Problem --- BE Batch 2023, Fall Semester 2026
+\end{center}
+
+\noindent\begin{tabular}{|l|p{7cm}|l|}
+\hline
+\textbf{Student No.} & \textbf{Name} & \textbf{Roll No.} \\ \hline
+S1 & Muhammad Awwab Khan & SE-23051 \\ \hline
+S2 & Muhammad Abyaz Khalid & SE-23053 \\ \hline
+\end{tabular}
+
+\vspace{8pt}
+\footnotesize
+\noindent\begin{tabularx}{\textwidth}{|Y|Y|Y|Y|p{0.7cm}|p{0.7cm}|}
+\hline
+\multicolumn{4}{|l|}{\textbf{Criteria and scales}} & \textbf{S1} & \textbf{S2} \\ \hline
+\multicolumn{4}{|l|}{\textbf{Criterion 1:} Understanding of the Assigned Complex Engineering Problem (CPA-1)} & & \\ \hline
+\textbf{1} Limited understanding of the assigned problem and relevant cloud/AI/security concepts. &
+\textbf{2} Satisfactory understanding of the assigned problem and its main requirements. &
+\textbf{3} Good understanding of the problem, relevant technologies, requirements, and constraints. &
+\textbf{4} Excellent understanding of the problem, its technical context, requirements, constraints, and relevant cloud/AI/security concepts. & & \\ \hline
+\multicolumn{4}{|l|}{\textbf{Criterion 2:} Experimental Environment and Scenario Implementation (CPA-2, CPA-3)} & & \\ \hline
+\textbf{1} Environment partially configured; scenario incomplete or minimally demonstrated. &
+\textbf{2} Functional environment with a basic relevant test scenario. &
+\textbf{3} Environment properly configured; relevant test scenarios implemented effectively. &
+\textbf{4} Complete, well-configured environment with realistic, technically appropriate, clearly demonstrated scenarios. & & \\ \hline
+\multicolumn{4}{|l|}{\textbf{Criterion 3:} Implementation of the Proposed Mechanism/Solution (CPA-1, CPA-2)} & & \\ \hline
+\textbf{1} Mechanism incomplete or poorly integrated. &
+\textbf{2} Appropriate mechanism implemented with basic functionality. &
+\textbf{3} Mechanism implemented correctly and addresses the problem effectively. &
+\textbf{4} Technically sound, well integrated, appropriately justified, and effective under the selected scenarios. & & \\ \hline
+\multicolumn{4}{|l|}{\textbf{Criterion 4:} Quantitative Evaluation and Analysis (CPA-2, CPA-3)} & & \\ \hline
+\textbf{1} Limited evaluation, insufficient metrics or weak interpretation. &
+\textbf{2} Suitable metrics and basic quantitative analysis. &
+\textbf{3} Appropriate metrics with good analysis, including performance or security trade-offs. &
+\textbf{4} Comprehensive evaluation with well-selected metrics, clear interpretation, comparison, limitations, and justified conclusions. & & \\ \hline
+\multicolumn{4}{|l|}{\textbf{Criterion 5:} Documentation, Professional Considerations, and Presentation} & & \\ \hline
+\textbf{1} Limited required information; major formatting or presentation issues. &
+\textbf{2} Required sections with acceptable presentation; partial consideration of professional issues. &
+\textbf{3} Well structured in the prescribed Elsevier format; addresses relevant security, privacy, ethical, legal, or operational considerations. &
+\textbf{4} Complete, clear, well organized, Elsevier format, thoroughly addresses professional, security, privacy, ethical, legal, regulatory, and operational considerations. & & \\ \hline
+\multicolumn{4}{|r|}{\textbf{Total marks}} & & \\ \hline
+\end{tabularx}
+
+\vspace{1.5cm}
+\hfill\begin{tabular}{c}\rule{5cm}{0.4pt}\\ Teacher's Signature\end{tabular}
+
+\end{document}

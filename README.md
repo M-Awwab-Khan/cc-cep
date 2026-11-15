@@ -16,7 +16,9 @@ static injection, but calibrated open-loop delivers substantially more abort exp
 Broad SLO-driven injection has close prior art; this is an empirical course contribution.
 See docs/NOVELTY.md. Student authors and vendor layout files are preserved.
 
-Deadline: **16 November 2026**. No course rubric supplied.
+Deadline: **16 November 2026**. The course brief and rubric arrived on 15 November; see
+[rubric coverage](docs/RUBRIC-MATRIX.md). Print `rubric-cover.tex` (title page and filled
+rubric) on top of the report.
 
 Quick start (from this project directory):
 

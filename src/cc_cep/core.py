@@ -136,7 +136,7 @@ class Config:
             raise ValueError("invalid intensity")
         if {s.name for s in self.slos} != {"availability", "latency"} or len(self.slos) != 2:
             raise ValueError("exactly availability and latency SLOs required")
-        if self.policy not in {"static", "threshold", "open-loop", "closed-loop"}:
+        if self.policy not in {"static", "threshold", "open-loop", "closed-loop", "paced"}:
             raise ValueError("unknown policy")
 
 
@@ -270,6 +270,7 @@ class Controller:
                     "burn": burn,
                     "intensity": self.intensity,
                     "treatment": t,
+                    "dt": dt,
                 }
             )
             for name, ledger in self.ledgers.items():
@@ -310,10 +311,58 @@ class Controller:
                     )
                 if self.intensity != previous_intensity:
                     self.last_change = snapshot.timestamp
+            if self.config.policy == "paced" and (
+                snapshot.timestamp - self.last_change >= self.config.cooldown
+            ):
+                previous_intensity = self.intensity
+                self.intensity = self._paced_step(snapshot.timestamp, dt)
+                if self.intensity != previous_intensity:
+                    self.last_change = snapshot.timestamp
             return self.intensity
         except (ValueError, ArithmeticError) as exc:
             self.failed = True
             return self.stop(str(exc))
+
+    def pace(self, timestamp, dt):
+        """Per-SLO consumption relative to the rate that spends the usable allocation on time.
+
+        Unlike SRE burn rate (bad fraction / q), pace is relative to the experiment's own
+        planned spend, so a deliberate experiment is not throttled merely for burning budget.
+        Returns {slo: (risk, short_pace, long_pace)}; inf means no usable allocation remains.
+        """
+        elapsed = max(dt, timestamp - self.started)
+        remaining = max(dt, self.config.duration - elapsed)
+        short = self.window_rate(self.config.short_window)
+        long = self.window_rate(self.config.long_window)
+        result = {}
+        for s in self.config.slos:
+            ledger = self.ledgers[s.name]
+            usable = ledger.allocation - ledger.enforced - self.reserve
+            if usable <= 0:
+                result[s.name] = (math.inf, math.inf, math.inf)
+                continue
+            sustainable = usable / remaining
+            risk = (ledger.enforced / elapsed) * remaining / usable
+            result[s.name] = (risk, short[s.name] / sustainable, long[s.name] / sustainable)
+        return result
+
+    def _paced_step(self, timestamp, dt):
+        values = self.pace(timestamp, dt).values()
+        if any(risk > 1 or (short > 2 and long > 1) for risk, short, long in values):
+            return self.intensity * 0.5
+        if all(risk < 0.9 and short < 1 and long < 1 for risk, short, long in values):
+            return min(self.config.max_intensity, self.intensity + self.config.step)
+        return self.intensity
+
+    def window_rate(self, seconds):
+        """Observed treatment bad requests per second over whole intervals in the window."""
+        end = self.history[-1]["timestamp"]
+        samples = [h for h in self.history if h["timestamp"] > end - seconds]
+        span = sum(h["dt"] for h in samples)
+        return {
+            s.name: sum(getattr(h["treatment"], s.name) for h in samples) / span
+            for s in self.config.slos
+        }
 
     def account_tail(self, snapshot: Snapshot, now: float):
         """Drain exact client counts through removal; stopping must not hide cleanup damage."""

@@ -82,8 +82,8 @@ explicitly incomplete and are not pooled into the final dataset.
 Select `cas-dc-template.tex` as the Overleaf main document, using pdfLaTeX and BibTeX.
 The source bundle contains its local dependencies and generated result inserts. Earlier
 interim PDFs/decks are historical. See DEMONSTRATION.md for the viva sequence. Students
-should review authorship and rehearse before the 16 November submission; no rubric was
-provided. No Overleaf upload or course submission has been performed. Repository commits and pushes are tracked separately in Git history.
+should review authorship and rehearse before the 16 November submission; the rubric arrived
+on 15 November (see RUBRIC-MATRIX.md). No Overleaf upload or course submission has been performed. Repository commits and pushes are tracked separately in Git history.
 
 ## Scope and limits
 
@@ -103,3 +103,12 @@ Close prior art already describes SLO-governed fault rates and matched chaos coh
 This project contributes a reproducible empirical course study and a particular
 accounting/control implementation. Novelty or publication acceptance is not guaranteed.
 See NOVELTY.md for the primary-source audit and its non-exhaustive search limits.
+
+## Post-result follow-up: budget-paced policy (15 November)
+
+Separate 20-run evaluation (`results/raw/followup-paced-v1`, workstation), paired with
+v7 by block ID only and never pooled. All runs valid. Paced control spent 98-100% of the
+usable allocation and delivered exposure within 0.62 fraction-seconds of static injection
+(14.8-15.4), with mean guard overshoot of 0.8-1.6 requests against 4.6-21.6 for static.
+Nine runs exceeded the usable guard by 1-4 requests; no run exceeded its allocation.
+See report Section 6.6 and Table 9; a jointly randomized study is still required.

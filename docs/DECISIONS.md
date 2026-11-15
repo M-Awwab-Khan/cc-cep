@@ -219,3 +219,33 @@ still need to review authorship and rehearse; no rubric or remote submission is 
 - An optional Wilson-screen mode reproduces the prototype's per-interval formula to explain zero-error enforcement spending. No causal, safety, or superiority guarantee is implied.
 - Includes a live sandbox, independent SLO ledgers, four-policy comparison, glossary, guided explanations, quiz, accessible chart data, and JSON export.
 - Verified nine model checks plus Chrome interactions and desktop/mobile layout. Publication defaults to owner-private.
+
+## 15 November follow-up: budget-paced closed loop (post-result, separate evaluation)
+
+- Review of v7 traces showed the original closed-loop policy was limited by SRE burn-rate
+  gates (interval bad fraction / q: halve above 2, increase only below 1), not by its
+  budget. With q = 1%, abort intensity oscillated between 0.5% and about 2.3% and spent
+  about 30% of the usable allocation (block 1001, 32 requests/s: 148 of 480); delay
+  intensity stayed at the 5% latency burn = 1 boundary.
+- Added policy `paced` in `core.py`. Its gates measure consumption relative to the rate
+  that spends the remaining usable allocation (A - D - R) over the remaining fault window.
+  It halves if cumulative projected risk > 1 or short pace > 2 with long pace > 1, and
+  increases by the unchanged step only if every SLO has risk < 0.9 and short/long pace < 1.
+  Allocations, reserve, caps, step, cooldown, windows and all common guards are unchanged.
+  The original `closed-loop` policy is unchanged so frozen v7 evidence still replays.
+- This change followed v7 outcomes, so it is evaluated as `followup-paced-v1`: 20 runs
+  (2 faults x 2 loads x blocks 1001-1005), randomized within blocks with order seed
+  20261115, full 120/300/120-second phases. It is compared with v7 runs that share block
+  IDs, but the pairing is time-separated and not jointly randomized; it is never pooled
+  into the v7 comparison. Runtime anchor (images/templates) matched v7 at preparation.
+- Collection ran on the separate Linux workstation over SSH; the idle-sleep inhibitor was
+  granted but sleep/lid inhibition was refused by polkit, so the operator must keep it awake.
+- Outcome (15 November, collected 10:25-13:45 UTC): 20/20 runs valid, 128/128 planned
+  comparisons. Paced spent 98-100% of usable allocation (closed-loop: 29-30% abort,
+  93-94% delay). Exposure 14.8-15.4 fraction-seconds, within 0.62 of static (all
+  intervals include zero); +10.9 vs closed-loop for aborts, +0.8-1.0 for delays.
+  Mean guard overshoot 0.8-1.6 requests (static 4.6-21.6); 9 runs overshot by 1-4
+  requests, 7 ended by the allocation safety guard; max total 964 of 2,310 allocation.
+  A tailnet outage during run 18 did not affect local collection. Outputs:
+  `followup-*.csv`, `followup-summary.json`, `results/curated/followup-table.tex`,
+  `results/curated/followup-results.tex` (report Section 6.6, Table 9).
