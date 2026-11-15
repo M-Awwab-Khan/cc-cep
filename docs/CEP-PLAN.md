@@ -1,9 +1,9 @@
 # Complete CEP delivery plan
 
-Status: **Prototype implemented; local cluster and engineering validation in progress** (3 November 2026).
+Status: **9 November: 110 selected cluster runs complete; final findings and deliverables prepared.**
 Deadline: **16 November 2026**, supplied by the user; no rubric supplied. The eight-week
 schedule below is historical planning, superseded by the 13-day schedule in IMPLEMENTATION.md.
-See IMPLEMENTATION.md for completed checks, limitations, and the remaining research gates.
+See IMPLEMENTATION.md for completed checks and corrections, and FULL-STUDY-RUNBOOK.md for the user-selected full-duration study. The measured scope and remaining limitations are in FINAL-RESULTS.md. Student review and viva rehearsal remain before submission.
 Simulation checks and short cluster pilots are not final comparative evaluation.
 Scope: a reproducible course demonstrator plus an evidence-backed two-column report.
 Schedule: provisional eight weeks for two students; adapt to the actual deadline and rubric.
@@ -91,7 +91,7 @@ Measure cleanup latency and recovery time; validate watchdog behavior after cont
    Gate: every reported result links to raw evidence and exact configuration.
 
 ## 8. Evaluation protocol
-Policies: fixed intensity; fixed intensity with SLO/budget threshold abort; precomputed open-loop intensity schedule using pilot-estimated budget cost; proposed attributed closed-loop controller.
+Policies: fixed intensity; fixed intensity with SLO/budget threshold abort; precomputed open-loop intensity schedule using pilot-estimated budget cost; closed-loop budget controller (total-loss enforcement by default; conditional attribution evaluated separately).
 Give every policy identical workloads, initial allocation, intensity bounds, fault duration limit, and emergency safety guard. Report safety-guard interventions separately.
 Tune all policies only on pilot seeds and freeze configurations before final experiments.
 Core matrix: 4 policies x 2 fault families x 2 loads x 5 seeds = 80 measured runs.
@@ -104,7 +104,7 @@ Measure per-SLO attributed consumption, total bad requests, absolute/relative ov
 Define exposure as the time integral of injected percentage for fixed delay; report delay magnitude separately. Define weakness discovery as a reproducible fault/load condition causing a prespecified SLO deviation.
 Use paired policy differences across matched seeds, effect sizes, and confidence intervals (bootstrap across independent runs, not individual autocorrelated requests). Five seeds are a starting point, not a significance guarantee.
 Report distributions and failed/aborted runs; distinguish insufficient evidence from no effect.
-Ablations: attributed vs total burn, single vs dual SLO, delayed telemetry, no background failures vs known organic failures.
+Delivered ablations: attributed vs total burn with known synthetic organic failures; no-fault controls. Single-vs-dual-SLO and deliberately delayed-telemetry cluster ablations were not collected. Independent-ledger and missing-data tests cover implementation behavior only; the unmeasured effects remain explicit limitations, not claimed empirical results.
 Plot consumption/allocation over time, intensity and burn rate, overshoot vs exposure, and attribution error. Do not select only favorable traces.
 
 ## 9. Verification and evidence

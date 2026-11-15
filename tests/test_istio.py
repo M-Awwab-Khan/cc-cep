@@ -64,3 +64,20 @@ def test_non_disposable_or_wrong_host_rejected():
     with pytest.raises(RuntimeError, match="host"):
         adapter.clear()
     assert HOST.endswith(".cc-cep.svc.cluster.local")
+
+
+def test_slow_api_cannot_apply_fault_after_client_telemetry_expires():
+    adapter = Fake()
+    step(adapter)
+    original_inspect = adapter.inspect
+
+    def delayed_inspection():
+        resource = original_inspect()
+        adapter.clock = lambda: 106
+        adapter.last_watchdog = 106
+        return resource
+
+    adapter.inspect = delayed_inspection
+    with pytest.raises(RuntimeError, match="telemetry expired"):
+        adapter.apply(0.1, telemetry_deadline=105)
+    assert adapter.object["spec"] == safe_spec()

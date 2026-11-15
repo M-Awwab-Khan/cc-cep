@@ -1,0 +1,33 @@
+{
+  "audited_utc": "2026-11-08T09:30:21.566813+00:00",
+  "tests_passed": 59,
+  "lint_passed": true,
+  "qualification_name": "sustained-qualification-03",
+  "study_name": "full-study-v7",
+  "phases_seconds": [
+    120,
+    300,
+    120
+  ],
+  "planned_core": 80,
+  "planned_controls": 10,
+  "planned_background": 20,
+  "research_complete": false,
+  "remaining": [
+    "four fresh qualifications",
+    "110 verified full-duration runs",
+    "paired inference and interpretation",
+    "final report/slides/demo content and visual review"
+  ],
+  "protocol_note": "Post-pilot amendment replaces zero-event gate with per-stream 99% Wilson upper screen at half SLO bad fractions; old data retained and not pooled",
+  "fixes": [
+    "guardian shutdown ordering and exception exposure timing",
+    "runtime template/image drift pinning",
+    "incomplete metadata inference classification",
+    "attempt-level audit CSV",
+    "explicit NumPy dependency",
+    "source guard during qualification",
+    "best-effort local exit/failure notices",
+    "Actual post-inspection decision clocks, pre-write client expiry and replayed freshness gates"
+  ]
+}

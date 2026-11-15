@@ -4,6 +4,8 @@ import math
 from dataclasses import dataclass, field
 from enum import StrEnum
 
+from .uncertainty import background_credit
+
 
 class Unsafe(ValueError):
     pass
@@ -65,10 +67,10 @@ def wilson(bad, total, z=1.96):
 
 
 def attributed(treatment_bad, treatment_n, control_bad, control_n):
-    """Signed difference plus conservative marginal-Wilson enforcement estimate.
+    """Legacy descriptive interval estimate, retained for comparison only.
 
     This is a per-interval screening bound, NOT a time-uniform budget guarantee.
-    Repeated clipping creates bias; retain both estimates in all evidence.
+    Repeated clipping creates bias. The controller does not debit this value.
     """
     signed = treatment_bad - treatment_n * control_bad / control_n
     upper = treatment_n * max(
@@ -94,6 +96,10 @@ class Config:
     short_window: float = 5
     long_window: float = 30
     cooldown: float = 2
+    attribution_mode: str = "attributed"
+    background_model: str = "unvalidated"
+    uncertainty_alpha: float = 0.05
+    expected_fault_requests: int | None = None
 
     def __post_init__(self):
         if any(type(v) is not int for v in (self.expected_treatment_requests, self.min_requests)):
@@ -114,6 +120,16 @@ class Config:
         )
         if any(not math.isfinite(v) or v <= 0 for v in positive):
             raise ValueError("configuration values must be finite and positive")
+        if self.attribution_mode not in {"attributed", "total"}:
+            raise ValueError("unknown attribution mode")
+        if self.background_model not in {"unvalidated", "iid-bernoulli"}:
+            raise ValueError("unknown background model")
+        if not 0 < self.uncertainty_alpha < 1:
+            raise ValueError("invalid uncertainty alpha")
+        if self.expected_fault_requests is not None and (
+            type(self.expected_fault_requests) is not int or self.expected_fault_requests <= 0
+        ):
+            raise ValueError("expected fault requests must be a positive integer")
         if self.short_window > self.long_window:
             raise ValueError("short burn window exceeds long window")
         if not 0 < self.max_intensity <= 1:
@@ -143,6 +159,9 @@ class Ledger:
     enforced: float = 0
     total_bad: int = 0
     treatment_requests: int = 0
+    control_requests: int = 0
+    control_bad: int = 0
+    background_lower: float = 0
 
 
 @dataclass
@@ -205,8 +224,8 @@ class Controller:
         elif self.config.policy == "open-loop":
             self.intensity = min(
                 self.config.max_intensity,
-                min(ledger.allocation for ledger in self.ledgers.values())
-                / self.config.expected_treatment_requests
+                min(ledger.allocation - self.reserve for ledger in self.ledgers.values())
+                / (self.config.expected_fault_requests or self.config.expected_treatment_requests)
                 / self.config.pilot_cost,
             )
         return self.intensity
@@ -243,13 +262,7 @@ class Controller:
             burn = {}
             for slo in self.config.slos:
                 ledger = self.ledgers[slo.name]
-                signed, upper = attributed(
-                    getattr(t, slo.name), t.total, getattr(c, slo.name), c.total
-                )
-                ledger.signed += signed
-                ledger.enforced += upper
-                ledger.total_bad += getattr(t, slo.name)
-                ledger.treatment_requests += t.total
+                self._account(ledger, slo.name, c, t)
                 burn[slo.name] = getattr(t, slo.name) / t.total / slo.q
             self.history.append(
                 {
@@ -312,20 +325,35 @@ class Controller:
         c = snapshot.control.delta(self.last.control)
         t = snapshot.treatment.delta(self.last.treatment)
         for slo in self.config.slos:
-            ledger = self.ledgers[slo.name]
-            bad = getattr(t, slo.name)
-            ledger.total_bad += bad
-            ledger.treatment_requests += t.total
-            if t.total and c.total:
-                signed, upper = attributed(bad, t.total, getattr(c, slo.name), c.total)
-                ledger.signed += signed
-                ledger.enforced += upper
-            elif t.total:
-                # Attribution unavailable, but all treatment bad events remain charged.
-                ledger.enforced += bad
-                self.failed = True
-                self.reason += "; tail control samples unavailable"
+            self._account(self.ledgers[slo.name], slo.name, c, t)
         self.last = snapshot
+
+    def _account(self, ledger, name, control, treatment):
+        bad = getattr(treatment, name)
+        ledger.total_bad += bad
+        ledger.treatment_requests += treatment.total
+        ledger.control_requests += control.total
+        ledger.control_bad += getattr(control, name)
+        if treatment.total and control.total:
+            ledger.signed += bad - treatment.total * getattr(control, name) / control.total
+        elif treatment.total:
+            self.failed = True
+            self.reason += "; control samples unavailable"
+        credit = 0.0
+        if (
+            self.config.attribution_mode == "attributed"
+            and self.config.background_model == "iid-bernoulli"
+        ):
+            credit = background_credit(
+                ledger.control_bad,
+                ledger.control_requests,
+                ledger.treatment_requests,
+                self.config.uncertainty_alpha / len(self.config.slos),
+            )
+        ledger.background_lower = credit
+        # This is a cumulative realized-loss bound. Never add interval confidence widths.
+        # The high-water mark prevents a later background estimate from refunding spent budget.
+        ledger.enforced = max(ledger.enforced, max(0.0, ledger.total_bad - credit))
 
     def window_burn(self, seconds):
         # Include whole observed intervals ending inside the window. No invented fractional counts.
@@ -348,6 +376,7 @@ class Controller:
                 self.cleanup_errors.append("fault remains active after clear")
             except Exception as exc:
                 self.cleanup_errors.append(repr(exc))
+        self.failed = True  # Sticky: later recovery cannot erase an exhausted cleanup attempt.
         self.reason = f"cleanup failed; {self.reason}"
         self.state = State.FAILED
         return False

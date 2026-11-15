@@ -1,0 +1,37 @@
+{
+  "checked_utc": "2026-11-09T05:23:03.525348+00:00",
+  "archive_manifests_verified": true,
+  "verifier_reported_main_analysis_complete": true,
+  "traceback_present": false,
+  "tables": {
+    "trials.csv": {
+      "sha256": "938b3ed99f8de5d6dd94336d5cf0d57927ed538217b651afdfc88f4c5cb07fb9",
+      "matches_original": true
+    },
+    "attempts.csv": {
+      "sha256": "65e872aabda33e399e1975a04b29cbb7cd3042f15973629e99cca30abe170eea",
+      "matches_original": true
+    },
+    "outcomes.csv": {
+      "sha256": "c66d2d71b58cfe38e17d39d9d24215c2729ce2d468ca0008a1e63bf199f444be",
+      "matches_original": true
+    },
+    "paired-comparisons.csv": {
+      "sha256": "1a219fc8ae8f75fbec477f2ccffa3c8b492fa0e47380338c02af7fd648ed5df7",
+      "matches_original": true
+    },
+    "background-comparisons.csv": {
+      "sha256": "7a4da5d026c22ac4c81530b644c8a1073b956cbb2f4e35df590ca493232955b4",
+      "matches_original": true
+    },
+    "oracle.csv": {
+      "sha256": "9937ccf66bbc4ccf388df367546696d6a8174da0411d650e14d3d6b974457561",
+      "matches_original": true
+    },
+    "statistical-summary.json": {
+      "sha256": "9144f95f6ab5bc7498bb81b2fbed9743f7fe508c84493b5cae4c33eef153d3e1",
+      "matches_original": true
+    }
+  },
+  "passed": true
+}

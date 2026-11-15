@@ -1,4 +1,4 @@
-﻿%%
+%%
 %% Copyright 2019-2024 Elsevier Ltd
 %%
 %% This file is part of the 'CAS Bundle'.
@@ -20,6 +20,8 @@
 \documentclass[a4paper,fleqn]{cas-dc}
 \usepackage[numbers]{natbib}
 \usepackage{placeins}
+\usepackage{lmodern}
+\emergencystretch=1em
 
 % If the frontmatter runs over more than one page
 % use the longmktitle option.
@@ -48,6 +50,10 @@
 
 \begin{document}
 \let\WriteBookmarks\relax
+\let\printorcid\relax
+\ExplSyntaxOn
+\cs_set:Npn \__first_footerline: {\small\sffamily Khan~and~Khalid:~\itshape Course~CEP~research~report}
+\ExplSyntaxOff
 \def\floatpagepagefraction{1}
 \def\textpagefraction{.001}
 
@@ -114,7 +120,9 @@
 
 % Here goes the abstract
 \begin{abstract}
-Abstract to be added    
+% BEGIN GENERATED STUDY ABSTRACT
+Chaos experiments consume the reliability resources they test. We evaluate request-count availability and latency ledgers, fault-intensity feedback and conditional background credit in a single-node Kubernetes/Istio benchmark. The dataset contains 80 policy comparisons, ten no-fault controls and twenty background ablations, each with 120-second warmup, 300-second fault opportunity and 120-second recovery. All selected runs pass evidence verification and ledger replay. No run exceeds its full allocation. Relative to static injection, adaptive control reduces mean usable-guard overshoot by 4.6--21.6 requests across the tested fault/load combinations, but also reduces exposure. Against pilot-calibrated open-loop injection, adaptive control gains about 0.8 fraction-seconds of delay exposure but loses about nine fraction-seconds of abort exposure. Under synthetic background errors, matched estimates reduce absolute attribution error, while conservative background credit yields no clear exposure gain. Descriptive paired bootstrap intervals use five blocks. One sleep-interrupted attempt is retained and retried under the declared rule. The findings demonstrate a workload-dependent safety/exposure trade-off, rather than uniform controller superiority, general causal validity or a first-ever SLO-driven injection method.
+% END GENERATED STUDY ABSTRACT
 \end{abstract}
 % Keywords
 % Each keyword is seperated by \sep
@@ -133,20 +141,20 @@ Cloud native applications are built from many loosely coupled microservices that
 
 Chaos engineering addresses these problems by injecting controlled faults into a running system and checking whether its steady state holds \citep{basiri2016chaos}. It is now widely applied to microservice systems and supported by many tools \citep{owotogbe2026chaos,esen2026chaos}. In parallel, site reliability engineering defines reliability through service level objectives (SLOs). In this paper, the error budget is the gap between an SLO target and perfect reliability over a time window, and the burn rate is the rate at which this budget is consumed relative to the rate that would exhaust it exactly at the end of the window. Recent work treats the error budget as a dynamic resource that a controller can consume in a controlled way to reach other objectives \citep{souza2026bahya}.
 
-A chaos experiment in a production or production representative environment consumes the same error budget that protects users. In current practice, the experiment designer sets the fault intensity before the experiment, for example as fixed injected delays \citep{ahmad2024exploring} or as increases in predefined steps \citep{botros2024towards}, and fault injection frameworks treat the choice of faults as design decisions made before testing \citep{yu2025systematic}. If the intensity is too high, one experiment can consume a large part of the budget within minutes. If it is too low, the experiment ends without revealing any weakness. In addition, the measured service level indicator mixes failures caused by the experiment with organic failures, so a rule that stops the experiment cannot tell which of the two consumed the budget. SLO-aware control exists for timeout configuration in microservices \citep{hanada2025slo}, and error budget aware control exists for application placement \citep{souza2026bahya}, but neither controls fault injection. A search of the Web of Science Core Collection on 27 September 2026 for journal articles and reviews that combine chaos engineering, fault injection, chaos experiments or resilience testing with error budgets, SLOs or burn rates returned one article, which mitigates gray failures by workload migration and does not control fault injection \citep{ye2026a3sm}. To the best of our knowledge, no journal study controls the intensity of chaos experiments from the attributed consumption of SLO error budgets.
+A chaos experiment consumes reliability resources while testing a service. Excessive injection can exhaust the permitted allocation, while weak injection can provide little evidence. Delay experiments under different loads illustrate the sensitivity of service outcomes to fault settings \citep{ahmad2024exploring}. Netflix's ChAP already uses baseline and canary clusters, request-level faults and automated safety mechanisms \citep{basiri2019automating}. Error-budget-aware placement and SLO-aware timeout controllers provide related control ideas \citep{souza2026bahya,hanada2025slo}. Our candidate contribution is the experimental combination of attributed loss accounting, separate SLO constraints and fault-intensity feedback. We make no exhaustive absence-of-prior-work claim.
 
 The main objective of this study is to develop and evaluate a chaos engineering framework whose fault intensity is governed by the error budget that the experiment consumes. Specifically, the study aims to (i) keep the budget consumed by an experiment within an allocation set by the operator, (ii) separate experiment induced consumption from organic consumption, and (iii) support both availability and tail latency SLOs.
 
-To achieve these objectives, we propose a framework of four modules. A \emph{Budget Accountant} computes the remaining error budget and the multi window burn rate of each SLO. An \emph{Attribution Engine} estimates the consumption caused by the experiment through request tagging and control groups. An \emph{Intensity Controller} adjusts the fault intensity in a closed loop within the allocation and stops the experiment at a safety limit. A \emph{Budget Oracle} reports each failure mode as the budget it consumes per unit of fault intensity. The framework will be implemented on Kubernetes with Istio, Chaos Mesh and Prometheus and evaluated on open source microservice benchmarks such as Online Boutique, which prior SLO-aware microservice research also uses \citep{hanada2025slo}, against static injection, threshold based abort and an open loop budget rate policy.
+The implementation contains a Budget Accountant, an Attribution Engine, an Intensity Controller and an empirical Budget Oracle. A small instrumented frontend and dependency run in separate treatment and control stacks on Kubernetes with Istio and Prometheus. We compare static intensity, threshold stop, pilot-calibrated open-loop injection and budget-feedback closed-loop control. Online Boutique and Chaos Mesh remain optional future extensions; they are not part of the measured implementation.
 
 The main contributions of this work are:
 \begin{itemize}
-\item a formulation of chaos experimentation as a budget constrained control problem;
-\item an attribution method that separates experiment induced error budget consumption from organic consumption;
-\item a closed loop intensity controller for availability and tail latency SLOs, with a planned evaluation on open source microservice benchmarks.
+\item an explicit request-count formulation of separate SLO allocations and cleanup reserves;
+\item an implementation of signed excess-loss estimation with conditional, sequential background credit;
+\item a reproducible Kubernetes controller, independent watchdog, and evidence protocol that distinguishes operational checks from comparative research results.
 \end{itemize}
 
-The rest of this paper is organized as follows. Section~\ref{sec:lit} reviews related work and identifies the research gap. Section~3 presents the framework, Section~4 the experimental setup, Section~5 the results, and Section~6 concludes the paper.
+The rest of this paper is organized as follows. Section~\ref{sec:lit} reviews related work and identifies the research gap. Section~\ref{sec:method} presents the framework, Section~\ref{sec:impl} describes the setup, Section~\ref{sec:results} reports available evidence, and Sections~\ref{sec:threats} and~\ref{sec:conclusion} discuss limitations and conclusions.
 
 %% ===========================================================================
 \section{Literature Review}\label{sec:lit}
@@ -154,23 +162,18 @@ The rest of this paper is organized as follows. Section~\ref{sec:lit} reviews re
 
 This section reviews chaos engineering and fault injection for microservices, adaptive and SLO-aware control in cloud systems, and the use of error budgets as a control resource, and then states the research gap.
 
-\begin{table*}[width=\textwidth,cols=7,pos=t]
-\caption{Comparison of related work with the proposed framework. \cmyes: supported; \cmpart: partially supported, or supported for a control variable other than fault intensity; \cmno: not supported. The marks are based on the abstracts indexed in the Web of Science Core Collection.}\label{tbl:compare}
-\small
-\begin{tabular*}{\tblwidth}{@{\extracolsep{\fill}}>{\raggedright\arraybackslash}p{3.4cm}>{\raggedright\arraybackslash}p{2.2cm}ccccc@{}}
+\begin{table*}[width=\textwidth,cols=3,pos=t]
+\caption{Research positioning from verified source records and the reviewed material. This table describes scope rather than certifying that a source lacks an unreviewed capability.}\label{tbl:compare}
+\begin{tabular*}{\tblwidth}{@{\extracolsep{\fill}}p{3.2cm}p{4.2cm}p{8cm}@{}}
 \toprule
-Study & Controlled variable & Closed loop & Remaining budget & Attribution & Latency & Empirical \\
- & & control & or burn rate & of burn & SLO & evaluation \\
+Source & Primary focus & Relevance to this study \\
 \midrule
-\citet{chen2024microfi} & Fault injection & \cmno & \cmno & \cmno & \cmno & \cmyes \\
-\citet{wu2023enhancing} & Fault injection & \cmno & \cmno & \cmno & \cmno & \cmyes \\
-\citet{ahmad2024exploring} & Fault injection & \cmno & \cmno & \cmno & \cmpart & \cmyes \\
-\citet{botros2024towards} & Fault tolerance & \cmno & \cmno & \cmno & \cmpart & \cmyes \\
-\citet{hanada2025slo} & Timeout & \cmpart & \cmno & \cmno & \cmyes & \cmyes \\
-\citet{ye2026a3sm} & Migration & \cmpart & \cmno & \cmno & \cmno & \cmyes \\
-\citet{souza2026bahya} & Placement & \cmpart & \cmyes & \cmno & \cmpart & \cmpart \\
-\midrule
-Proposed framework & Fault injection & \cmyes & \cmyes & \cmyes & \cmyes & \cmyes \\
+\citet{basiri2019automating} & Automated production chaos experiments & Control/treatment stacks and safety mechanisms are prior art. \\
+\citet{botros2024towards} & Adaptive chaos-driven fault tolerance & Adaptive resilience is prior art; actuator and objective require comparison. \\
+\citet{hanada2025slo} & SLO-aware timeouts & Reliability objectives already govern microservice control actions. \\
+\citet{souza2026bahya} & Budget-aware placement & Error budgets already function as optimization resources. \\
+\citet{bertsch2025chaos} & SLO-driven injection & Budget-derived rates and repeated injector updates are already described. \\
+This prototype & Fault-intensity feedback & Tests a particular engineering combination and its overshoot/exposure trade-off. \\
 \bottomrule
 \end{tabular*}
 \end{table*}
@@ -179,34 +182,99 @@ Proposed framework & Fault injection & \cmyes & \cmyes & \cmyes & \cmyes & \cmye
 
 The need for resilience testing in cloud native systems is well documented. A review of microservice adoption reports new difficulties in testing and monitoring the many interactions between services \citep{soldani2018pains}, and a survey of anomaly detection and root cause analysis shows that failures propagate across services, which makes their causes hard to identify \citep{soldani2023anomaly}. Distributed concurrency bugs are triggered by unexpected message orderings between nodes and are notoriously difficult to find \citep{lu2022cloudraid}, and gray failures degrade a component without stopping it \citep{ye2026a3sm}.
 
-\citet{basiri2016chaos} defined chaos engineering through four principles: a hypothesis about steady state behavior, real world events, experiments in production, and continuous automation. Their method compares a control group with an experimental group and treats a difference in the steady state metric as a weakness. A multivocal review of 96 academic and grey literature sources derives a unified definition of chaos engineering and a taxonomy of chaos engineering platforms \citep{owotogbe2026chaos}, and a systematic review of 31 studies identifies 38 tools for fault injection in microservice systems \citep{esen2026chaos}. A retrospective of ten years of chaos engineering names large language model assisted test automation, hybrid testing frameworks and integration with compliance and governance workflows as next directions \citep{owotogbe2026ten}.
+\citet{basiri2016chaos} defined chaos engineering through four principles: a hypothesis about steady state behavior, real world events, experiments in production, and continuous automation. Their method compares a control group with an experimental group and treats a difference in the steady state metric as a weakness. A multivocal literature review derives a unified definition of chaos engineering and a taxonomy of chaos engineering platforms \citep{owotogbe2026chaos}, and a systematic review examines fault-injection tools in microservice systems \citep{esen2026chaos}. A retrospective of ten years of chaos engineering names large language model assisted test automation, hybrid testing frameworks and integration with compliance and governance workflows as next directions \citep{owotogbe2026ten}.
 
-Research on fault injection has made experiments more systematic. A systematic review of fault injection testing for microservice systems summarizes a general framework of five components, each of which represents a design decision that the tester must determine \citep{yu2025systematic}. FBFI iteratively infers and injects fault-tolerance bottlenecks to test redundant components \citep{wu2023enhancing}, and MicroFI restricts faults to selected requests and prioritizes high impact faults \citep{chen2024microfi}. Other work makes injected faults more realistic by deriving them from system call errors observed in production \citep{zhang2022maximizing}, analyzes exception handling in the JVM through chaos experiments \citep{zhang2021chaos}, and provides a configurable chaos platform for hybrid cloud systems \citep{camacho2022chaos}. An empirical study injects delays of different lengths into cloud native applications under different user loads and observes that availability problems appear suddenly at a particular delay \citep{ahmad2024exploring}. In all of these studies, the faults and their intensity are chosen by the experiment designer, and none of them adjusts the intensity during an experiment from the consumption of reliability objectives.
+Research on fault injection has made experiments more systematic. A systematic review of fault injection testing for microservice systems summarizes a general framework of five components, each of which represents a design decision that the tester must determine \citep{yu2025systematic}. FBFI iteratively infers and injects fault-tolerance bottlenecks to test redundant components \citep{wu2023enhancing}, and MicroFI restricts faults to selected requests and prioritizes high impact faults \citep{chen2024microfi}. Other work makes injected faults more realistic by deriving them from system call errors observed in production \citep{zhang2022maximizing}, analyzes exception handling in the JVM through chaos experiments \citep{zhang2021chaos}, and provides a configurable chaos platform for hybrid cloud systems \citep{camacho2022chaos}. An empirical study injects delays of different lengths into cloud native applications under different user loads and observes that availability problems appear suddenly at a particular delay \citep{ahmad2024exploring}. These sources motivate more systematic experimentation. Their complete algorithms and assumptions require study before making categorical claims about the absence of budget-driven fault control.
 
 \subsection{Adaptive and SLO-aware control}\label{sec:lit:adaptive}
 
-Recent work makes cloud systems react to faults and SLOs in a closed loop. UNFRAGILE increases latency faults in predefined steps and adapts the fault tolerance strategies of the application, such as asynchronous requests, timeouts and adaptive concurrency limits, but it does not adapt the experiment itself \citep{botros2024towards}. A load-adaptive timeout mechanism adjusts timeout values in microservices to keep failure rate and latency SLOs, and it is evaluated on Online Boutique \citep{hanada2025slo}. A3SM uses hierarchical reinforcement learning to decide when and where to migrate workloads under gray failures, and it attributes anomaly impact to tasks, nodes and groups before it acts \citep{ye2026a3sm}. These approaches control timeouts, migration or fault tolerance mechanisms. None of them controls the intensity of fault injection, and none tracks the remaining error budget during an experiment.
+Recent work makes cloud systems react to faults and SLOs in a closed loop. The reported UNFRAGILE latency case study uses progressively injected latency and adapts application fault tolerance, including asynchronous requests, timeouts and concurrency limits \citep{botros2024towards}. A load-adaptive timeout mechanism adjusts timeout values in microservices to keep failure rate and latency SLOs, and it is evaluated on Online Boutique \citep{hanada2025slo}. A3SM uses hierarchical reinforcement learning to decide when and where to migrate workloads under gray failures, and it attributes anomaly impact to tasks, nodes and groups before it acts \citep{ye2026a3sm}. These examples emphasize timeouts, migration or fault tolerance mechanisms. This prototype instead exposes request-fault percentage as its actuator; that distinction alone does not establish novelty.
 
 \subsection{Error budgets as a control resource}\label{sec:lit:slo}
 
-SLOs, error budgets and burn rates are the basis of reliability management in site reliability engineering practice. In research, BAHYA treats the SLA error budget of an application as a dynamic, manageable resource: a deep reinforcement learning agent consumes a controlled portion of the budget to trade latency, energy efficiency and resilience in application placement, and it is evaluated in simulation \citep{souza2026bahya}. This work shows that an error budget can govern a closed loop controller. However, it controls placement and not fault injection, and it does not separate the budget consumed by the controller's own actions from organic consumption.
+SLOs, error budgets and burn rates are the basis of reliability management in site reliability engineering practice. In research, BAHYA treats the SLA error budget of an application as a dynamic, manageable resource: a deep reinforcement learning agent consumes a controlled portion of the budget to trade latency, energy efficiency and resilience in application placement, and it is evaluated in simulation \citep{souza2026bahya}. This work shows that an error budget can govern a closed loop controller. Its placement actuator differs from our fault-percentage actuator. The comparison motivates an empirical question rather than an unsupported universal research gap.
+
+Bertsch describes rates constrained by SLO budgets and burn, repeated injector updates and Envoy HTTP faults \citep{bertsch2025chaos}. Our contribution is therefore an empirical evaluation of particular accounting and control choices.
 
 \subsection{Research gap}\label{sec:lit:gap}
 
-Table~\ref{tbl:compare} compares the closest journal studies with the proposed work. Three gaps follow. First, fault injection studies fix the fault intensity before the experiment, and closed loop, SLO-aware or budget-aware controllers exist only for other control variables, such as timeouts, migration and placement. Second, no study separates the budget consumed by an experiment from organic consumption, although a controller that must respect a budget allocation requires this separation. Third, latency objectives, which are strongly affected by tail latency \citep{dean2013tail}, are not used as budgets that constrain chaos experiments. This work addresses these three gaps.
-
+Table~\ref{tbl:compare} positions the engineering experiment. We ask whether feedback changes allocation overshoot and useful exposure, whether signed attribution estimates improve on total-failure accounting under known background errors, and how shared infrastructure limits those inferences. A negative or inconclusive comparison remains a valid study outcome. No indexing, impact-factor or first-ever claim is required for the course contribution.
 
 \FloatBarrier
 
 
 %% ===========================================================================
-%% Remaining sections (to be written)
-%% ===========================================================================
-% \section{Proposed Framework}\label{sec:method}
-% \section{Implementation and Experimental Setup}\label{sec:impl}
-% \section{Results}\label{sec:results}
-% \section{Threats to Validity}\label{sec:threats}
-% \section{Conclusion}\label{sec:conclusion}
+\section{Framework and Accounting}\label{sec:method}
+
+\subsection{Request eligibility and independent ledgers}
+Every completed client request to the business endpoint is eligible. HTTP failures and client timeouts are availability-bad events. A request is latency-bad if it exceeds 500\,ms or fails, so one request can be bad for both SLOs. We never add the ledgers together. With target $s_j$, allowed bad fraction $q_j=1-s_j$, expected reservation traffic $N_H$ and allocation fraction $f_j$, admission freezes $A_j=f_jq_jN_H$. The observed-window service balance $q_jN-B_j$ and the fixed experiment allocation are distinct quantities.
+
+The supported reserve is $R=\lambda_{\max}L$, where $L$ includes observation delay, fault lease, request timeout and API/removal margin. Admission rejects $A_j\leq R$. Remaining usable allocation is $A_j-D_j-R$, where $D_j$ is the enforcement debit. Reservation horizons describe laboratory accounting; a short experiment does not validate service reliability over that longer horizon.
+
+\subsection{Attribution and uncertainty}
+For aligned interval $k$, the signed excess estimate is
+\begin{equation}
+ \widehat E_{jk}=B^T_{jk}-N^T_k B^C_{jk}/N^C_k.
+\end{equation}
+We retain negative estimates for analysis. Previously, the accountant summed interval Wilson upper limits, generating apparent consumption with zero bad requests. The corrected default debit is the cumulative observed treatment bad count: uncertainty never creates a realized event.
+
+A declared stationary, independent Bernoulli background model permits conservative credit. Invert the beta-mixture likelihood-ratio confidence sequence for control outcomes \citep{howard2021timeuniform} to obtain a lower background-rate bound $p^-_n$. With a separately allocated error probability $\delta$, define
+\begin{equation}
+ L_B(n)=\max\{0,np^-_n-\sqrt{2np^-_n\log(\pi^2n^2/(6\delta))}\}.
+\end{equation}
+A Chernoff bound and a union bound over request counts motivate this lower bound on realized counterfactual background events. Error probability is split between the confidence sequence and the count bound, and across SLOs. The cumulative debit uses
+\begin{equation}
+ D_j(k)=\max\{D_j(k-1),\,0,\,B^T_j(k)-L_B(N^T(k))\}.
+\end{equation}
+Thus $0\leq D_j\leq B^T_j$ and zero observed bad events imply zero debit. Credit requires independent, identical, stationary organic outcomes and a monotone fault model under which injection cannot remove organic bad events. Shared failures, drift or contamination invalidate that interpretation. Without the declared model, the controller grants no background credit. This is an application of established uncertainty tools, not a new general causal estimator.
+
+\subsection{Control and safety}
+Static injection fixes the maximum percentage. Threshold stop additionally reacts to interval burn. The open-loop policy uses an independently measured cost and the usable allocation divided by expected fault-window traffic; it does not divide by traffic in the longer reservation horizon. Closed-loop control projects cumulative debit over remaining experiment time, increases additively when both SLO constraints permit, and decreases multiplicatively when projected consumption or short/long burn threatens a constraint. Cooldown and distinct increase/decrease thresholds reduce rapid oscillation.
+
+All policies share allocation and total-health guards, fresh-data and minimum-traffic gates, a traffic cap, finite fault duration and an emergency stop. Freshness uses the decision clock after API inspection; a second client-expiry check precedes each fault write. Observation, decision and guardian timestamps remain in the evidence. An external process maintains a heartbeat and removes expired Istio faults. Heartbeat updates use a separate namespaced resource so they cannot rewrite active fault routing. Cleanup retries require API readback; exhausted cleanup sets a sticky failed flag, even if a later removal succeeds. Counts observed through cleanup and recovery remain in the ledger. A stop request alone is not proof of removal, and API outages preclude an unconditional safety guarantee.
+
+\section{Implementation and Experimental Setup}\label{sec:impl}
+
+The disposable kind cluster contains separate control and treatment frontends and dependencies, with equal resource settings. Istio targets only the treatment dependency hostname. A host-side k6 generator produces matched constant-arrival traffic, while the controller consumes raw client outcome points. Prometheus/Grafana provide supporting telemetry. The single-node setup still shares CPU, memory and the host transport. Source snapshots, configuration, package locks, UTC times, raw outcomes, controller actions and checksums accompany each revised trial.
+
+Availability and latency targets are 99\% and 95\% within 500\,ms. No-fault capacity probes found healthy levels at 80 and 160 requests/s per cohort; the 320 requests/s probe failed with dropped iterations and high latency. The initial loads were 48 and 112 requests/s. Sustained high-load runs subsequently failed without injection, so those studies were superseded. The replacement protocol requires two full-length healthy qualifications at each of 32 and 64 requests/s, with explicit CPU headroom, before comparison admission. This calibrates the entire client/port-forward/service path, not universal application capacity. Failed probes remain in the evidence archive.
+
+Qualification uses four independent no-fault runs at 32, 64, 32 and 64 requests/s with the full study phase lengths. For each cohort and SLO, a per-stream 99\% Wilson upper screening limit must be below half the permitted bad fraction (0.5\% availability, 2.5\% latency). This is a finite-sample operating screen, not a simultaneous or causal coverage guarantee. Frontend average CPU must remain below 0.70 cores with at most 5\% wall time throttled. Dropped requests, pod drift or unverified cleanup invalidate qualification. An earlier zero-error screen rejected one control failure in 27,117 requests; that post-pilot rule was revised before these fresh qualification seeds and before the replacement comparison. Earlier studies are archived and excluded from the replacement dataset.
+
+The primary comparison grants no background credit: its closed-loop enforcement uses observed treatment losses. Matched control provides signed excess estimates for analysis and health checks. Conditional attributed enforcement is evaluated separately against total debit in the synthetic-background ablation; the primary comparison alone cannot establish attribution accuracy.
+
+The full study uses four policies, two fault families, two loads and five replication blocks: 80 cluster comparisons plus ten no-fault controls. The user retained 120\,s warmup, a 300\,s fault window and at least 120\,s recovery. Policy order is randomized within blocks before collection. Pilot seeds are separate from evaluation block identifiers. Istio's fault RNG is not seeded by the workload identifier. Background-error attribution/total-debit ablations follow the core study. Synthetic organic labels support a controlled residual reference, but do not establish counterfactual ground truth for arbitrary real services.
+
+\section{Results}\label{sec:results}
+\input{results/curated/study-results.tex}
+
+\subsection{Observed safety and exposure trade-offs}
+\input{results/curated/study-means.tex}
+Collection ran on 8--9 November 2026. All 110 selected runs completed and replayed; all 111 retained attempts, including one failure, verified cleanup. The host suspended for approximately nine minutes during an open-loop abort attempt. Stale telemetry triggered stopping, the independent watchdog reported expired-fault removal, and readback confirmed fault absence. The attempt failed during workload draining and remained excluded; its predeclared retry completed. This interruption demonstrates a recovery path under the observed conditions, not a guarantee during host or API outages.
+
+All ten no-fault controls recorded zero bad outcomes and zero debit in both ledgers. The original healthy-traffic accounting defect therefore did not recur in these controls. Every selected run had zero full-allocation overshoot. The reserve was 675 requests at 32 requests/s and 1,350 at 64 requests/s; the usable allocations were 480 and 960 requests per SLO. These large removal reserves explain why full-allocation overshoot alone cannot discriminate the policies.
+
+Static injection exceeded the latency usable guard by 4.6 and 21.6 requests on average for aborts at 32 and 64 requests/s, and by 9.6 and 16.2 for delays. Closed-loop means were zero except for 0.4 requests in the 32 requests/s delay condition. Closed-loop minus static guard differences were -4.6 (95\% interval [-6.8,-2.6]), -21.6 ([-26.0,-17.2]), -9.2 ([-12.0,-6.2]) and -16.2 ([-24.4,-8.4]) requests, respectively. Static injection still provided greater commanded exposure in every condition. Safety here means the measured guard outcome under shared safeguards, not unrestricted baseline injection.
+
+The calibrated open-loop policy also had zero guard overshoot. For delays, closed-loop provided 0.82 additional fraction-seconds at 32 requests/s (95\% interval [0.42,1.21]) and 0.80 at 64 ([0.19,1.20]). For aborts it provided 8.95 fewer fraction-seconds at 32 ([-9.22,-8.61]) and 9.19 fewer at 64 ([-9.46,-8.98]). Threshold stop had the least exposure: 0.26 fraction-seconds for aborts and 0.82--0.86 for delays. The adaptive policy therefore avoids some premature stopping relative to threshold control, but does not dominate the calibrated open-loop policy. The unchanged controller parameters respond differently to availability-and-latency abort burn than to latency-only delay burn; post-result retuning would require a new evaluation.
+
+In the background ablation, conservative credit remained zero in all five 32 requests/s attributed runs and averaged 25.91 requests at 64. The signed point estimate reduced absolute error against the tagged residual reference by 66.78 requests at 32 requests/s (95\% interval [-68.38,-64.97]) and 134.60 at 64 ([-138.20,-130.99]), relative to naive total-loss accounting. This estimation benefit did not translate into an observed exposure benefit: attributed-minus-total exposure differences were -0.17 fraction-seconds ([-0.55,0.09]) and -0.13 ([-0.36,0.10]). Those intervals include zero. Conservative enforcement credit and descriptive point-estimate accuracy are separate results.
+
+\subsection{Reproducibility and implementation parameters}
+The portable archive index retains all 111 attempts and the source/configuration snapshots; every selected ledger reconciles with raw client outcomes. The analysis exports trial-level, attempt-level and per-SLO CSV tables, 96 core paired metric comparisons and sixteen background comparisons. Pairing uses five sequential replication blocks, not 110 independent observations for each policy contrast. Policy order was randomized within each block before collection. Workload identifiers 1001--1005 do not seed Istio's Bernoulli fault decisions.
+
+The locked tools are kind 0.33.0, kubectl 1.36.0, Istio 1.31.3 and k6 2.3.0; resolved deployed images and pod templates accompany the evidence. The controller observes at two-second intervals, requires telemetry no older than five seconds and at least fifty aligned requests, caps injection at 10\%, and changes intensity in 0.5-percentage-point steps. A fifteen-second reserve uses capped traffic rates of 45 and 90 requests/s. Delay injection adds 600\,ms; abort injection returns HTTP 503. Costs fitted from separate 48 requests/s engineering pilots were 1.138 for delay and 1.122 for abort. These settings were frozen for the replacement study; no result-driven tuning is included in the reported comparison.
+
+\subsection{Analysis protocol}
+Primary reporting includes full-allocation overshoot, overshoot of the usable guard threshold $A_j-R$, integrated command exposure, observed bad requests and cleanup status. Full-allocation and guard overshoot must remain separate because a large reserve can make the former uninformative. Command exposure integrates API-acknowledged percentages; Envoy propagation remains uncertain. We compute paired policy differences within replication blocks and percentile bootstrap intervals across independent blocks, never by treating individual correlated requests as independent replications. Five blocks offer limited precision; descriptive intervals have no multiplicity adjustment.
+
+Every declared trial, failure and retry remains visible. A predetermined retry rule addresses invalid execution, not unfavorable outcomes. Replay reconstructs revised ledgers from saved observations and reconciles them against raw client counts. Empirical cost per unit exposure summarizes observed sensitivity and does not promise future costs.
+
+\section{Threats to Validity}\label{sec:threats}
+Shared-node and transport interference can affect control traffic. Healthy controls and route targeting support operational isolation but cannot prove absence of interference. Synthetic independent errors are simpler than correlated incidents; confidence-sequence background credit is conditional on that model. Observations are grouped at client-file ingestion boundaries rather than a distributed event-time watermark. Rare-event SLOs, baseline drift, cleanup latency and API readback can all distort short-run accounting. Calibration and pilot fitting can bias comparisons, so their parameters and seeds must be frozen before final collection. The benchmark has one synchronous dependency and cannot establish external validity for Online Boutique, infrastructure faults or production services. A host-local controller lock also does not replace a validated distributed leadership protocol. Cluster ablations that remove one SLO or deliberately delay telemetry were not included in this matrix; missing-data and independent-ledger unit checks do not replace those experiments. The oracle is a retrospective empirical sensitivity summary, not a validated optimizer or a predictor of undiscovered weaknesses. Literature checks identify close prior art and support a scoped empirical contribution; they are not an exhaustive novelty certification.
+
+\section{Conclusion}\label{sec:conclusion}
+The 110-run cluster study establishes an auditable empirical comparison of SLO-governed fault policies under the tested benchmark and revised workload protocol. Corrected accounting assigns zero debit to the ten healthy controls. Adaptive control reduces usable-guard overshoot relative to static injection, but trades away exposure, particularly for abort faults. Calibrated open-loop injection remains competitive and offers more abort exposure without observed guard overshoot. Conditional matched estimates improve synthetic-background attribution accuracy, while conservative credit provides no clear exposure gain. These mixed findings answer the research questions without establishing universal safety, causal validity or a first-ever method. Future work should test correlated backgrounds, additional independent clusters, richer applications and infrastructure faults before extending the conclusions.
 
 %% Loading bibliography style file
 %\bibliographystyle{model1-num-names}

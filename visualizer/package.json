@@ -1,0 +1,9 @@
+﻿{
+  "name": "cep-chaos-learning-lab",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "test": "node --test model.test.mjs",
+    "start": "node serve.mjs"
+  }
+}

@@ -1,0 +1,17 @@
+{
+  "state": "CORE_STUDY_VERIFIED_DELIVERED",
+  "pid": 464559,
+  "completed_qualifications": 4,
+  "planned_qualifications": 4,
+  "main_study_running": false,
+  "directory": "/home/muhammad-abyaz/workspace/personal/cc/cc-cep/results/raw/full-study-v7",
+  "heartbeat_path": "/home/muhammad-abyaz/workspace/personal/cc/cc-cep/results/raw/sustained-qualification-03/heartbeat.json",
+  "active_rate": 64,
+  "active_repetition": 4,
+  "status_path": "/home/muhammad-abyaz/workspace/personal/cc/cc-cep/results/raw/full-study-v7/status.json",
+  "frozen_source": "/home/muhammad-abyaz/workspace/personal/cc/cc-cep/results/raw/full-study-v7/frozen",
+  "returncode": 0,
+  "updated_utc": "2026-11-09T05:27:08.342728+00:00",
+  "final_deliverables": "/home/muhammad-abyaz/workspace/personal/cc/cc-cep/results/curated/final-deliverables.json",
+  "portable_reproduction_result": "/home/muhammad-abyaz/workspace/personal/cc/cc-cep/results/curated/portable-reproduction-result.json"
+}

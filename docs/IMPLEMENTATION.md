@@ -3,6 +3,42 @@
 Working repository: `/home/muhammad-abyaz/workspace/personal/cc/cc-cep`.
 Deadline: **16 November 2026**. No rubric supplied.
 
+## Final measured status — 9 November 2026
+
+The replacement dataset has 110 verified selected runs, 111 retained attempts, 96 complete
+core paired metric comparisons and 16 background comparisons. All attempts verified
+cleanup. The single failed execution was interrupted by host sleep and retried under
+the existing rule. See FINAL-RESULTS.md for findings, artifacts and reproduction.
+The Linux suite passes 59 tests. Native Windows CI and distributed leadership remain
+unvalidated. Earlier notes below describe historical implementation and pending gates;
+ACCOUNTING-V2.md and the final findings supersede their interval-Wilson description.
+
+## Review correction status — 3 November 2026
+
+- Fixed zero-error consumption by separating realized cumulative debit from uncertainty.
+  See ACCOUNTING-V2.md; default enforcement cannot exceed observed treatment bad counts.
+- Cleanup exhaustion now sets a sticky failed flag; subsequent removal preserves failure.
+- Real corrected no-fault control: 2,006 healthy treatment requests, zero consumption,
+  duration stop. Baseline/observations/raw client totals replay successfully.
+- Original raw development archive is included in results/evidence, not merely referenced
+  by an absent ignored path. A portable verifier checked 169 manifests successfully.
+- Revised trials include per-run source snapshots, explicit baselines, raw cohort/organic
+  outcomes, pod identities/image IDs, cleanup tail, and checksums. Source freezes for the
+  unattended full study. All invalid attempts remain retained.
+- Added paired block-bootstrap analysis and background-debit ablation analysis. These are
+  implemented methods; final numeric comparisons require completed cluster collection.
+- The paper now has substantive abstract/methodology/implementation/results-status/
+  threats/conclusion sections. Removed unverified search/gap claims and unimplemented
+  benchmark promises. The compiled PDF and eight-slide deck are interim, not final study findings.
+- Native Windows collection no longer imports fcntl unconditionally; dependencies remain
+  mandatory. Windows CI is configured but has not run here. Cluster execution uses Linux/WSL.
+- The user chose full 120/300/120-second phases. See FULL-STUDY-RUNBOOK.md for the sequential,
+  resumable 80 core +10 controls +20 background runs. Do not claim CEP completion while
+  collection or final artifact review remains pending.
+
+Historical implementation notes below describe the first prototype. Where they mention
+interval Wilson screening, ACCOUNTING-V2.md supersedes that algorithm.
+
 ## Implemented
 
 - Fixed, independent availability and conservative latency request-count ledgers;

@@ -1,6 +1,5 @@
 """Exclusive run locking, atomic checkpoints, and a bounded local fault adapter."""
 
-import fcntl
 import json
 import os
 import tempfile
@@ -18,13 +17,30 @@ class RunLock:
         self.path.parent.mkdir(parents=True, exist_ok=True)
         self.file = self.path.open("a")
         try:
-            fcntl.flock(self.file, fcntl.LOCK_EX | fcntl.LOCK_NB)
+            if os.name == "nt":
+                import msvcrt
+
+                self.file.seek(0, os.SEEK_END)
+                if self.file.tell() == 0:
+                    self.file.write("0")
+                    self.file.flush()
+                self.file.seek(0)
+                msvcrt.locking(self.file.fileno(), msvcrt.LK_NBLCK, 1)
+            else:
+                import fcntl
+
+                fcntl.flock(self.file, fcntl.LOCK_EX | fcntl.LOCK_NB)
         except OSError:
             self.file.close()
             raise RuntimeError("another controller owns this target") from None
         return self
 
     def __exit__(self, *args):
+        if os.name == "nt":
+            import msvcrt
+
+            self.file.seek(0)
+            msvcrt.locking(self.file.fileno(), msvcrt.LK_UNLCK, 1)
         self.file.close()
 
 
@@ -81,3 +97,11 @@ class LocalFault:
         response = self.client.get(self.url)
         response.raise_for_status()
         return response.json()["active"]
+
+
+def process_token(pid):
+    """Linux start-time token prevents a reused PID from being treated as our child."""
+    try:
+        return Path(f"/proc/{pid}/stat").read_text().rsplit(")", 1)[1].split()[19]
+    except (OSError, IndexError):
+        return None

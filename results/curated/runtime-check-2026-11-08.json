@@ -1,0 +1,54 @@
+{
+  "frontend-control": {
+    "template_sha256": "6c958dfd703731c1b71a5f47e5c9959019b2378d9153fccc073689a25a6041e0",
+    "images": [
+      [
+        "app",
+        "docker.io/library/import-2026-11-03@sha256:a314080640498c571bad53783819aa97fe3bef2328911dfcdc9d32dfbb92eb57"
+      ],
+      [
+        "istio-proxy",
+        "docker.io/istio/proxyv2@sha256:eb74eacea98d3fb1e239ea84016085155478586a554158676b9b67d960151084"
+      ]
+    ]
+  },
+  "frontend-treatment": {
+    "template_sha256": "311e39f3e08f61856a796dd614202a0c5a7f516d8c537d87616f839bce5a46e0",
+    "images": [
+      [
+        "app",
+        "docker.io/library/import-2026-11-03@sha256:a314080640498c571bad53783819aa97fe3bef2328911dfcdc9d32dfbb92eb57"
+      ],
+      [
+        "istio-proxy",
+        "docker.io/istio/proxyv2@sha256:eb74eacea98d3fb1e239ea84016085155478586a554158676b9b67d960151084"
+      ]
+    ]
+  },
+  "dependency-control": {
+    "template_sha256": "0fa2e90c3606b5cd4941675b141f42b9aab24998952160ea7896fa0ae4be7414",
+    "images": [
+      [
+        "app",
+        "docker.io/library/import-2026-11-03@sha256:a314080640498c571bad53783819aa97fe3bef2328911dfcdc9d32dfbb92eb57"
+      ],
+      [
+        "istio-proxy",
+        "docker.io/istio/proxyv2@sha256:eb74eacea98d3fb1e239ea84016085155478586a554158676b9b67d960151084"
+      ]
+    ]
+  },
+  "dependency-treatment": {
+    "template_sha256": "a080173d55bf2ae8ae37331faac4a7c509f3254f952da8735961ee453daf2544",
+    "images": [
+      [
+        "app",
+        "docker.io/library/import-2026-11-03@sha256:a314080640498c571bad53783819aa97fe3bef2328911dfcdc9d32dfbb92eb57"
+      ],
+      [
+        "istio-proxy",
+        "docker.io/istio/proxyv2@sha256:eb74eacea98d3fb1e239ea84016085155478586a554158676b9b67d960151084"
+      ]
+    ]
+  }
+}

@@ -1,0 +1,72 @@
+{
+  "reviewed_utc": "2026-11-09T05:07:38.799578+00:00",
+  "dataset_complete": true,
+  "selected_runs": 110,
+  "retained_attempts": 111,
+  "source_tests_passed": 62,
+  "paper_pages_visually_reviewed": 8,
+  "slides_visually_reviewed": 12,
+  "native_chart_slides": [
+    4,
+    6,
+    7
+  ],
+  "recorded_demo_seconds": 10,
+  "paper_source_zip_compiles_in_isolated_directory": true,
+  "portable_archive_manifests_verified": 173,
+  "portable_analysis_reproduction": "PASSED",
+  "measured_scope": "Four policies, two request faults, two loads, five blocks, no-fault controls and synthetic background ablation",
+  "unmeasured": [
+    "single-vs-dual-SLO cluster ablation",
+    "deliberately delayed-telemetry cluster ablation",
+    "Windows execution",
+    "distributed leadership",
+    "Online Boutique/Chaos Mesh"
+  ],
+  "student_actions": [
+    "review authorship and scope",
+    "rehearse viva",
+    "submit by16November"
+  ],
+  "files": [
+    {
+      "path": "output/pdf/cep-report-final.pdf",
+      "bytes": 486408,
+      "sha256": "be3c7c8a3f9d068e59ec3182782ef565f3f9c36648712261b018928567f1fcb7"
+    },
+    {
+      "path": "output/slides/cep-research-final-v2.pptx",
+      "bytes": 60758,
+      "sha256": "4a292d1f0cb7d08a8c4b3e3115d7095e4343f516161b0ec355f346ba4e64f334"
+    },
+    {
+      "path": "output/demo/cep-study-recorded-trace.mp4",
+      "bytes": 78689,
+      "sha256": "61760864de3be0f1c85bcc4425998f3421537d8987accbb5e50693b7de34db64"
+    },
+    {
+      "path": "output/cc-cep-overleaf-source.zip",
+      "bytes": 153170,
+      "sha256": "3f05e4944f9c9da4baad6112a2a1b451604e444e81c62ac0a94c2b96fdf8767e"
+    },
+    {
+      "path": "results/evidence/full-study-v7/index.json",
+      "bytes": 17851,
+      "sha256": "d97028b52dc2f199db1bcf0e0facd0e111ed111766df2b888b6b92a7d802f5bb"
+    },
+    {
+      "path": "results/curated/final-study-summary.json",
+      "bytes": 44547,
+      "sha256": "a65eb5e8582db38869e31037ca382e55c2f3c2324d5c753d8b091f0670f48517"
+    },
+    {
+      "path": "output/cc-cep-implementation-source.tar.gz",
+      "bytes": 366045,
+      "sha256": "f0cf1b54bc5c4963a9a590b787b3f4dc4f4338eef3629a4a67541e6f9a58a20e"
+    }
+  ],
+  "portable_reproduction_result": "results/curated/portable-reproduction-result.json",
+  "final_verification_utc": "2026-11-09T05:23:03.525348+00:00",
+  "handoff_state": "CORE_STUDY_VERIFIED_DELIVERED",
+  "evidence_distribution": "Standard Git, with four indexed checksum-verified chunks for the oversized metadata archive; original reconstructed archive bytes unchanged"
+}

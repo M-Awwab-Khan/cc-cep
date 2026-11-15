@@ -1,0 +1,11 @@
+﻿import test from 'node:test';import assert from 'node:assert/strict';import {Lab,compare,excess} from './dist/model.mjs';
+test('declared budgets remain separate and frozen after traffic changes',()=>{const l=new Lab();assert.ok(Math.abs(l.ledgers.availability.allocation-60)<1e-8);assert.ok(Math.abs(l.ledgers.latency.allocation-300)<1e-8);l.admit();l.config.rps=50;l.step();assert.ok(Math.abs(l.ledgers.availability.allocation-60)<1e-8);});
+test('delay alone never creates availability failures',()=>{const l=new Lab({family:'delay',policy:'static',limit:.1});l.step();assert.equal(l.ledgers.availability.totalBad,0);assert.ok(l.ledgers.latency.totalBad>0);});
+test('abort counts against both independent SLOs',()=>{const l=new Lab({family:'abort',policy:'static',limit:.1});l.step();assert.equal(l.ledgers.availability.totalBad,l.ledgers.latency.totalBad);assert.ok(l.ledgers.availability.totalBad>0);});
+test('cannot admit a reserve larger than an allocation',()=>{const l=new Lab({reserveSeconds:15});assert.equal(l.admit(),false);assert.equal(l.status,'REJECTED');});
+test('zero faults charge nothing in normal point-estimate teaching mode',()=>{const l=new Lab({limit:0});for(let i=0;i<60;i++)l.step();assert.equal(l.time,60);assert.equal(l.ledgers.availability.charged,0);assert.equal(l.ledgers.latency.totalBad,0);});
+test('repository Wilson screen can stop perfectly healthy traffic',()=>{const l=new Lab({limit:0,screen:true});for(let i=0;i<60;i++)if(!l.step())break;assert.equal(l.ledgers.availability.totalBad,0);assert.ok(l.ledgers.availability.charged>0);assert.ok(l.time<60);assert.equal(l.status,'STOPPED');});
+test('all policies have the same guard and reproducible seeded outcomes',()=>{const a=compare({family:'abort'}),b=compare({family:'abort'});assert.equal(a.length,4);assert.deepEqual(a.map(l=>l.ledgers),b.map(l=>l.ledgers));assert.ok(a.every(l=>l.time<=60));});
+test('attribution adjusts for unequal traffic',()=>{assert.equal(excess(14,200,2,100).signed,10);assert.equal(excess(0,200,3,100).signed,-6);});
+test('increasing traffic beyond admitted cap stops the experiment',()=>{const l=new Lab();l.admit();l.config.rps=150;l.step();assert.equal(l.status,'STOPPED');assert.match(l.reason,/Traffic/);});
+

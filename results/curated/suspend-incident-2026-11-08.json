@@ -1,0 +1,17 @@
+{
+  "recorded_utc": "2026-11-08T17:33:33.606843+00:00",
+  "study": "full-study-v7",
+  "affected_job": "core-abort-32-open-loop-1003",
+  "attempt": 0,
+  "completed_before_incident": 44,
+  "suspend_local": "2026-11-08T22:23:10+05:00",
+  "resume_local": "2026-11-08T22:32:21+05:00",
+  "source": "systemd journal: kernel PM suspend entry/exit and systemd-suspend.service",
+  "observed_decision_gap_seconds": 553.3537404537201,
+  "controller_stop_reason": "stale client telemetry or watchdog",
+  "watchdog_log": "expired fault removed",
+  "fault_absent_readback": true,
+  "attempt_disposition": "Attempt0 FAILED with verified cleanup; predeclared attempt1 COMPLETE with verified cleanup; both preserved in111 retained attempts",
+  "source_or_protocol_changed": false,
+  "selected_attempt": 1
+}

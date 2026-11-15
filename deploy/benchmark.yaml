@@ -53,11 +53,13 @@ spec:
         runAsUser: 10001
       containers:
       - name: app
-        image: cc-cep:0.1.0
+        image: cc-cep:0.2.0
         imagePullPolicy: Never
         env:
         - name: CC_COHORT
           value: control
+        - name: CC_SYNTHETIC_ENABLED
+          value: 'true'
         - name: CC_DEPENDENCY_URL
           value: http://dependency-control:8000
         ports:
@@ -121,7 +123,7 @@ spec:
         runAsUser: 10001
       containers:
       - name: app
-        image: cc-cep:0.1.0
+        image: cc-cep:0.2.0
         imagePullPolicy: Never
         env:
         - name: CC_COHORT
@@ -187,11 +189,13 @@ spec:
         runAsUser: 10001
       containers:
       - name: app
-        image: cc-cep:0.1.0
+        image: cc-cep:0.2.0
         imagePullPolicy: Never
         env:
         - name: CC_COHORT
           value: treatment
+        - name: CC_SYNTHETIC_ENABLED
+          value: 'true'
         - name: CC_DEPENDENCY_URL
           value: http://dependency-treatment:8000
         ports:
@@ -255,7 +259,7 @@ spec:
         runAsUser: 10001
       containers:
       - name: app
-        image: cc-cep:0.1.0
+        image: cc-cep:0.2.0
         imagePullPolicy: Never
         env:
         - name: CC_COHORT

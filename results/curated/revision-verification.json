@@ -1,0 +1,43 @@
+{
+  "scope": "Review-correction verification; not full-study results",
+  "tests": {
+    "command": "uv run pytest -q",
+    "passed": 45,
+    "failed": 0,
+    "native_windows_executed": false
+  },
+  "lint": {
+    "command": "uv run ruff check src tests scripts",
+    "passed": true
+  },
+  "accounting": "realized-cumulative-v2",
+  "portable_archive": "results/evidence/revision-2026-11-03.tar.gz",
+  "internal_manifests_verified": 195,
+  "revised_successful_pilots_replayed": [
+    "revision-no-fault-01",
+    "revision-cost-abort-01",
+    "revision-cost-delay-01"
+  ],
+  "archive_excludes_active_study": "full-study-v3",
+  "full_study_status": "results/raw/full-study-v3/status.json",
+  "novelty": "Provisional empirical contribution; directly overlapping SLO-driven injection prior art identified and cited",
+  "artifacts": {
+    "report": "output/pdf/cep-report-interim.pdf",
+    "slides": "output/slides/cep-validation-interim-v2.pptx",
+    "demo": "output/demo/recorded-controller-trace.mp4"
+  },
+  "limitations": [
+    "Full cluster comparisons and background ablations pending",
+    "Interim artifacts require final evidence integration and review",
+    "Windows CI configured but not executed in this session"
+  ],
+  "artifact_checks": {
+    "pdf_pages": 5,
+    "pdf_compiled": true,
+    "pdf_visually_reviewed_all_pages": true,
+    "pptx_slides": 8,
+    "pptx_native_chart_count": 1,
+    "pptx_package_and_geometry_findings": 0,
+    "pptx_visually_reviewed_all_slides": true
+  }
+}

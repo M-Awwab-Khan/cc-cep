@@ -1,0 +1,2012 @@
+{
+  "mode": "iid-bernoulli-model-validation",
+  "seed": 20261103,
+  "replications": 200,
+  "observations_per_replication": 100000,
+  "mean_point_absolute_error": 27.695,
+  "mean_total_absolute_error": 498.955,
+  "all_times_coverage_replicates": 200,
+  "limitation": "Independent stationary Bernoulli generator; does not establish field causal validity",
+  "runs": [
+    {
+      "seed": 0,
+      "point_error": 2.0,
+      "total_error": 497,
+      "all_times_enforcement_covers_reference": true,
+      "background_lower": 251.14161001598924,
+      "reference": 1000,
+      "signed": 1002.0,
+      "enforced": 1245.8583899840107
+    },
+    {
+      "seed": 1,
+      "point_error": 21.0,
+      "total_error": 484,
+      "all_times_enforcement_covers_reference": true,
+      "background_lower": 258.4629176966478,
+      "reference": 1011,
+      "signed": 990.0,
+      "enforced": 1236.5370823033522
+    },
+    {
+      "seed": 2,
+      "point_error": 56.0,
+      "total_error": 464,
+      "all_times_enforcement_covers_reference": true,
+      "background_lower": 269.4942073363121,
+      "reference": 993,
+      "signed": 937.0,
+      "enforced": 1187.5057926636878
+    },
+    {
+      "seed": 3,
+      "point_error": 44.0,
+      "total_error": 553,
+      "all_times_enforcement_covers_reference": true,
+      "background_lower": 261.3988864176231,
+      "reference": 946,
+      "signed": 990.0,
+      "enforced": 1237.601113582377
+    },
+    {
+      "seed": 4,
+      "point_error": 42.0,
+      "total_error": 466,
+      "all_times_enforcement_covers_reference": true,
+      "background_lower": 260.6645004584823,
+      "reference": 1015,
+      "signed": 973.0,
+      "enforced": 1220.3354995415177
+    },
+    {
+      "seed": 5,
+      "point_error": 44.0,
+      "total_error": 442,
+      "all_times_enforcement_covers_reference": true,
+      "background_lower": 244.57569710907933,
+      "reference": 914,
+      "signed": 870.0,
+      "enforced": 1111.4243028909207
+    },
+    {
+      "seed": 6,
+      "point_error": 15.0,
+      "total_error": 503,
+      "all_times_enforcement_covers_reference": true,
+      "background_lower": 246.03285139789446,
+      "reference": 998,
+      "signed": 1013.0,
+      "enforced": 1254.9671486021055
+    },
+    {
+      "seed": 7,
+      "point_error": 37.0,
+      "total_error": 528,
+      "all_times_enforcement_covers_reference": true,
+      "background_lower": 248.2206671091233,
+      "reference": 937,
+      "signed": 974.0,
+      "enforced": 1216.7793328908767
+    },
+    {
+      "seed": 8,
+      "point_error": 42.0,
+      "total_error": 452,
+      "all_times_enforcement_covers_reference": true,
+      "background_lower": 250.41096372230152,
+      "reference": 1011,
+      "signed": 969.0,
+      "enforced": 1212.5890362776986
+    },
+    {
+      "seed": 9,
+      "point_error": 46.0,
+      "total_error": 485,
+      "all_times_enforcement_covers_reference": true,
+      "background_lower": 277.6201496056318,
+      "reference": 965,
+      "signed": 919.0,
+      "enforced": 1172.379850394368
+    },
+    {
+      "seed": 10,
+      "point_error": 23.0,
+      "total_error": 455,
+      "all_times_enforcement_covers_reference": true,
+      "background_lower": 238.75834523734363,
+      "reference": 996,
+      "signed": 973.0,
+      "enforced": 1212.2416547626563
+    },
+    {
+      "seed": 11,
+      "point_error": 54.0,
+      "total_error": 508,
+      "all_times_enforcement_covers_reference": true,
+      "background_lower": 221.41836675261197,
+      "reference": 977,
+      "signed": 1031.0,
+      "enforced": 1263.581633247388
+    },
+    {
+      "seed": 12,
+      "point_error": 18.0,
+      "total_error": 483,
+      "all_times_enforcement_covers_reference": true,
+      "background_lower": 255.53117832824367,
+      "reference": 1053,
+      "signed": 1035.0,
+      "enforced": 1280.4688216717564
+    },
+    {
+      "seed": 13,
+      "point_error": 25.0,
+      "total_error": 512,
+      "all_times_enforcement_covers_reference": true,
+      "background_lower": 282.06504948719976,
+      "reference": 1013,
+      "signed": 988.0,
+      "enforced": 1242.9349505128002
+    },
+    {
+      "seed": 14,
+      "point_error": 84.0,
+      "total_error": 460,
+      "all_times_enforcement_covers_reference": true,
+      "background_lower": 287.2617298290937,
+      "reference": 952,
+      "signed": 868.0,
+      "enforced": 1124.7382701709062
+    },
+    {
+      "seed": 15,
+      "point_error": 17.0,
+      "total_error": 515,
+      "all_times_enforcement_covers_reference": true,
+      "background_lower": 253.335179644597,
+      "reference": 970,
+      "signed": 987.0,
+      "enforced": 1231.664820355403
+    },
+    {
+      "seed": 16,
+      "point_error": 23.0,
+      "total_error": 510,
+      "all_times_enforcement_covers_reference": true,
+      "background_lower": 245.3041347347014,
+      "reference": 982,
+      "signed": 1005.0,
+      "enforced": 1246.6958652652986
+    },
+    {
+      "seed": 17,
+      "point_error": 51.0,
+      "total_error": 478,
+      "all_times_enforcement_covers_reference": true,
+      "background_lower": 276.14047104299533,
+      "reference": 999,
+      "signed": 948.0,
+      "enforced": 1200.8595289570046
+    },
+    {
+      "seed": 18,
+      "point_error": 44.0,
+      "total_error": 530,
+      "all_times_enforcement_covers_reference": true,
+      "background_lower": 244.57569710907933,
+      "reference": 945,
+      "signed": 989.0,
+      "enforced": 1230.4243028909207
+    },
+    {
+      "seed": 19,
+      "point_error": 44.0,
+      "total_error": 452,
+      "all_times_enforcement_covers_reference": true,
+      "background_lower": 251.87252864612327,
+      "reference": 1022,
+      "signed": 978.0,
+      "enforced": 1222.1274713538767
+    },
+    {
+      "seed": 20,
+      "point_error": 4.0,
+      "total_error": 502,
+      "all_times_enforcement_covers_reference": true,
+      "background_lower": 253.335179644597,
+      "reference": 1031,
+      "signed": 1035.0,
+      "enforced": 1279.664820355403
+    },
+    {
+      "seed": 21,
+      "point_error": 15.0,
+      "total_error": 486,
+      "all_times_enforcement_covers_reference": true,
+      "background_lower": 233.68321069660598,
+      "reference": 969,
+      "signed": 984.0,
+      "enforced": 1221.316789303394
+    },
+    {
+      "seed": 22,
+      "point_error": 39.0,
+      "total_error": 520,
+      "all_times_enforcement_covers_reference": true,
+      "background_lower": 240.9377246982698,
+      "reference": 1011,
+      "signed": 1050.0,
+      "enforced": 1290.06227530173
+    },
+    {
+      "seed": 23,
+      "point_error": 35.0,
+      "total_error": 462,
+      "all_times_enforcement_covers_reference": true,
+      "background_lower": 252.6037187934714,
+      "reference": 962,
+      "signed": 927.0,
+      "enforced": 1171.3962812065286
+    },
+    {
+      "seed": 24,
+      "point_error": 69.0,
+      "total_error": 534,
+      "all_times_enforcement_covers_reference": true,
+      "background_lower": 229.34452252968666,
+      "reference": 959,
+      "signed": 1028.0,
+      "enforced": 1263.6554774703134
+    },
+    {
+      "seed": 25,
+      "point_error": 39.0,
+      "total_error": 489,
+      "all_times_enforcement_covers_reference": true,
+      "background_lower": 275.40100137104366,
+      "reference": 996,
+      "signed": 957.0,
+      "enforced": 1209.5989986289565
+    },
+    {
+      "seed": 26,
+      "point_error": 0.0,
+      "total_error": 520,
+      "all_times_enforcement_covers_reference": true,
+      "background_lower": 269.4942073363121,
+      "reference": 1051,
+      "signed": 1051.0,
+      "enforced": 1301.5057926636878
+    },
+    {
+      "seed": 27,
+      "point_error": 8.0,
+      "total_error": 483,
+      "all_times_enforcement_covers_reference": true,
+      "background_lower": 248.2206671091233,
+      "reference": 973,
+      "signed": 965.0,
+      "enforced": 1207.7793328908767
+    },
+    {
+      "seed": 28,
+      "point_error": 18.0,
+      "total_error": 489,
+      "all_times_enforcement_covers_reference": true,
+      "background_lower": 259.9303765040634,
+      "reference": 960,
+      "signed": 942.0,
+      "enforced": 1189.0696234959366
+    },
+    {
+      "seed": 29,
+      "point_error": 8.0,
+      "total_error": 489,
+      "all_times_enforcement_covers_reference": true,
+      "background_lower": 240.9377246982698,
+      "reference": 988,
+      "signed": 996.0,
+      "enforced": 1236.06227530173
+    },
+    {
+      "seed": 30,
+      "point_error": 26.0,
+      "total_error": 490,
+      "all_times_enforcement_covers_reference": true,
+      "background_lower": 266.54686023087817,
+      "reference": 946,
+      "signed": 920.0,
+      "enforced": 1169.453139769122
+    },
+    {
+      "seed": 31,
+      "point_error": 2.0,
+      "total_error": 510,
+      "all_times_enforcement_covers_reference": true,
+      "background_lower": 263.60360866071926,
+      "reference": 1005,
+      "signed": 1003.0,
+      "enforced": 1251.3963913392809
+    },
+    {
+      "seed": 32,
+      "point_error": 3.0,
+      "total_error": 500,
+      "all_times_enforcement_covers_reference": true,
+      "background_lower": 256.9965162113027,
+      "reference": 999,
+      "signed": 996.0,
+      "enforced": 1242.0034837886974
+    },
+    {
+      "seed": 33,
+      "point_error": 17.0,
+      "total_error": 512,
+      "all_times_enforcement_covers_reference": true,
+      "background_lower": 251.14161001598924,
+      "reference": 964,
+      "signed": 981.0,
+      "enforced": 1224.8583899840107
+    },
+    {
+      "seed": 34,
+      "point_error": 35.0,
+      "total_error": 494,
+      "all_times_enforcement_covers_reference": true,
+      "background_lower": 276.14047104299533,
+      "reference": 1054,
+      "signed": 1019.0,
+      "enforced": 1271.8595289570046
+    },
+    {
+      "seed": 35,
+      "point_error": 10.0,
+      "total_error": 485,
+      "all_times_enforcement_covers_reference": true,
+      "background_lower": 251.14161001598924,
+      "reference": 941,
+      "signed": 931.0,
+      "enforced": 1174.8583899840107
+    },
+    {
+      "seed": 36,
+      "point_error": 0.0,
+      "total_error": 506,
+      "all_times_enforcement_covers_reference": true,
+      "background_lower": 259.19651532419743,
+      "reference": 990,
+      "signed": 990.0,
+      "enforced": 1236.8034846758026
+    },
+    {
+      "seed": 37,
+      "point_error": 6.0,
+      "total_error": 518,
+      "all_times_enforcement_covers_reference": true,
+      "background_lower": 263.60360866071926,
+      "reference": 978,
+      "signed": 984.0,
+      "enforced": 1232.3963913392809
+    },
+    {
+      "seed": 38,
+      "point_error": 20.0,
+      "total_error": 480,
+      "all_times_enforcement_covers_reference": true,
+      "background_lower": 254.79891021677952,
+      "reference": 991,
+      "signed": 971.0,
+      "enforced": 1216.2010897832206
+    },
+    {
+      "seed": 39,
+      "point_error": 7.0,
+      "total_error": 495,
+      "all_times_enforcement_covers_reference": true,
+      "background_lower": 246.03285139789446,
+      "reference": 987,
+      "signed": 994.0,
+      "enforced": 1235.9671486021055
+    },
+    {
+      "seed": 40,
+      "point_error": 21.0,
+      "total_error": 501,
+      "all_times_enforcement_covers_reference": true,
+      "background_lower": 240.2109794507051,
+      "reference": 965,
+      "signed": 986.0,
+      "enforced": 1225.789020549295
+    },
+    {
+      "seed": 41,
+      "point_error": 18.0,
+      "total_error": 512,
+      "all_times_enforcement_covers_reference": true,
+      "background_lower": 250.41096372230152,
+      "reference": 961,
+      "signed": 979.0,
+      "enforced": 1222.5890362776986
+    },
+    {
+      "seed": 42,
+      "point_error": 26.0,
+      "total_error": 488,
+      "all_times_enforcement_covers_reference": true,
+      "background_lower": 265.0747195350543,
+      "reference": 992,
+      "signed": 966.0,
+      "enforced": 1214.9252804649457
+    },
+    {
+      "seed": 43,
+      "point_error": 21.0,
+      "total_error": 497,
+      "all_times_enforcement_covers_reference": true,
+      "background_lower": 268.02002479435475,
+      "reference": 934,
+      "signed": 913.0,
+      "enforced": 1162.9799752056451
+    },
+    {
+      "seed": 44,
+      "point_error": 13.0,
+      "total_error": 508,
+      "all_times_enforcement_covers_reference": true,
+      "background_lower": 251.14161001598924,
+      "reference": 979,
+      "signed": 992.0,
+      "enforced": 1235.8583899840107
+    },
+    {
+      "seed": 45,
+      "point_error": 28.0,
+      "total_error": 463,
+      "all_times_enforcement_covers_reference": true,
+      "background_lower": 248.2206671091233,
+      "reference": 1033,
+      "signed": 1005.0,
+      "enforced": 1247.7793328908767
+    },
+    {
+      "seed": 46,
+      "point_error": 30.0,
+      "total_error": 515,
+      "all_times_enforcement_covers_reference": true,
+      "background_lower": 243.84753937909736,
+      "reference": 1020,
+      "signed": 1050.0,
+      "enforced": 1291.1524606209027
+    },
+    {
+      "seed": 47,
+      "point_error": 55.0,
+      "total_error": 543,
+      "all_times_enforcement_covers_reference": true,
+      "background_lower": 246.03285139789446,
+      "reference": 965,
+      "signed": 1020.0,
+      "enforced": 1261.9671486021055
+    },
+    {
+      "seed": 48,
+      "point_error": 11.0,
+      "total_error": 541,
+      "all_times_enforcement_covers_reference": true,
+      "background_lower": 276.88018735295776,
+      "reference": 967,
+      "signed": 978.0,
+      "enforced": 1231.1198126470422
+    },
+    {
+      "seed": 49,
+      "point_error": 3.0,
+      "total_error": 544,
+      "all_times_enforcement_covers_reference": true,
+      "background_lower": 285.0331486596446,
+      "reference": 944,
+      "signed": 947.0,
+      "enforced": 1202.9668513403553
+    },
+    {
+      "seed": 50,
+      "point_error": 37.0,
+      "total_error": 514,
+      "all_times_enforcement_covers_reference": true,
+      "background_lower": 238.03245805132687,
+      "reference": 954,
+      "signed": 991.0,
+      "enforced": 1229.9675419486732
+    },
+    {
+      "seed": 51,
+      "point_error": 13.0,
+      "total_error": 509,
+      "all_times_enforcement_covers_reference": true,
+      "background_lower": 270.96940201789005,
+      "reference": 1077,
+      "signed": 1064.0,
+      "enforced": 1315.03059798211
+    },
+    {
+      "seed": 52,
+      "point_error": 10.0,
+      "total_error": 494,
+      "all_times_enforcement_covers_reference": true,
+      "background_lower": 243.11966240420134,
+      "reference": 996,
+      "signed": 1006.0,
+      "enforced": 1246.8803375957987
+    },
+    {
+      "seed": 53,
+      "point_error": 15.0,
+      "total_error": 495,
+      "all_times_enforcement_covers_reference": true,
+      "background_lower": 240.2109794507051,
+      "reference": 960,
+      "signed": 975.0,
+      "enforced": 1214.789020549295
+    },
+    {
+      "seed": 54,
+      "point_error": 32.0,
+      "total_error": 474,
+      "all_times_enforcement_covers_reference": true,
+      "background_lower": 259.19651532419743,
+      "reference": 1073,
+      "signed": 1041.0,
+      "enforced": 1287.8034846758026
+    },
+    {
+      "seed": 55,
+      "point_error": 53.0,
+      "total_error": 467,
+      "all_times_enforcement_covers_reference": true,
+      "background_lower": 269.4942073363121,
+      "reference": 1014,
+      "signed": 961.0,
+      "enforced": 1211.5057926636878
+    },
+    {
+      "seed": 56,
+      "point_error": 47.0,
+      "total_error": 495,
+      "all_times_enforcement_covers_reference": true,
+      "background_lower": 285.77577140350303,
+      "reference": 981,
+      "signed": 934.0,
+      "enforced": 1190.224228596497
+    },
+    {
+      "seed": 57,
+      "point_error": 54.0,
+      "total_error": 525,
+      "all_times_enforcement_covers_reference": true,
+      "background_lower": 233.68321069660598,
+      "reference": 1062,
+      "signed": 1116.0,
+      "enforced": 1353.316789303394
+    },
+    {
+      "seed": 58,
+      "point_error": 49.0,
+      "total_error": 488,
+      "all_times_enforcement_covers_reference": true,
+      "background_lower": 282.06504948719976,
+      "reference": 992,
+      "signed": 943.0,
+      "enforced": 1197.9349505128002
+    },
+    {
+      "seed": 59,
+      "point_error": 35.0,
+      "total_error": 472,
+      "all_times_enforcement_covers_reference": true,
+      "background_lower": 259.9303765040634,
+      "reference": 1053,
+      "signed": 1018.0,
+      "enforced": 1265.0696234959366
+    },
+    {
+      "seed": 60,
+      "point_error": 40.0,
+      "total_error": 454,
+      "all_times_enforcement_covers_reference": true,
+      "background_lower": 250.41096372230152,
+      "reference": 1025,
+      "signed": 985.0,
+      "enforced": 1228.5890362776986
+    },
+    {
+      "seed": 61,
+      "point_error": 62.0,
+      "total_error": 476,
+      "all_times_enforcement_covers_reference": true,
+      "background_lower": 282.8067141841515,
+      "reference": 962,
+      "signed": 900.0,
+      "enforced": 1155.1932858158484
+    },
+    {
+      "seed": 62,
+      "point_error": 13.0,
+      "total_error": 474,
+      "all_times_enforcement_covers_reference": true,
+      "background_lower": 226.45803039275935,
+      "reference": 943,
+      "signed": 956.0,
+      "enforced": 1190.5419696072406
+    },
+    {
+      "seed": 63,
+      "point_error": 19.0,
+      "total_error": 499,
+      "all_times_enforcement_covers_reference": true,
+      "background_lower": 240.2109794507051,
+      "reference": 1015,
+      "signed": 1034.0,
+      "enforced": 1273.789020549295
+    },
+    {
+      "seed": 64,
+      "point_error": 32.0,
+      "total_error": 481,
+      "all_times_enforcement_covers_reference": true,
+      "background_lower": 264.33903499579924,
+      "reference": 1000,
+      "signed": 968.0,
+      "enforced": 1216.6609650042008
+    },
+    {
+      "seed": 65,
+      "point_error": 61.0,
+      "total_error": 472,
+      "all_times_enforcement_covers_reference": true,
+      "background_lower": 279.1008091845571,
+      "reference": 955,
+      "signed": 894.0,
+      "enforced": 1147.899190815443
+    },
+    {
+      "seed": 66,
+      "point_error": 1.0,
+      "total_error": 508,
+      "all_times_enforcement_covers_reference": true,
+      "background_lower": 259.9303765040634,
+      "reference": 1031,
+      "signed": 1032.0,
+      "enforced": 1279.0696234959366
+    },
+    {
+      "seed": 67,
+      "point_error": 14.0,
+      "total_error": 491,
+      "all_times_enforcement_covers_reference": true,
+      "background_lower": 258.4629176966478,
+      "reference": 988,
+      "signed": 974.0,
+      "enforced": 1220.5370823033522
+    },
+    {
+      "seed": 68,
+      "point_error": 15.0,
+      "total_error": 513,
+      "all_times_enforcement_covers_reference": true,
+      "background_lower": 275.40100137104366,
+      "reference": 965,
+      "signed": 950.0,
+      "enforced": 1202.5989986289565
+    },
+    {
+      "seed": 69,
+      "point_error": 22.0,
+      "total_error": 463,
+      "all_times_enforcement_covers_reference": true,
+      "background_lower": 243.84753937909736,
+      "reference": 985,
+      "signed": 963.0,
+      "enforced": 1204.1524606209027
+    },
+    {
+      "seed": 70,
+      "point_error": 8.0,
+      "total_error": 497,
+      "all_times_enforcement_covers_reference": true,
+      "background_lower": 246.76184624624068,
+      "reference": 1001,
+      "signed": 1009.0,
+      "enforced": 1251.2381537537594
+    },
+    {
+      "seed": 71,
+      "point_error": 47.0,
+      "total_error": 552,
+      "all_times_enforcement_covers_reference": true,
+      "background_lower": 258.4629176966478,
+      "reference": 971,
+      "signed": 1018.0,
+      "enforced": 1264.5370823033522
+    },
+    {
+      "seed": 72,
+      "point_error": 29.0,
+      "total_error": 516,
+      "all_times_enforcement_covers_reference": true,
+      "background_lower": 245.3041347347014,
+      "reference": 1009,
+      "signed": 1038.0,
+      "enforced": 1279.6958652652986
+    },
+    {
+      "seed": 73,
+      "point_error": 28.0,
+      "total_error": 486,
+      "all_times_enforcement_covers_reference": true,
+      "background_lower": 265.0747195350543,
+      "reference": 1062,
+      "signed": 1034.0,
+      "enforced": 1282.9252804649457
+    },
+    {
+      "seed": 74,
+      "point_error": 49.0,
+      "total_error": 489,
+      "all_times_enforcement_covers_reference": true,
+      "background_lower": 282.8067141841515,
+      "reference": 1004,
+      "signed": 955.0,
+      "enforced": 1210.1932858158484
+    },
+    {
+      "seed": 75,
+      "point_error": 26.0,
+      "total_error": 501,
+      "all_times_enforcement_covers_reference": true,
+      "background_lower": 274.66177903480525,
+      "reference": 1035,
+      "signed": 1009.0,
+      "enforced": 1261.3382209651948
+    },
+    {
+      "seed": 76,
+      "point_error": 2.0,
+      "total_error": 502,
+      "all_times_enforcement_covers_reference": true,
+      "background_lower": 254.79891021677952,
+      "reference": 981,
+      "signed": 983.0,
+      "enforced": 1228.2010897832206
+    },
+    {
+      "seed": 77,
+      "point_error": 39.0,
+      "total_error": 491,
+      "all_times_enforcement_covers_reference": true,
+      "background_lower": 276.88018735295776,
+      "reference": 978,
+      "signed": 939.0,
+      "enforced": 1192.1198126470422
+    },
+    {
+      "seed": 78,
+      "point_error": 71.0,
+      "total_error": 440,
+      "all_times_enforcement_covers_reference": true,
+      "background_lower": 262.8684412800338,
+      "reference": 995,
+      "signed": 924.0,
+      "enforced": 1172.1315587199663
+    },
+    {
+      "seed": 79,
+      "point_error": 51.0,
+      "total_error": 461,
+      "all_times_enforcement_covers_reference": true,
+      "background_lower": 263.60360866071926,
+      "reference": 979,
+      "signed": 928.0,
+      "enforced": 1176.3963913392809
+    },
+    {
+      "seed": 80,
+      "point_error": 18.0,
+      "total_error": 493,
+      "all_times_enforcement_covers_reference": true,
+      "background_lower": 236.5815480121261,
+      "reference": 1017,
+      "signed": 1035.0,
+      "enforced": 1273.4184519878738
+    },
+    {
+      "seed": 81,
+      "point_error": 29.0,
+      "total_error": 523,
+      "all_times_enforcement_covers_reference": true,
+      "background_lower": 250.41096372230152,
+      "reference": 997,
+      "signed": 1026.0,
+      "enforced": 1269.5890362776986
+    },
+    {
+      "seed": 82,
+      "point_error": 1.0,
+      "total_error": 474,
+      "all_times_enforcement_covers_reference": true,
+      "background_lower": 235.13179645509373,
+      "reference": 968,
+      "signed": 969.0,
+      "enforced": 1206.8682035449062
+    },
+    {
+      "seed": 83,
+      "point_error": 1.0,
+      "total_error": 493,
+      "all_times_enforcement_covers_reference": true,
+      "background_lower": 248.95049143939755,
+      "reference": 983,
+      "signed": 984.0,
+      "enforced": 1227.0495085606024
+    },
+    {
+      "seed": 84,
+      "point_error": 1.0,
+      "total_error": 484,
+      "all_times_enforcement_covers_reference": true,
+      "background_lower": 243.84753937909736,
+      "reference": 971,
+      "signed": 970.0,
+      "enforced": 1211.1524606209027
+    },
+    {
+      "seed": 85,
+      "point_error": 3.0,
+      "total_error": 521,
+      "all_times_enforcement_covers_reference": true,
+      "background_lower": 272.4456030587769,
+      "reference": 981,
+      "signed": 978.0,
+      "enforced": 1229.554396941223
+    },
+    {
+      "seed": 86,
+      "point_error": 40.0,
+      "total_error": 493,
+      "all_times_enforcement_covers_reference": true,
+      "background_lower": 279.1008091845571,
+      "reference": 1024,
+      "signed": 984.0,
+      "enforced": 1237.899190815443
+    },
+    {
+      "seed": 87,
+      "point_error": 33.0,
+      "total_error": 456,
+      "all_times_enforcement_covers_reference": true,
+      "background_lower": 246.76184624624068,
+      "reference": 936,
+      "signed": 903.0,
+      "enforced": 1145.2381537537594
+    },
+    {
+      "seed": 88,
+      "point_error": 34.0,
+      "total_error": 481,
+      "all_times_enforcement_covers_reference": true,
+      "background_lower": 265.81066152851895,
+      "reference": 1003,
+      "signed": 969.0,
+      "enforced": 1218.189338471481
+    },
+    {
+      "seed": 89,
+      "point_error": 38.0,
+      "total_error": 515,
+      "all_times_enforcement_covers_reference": true,
+      "background_lower": 238.03245805132687,
+      "reference": 1016,
+      "signed": 1054.0,
+      "enforced": 1292.9675419486732
+    },
+    {
+      "seed": 90,
+      "point_error": 84.0,
+      "total_error": 485,
+      "all_times_enforcement_covers_reference": true,
+      "background_lower": 305.9144168074813,
+      "reference": 1001,
+      "signed": 917.0,
+      "enforced": 1180.0855831925187
+    },
+    {
+      "seed": 91,
+      "point_error": 10.0,
+      "total_error": 491,
+      "all_times_enforcement_covers_reference": true,
+      "background_lower": 240.9377246982698,
+      "reference": 1052,
+      "signed": 1062.0,
+      "enforced": 1302.06227530173
+    },
+    {
+      "seed": 92,
+      "point_error": 71.0,
+      "total_error": 554,
+      "all_times_enforcement_covers_reference": true,
+      "background_lower": 242.39206705159353,
+      "reference": 981,
+      "signed": 1052.0,
+      "enforced": 1292.6079329484064
+    },
+    {
+      "seed": 93,
+      "point_error": 7.0,
+      "total_error": 494,
+      "all_times_enforcement_covers_reference": true,
+      "background_lower": 255.53117832824367,
+      "reference": 987,
+      "signed": 980.0,
+      "enforced": 1225.4688216717564
+    },
+    {
+      "seed": 94,
+      "point_error": 42.0,
+      "total_error": 479,
+      "all_times_enforcement_covers_reference": true,
+      "background_lower": 270.2316785218794,
+      "reference": 964,
+      "signed": 922.0,
+      "enforced": 1172.7683214781205
+    },
+    {
+      "seed": 95,
+      "point_error": 27.0,
+      "total_error": 520,
+      "all_times_enforcement_covers_reference": true,
+      "background_lower": 249.6805905877517,
+      "reference": 1048,
+      "signed": 1075.0,
+      "enforced": 1318.3194094122482
+    },
+    {
+      "seed": 96,
+      "point_error": 37.0,
+      "total_error": 496,
+      "all_times_enforcement_covers_reference": true,
+      "background_lower": 279.1008091845571,
+      "reference": 1000,
+      "signed": 963.0,
+      "enforced": 1216.899190815443
+    },
+    {
+      "seed": 97,
+      "point_error": 30.0,
+      "total_error": 514,
+      "all_times_enforcement_covers_reference": true,
+      "background_lower": 243.11966240420134,
+      "reference": 995,
+      "signed": 1025.0,
+      "enforced": 1265.8803375957987
+    },
+    {
+      "seed": 98,
+      "point_error": 7.0,
+      "total_error": 512,
+      "all_times_enforcement_covers_reference": true,
+      "background_lower": 258.4629176966478,
+      "reference": 1004,
+      "signed": 1011.0,
+      "enforced": 1257.5370823033522
+    },
+    {
+      "seed": 99,
+      "point_error": 39.0,
+      "total_error": 504,
+      "all_times_enforcement_covers_reference": true,
+      "background_lower": 229.34452252968666,
+      "reference": 992,
+      "signed": 1031.0,
+      "enforced": 1266.6554774703134
+    },
+    {
+      "seed": 100,
+      "point_error": 37.0,
+      "total_error": 473,
+      "all_times_enforcement_covers_reference": true,
+      "background_lower": 262.1335336121498,
+      "reference": 956,
+      "signed": 919.0,
+      "enforced": 1166.8664663878503
+    },
+    {
+      "seed": 101,
+      "point_error": 34.0,
+      "total_error": 529,
+      "all_times_enforcement_covers_reference": true,
+      "background_lower": 251.14161001598924,
+      "reference": 953,
+      "signed": 987.0,
+      "enforced": 1230.8583899840107
+    },
+    {
+      "seed": 102,
+      "point_error": 3.0,
+      "total_error": 517,
+      "all_times_enforcement_covers_reference": true,
+      "background_lower": 269.4942073363121,
+      "reference": 949,
+      "signed": 946.0,
+      "enforced": 1196.5057926636878
+    },
+    {
+      "seed": 103,
+      "point_error": 48.0,
+      "total_error": 545,
+      "all_times_enforcement_covers_reference": true,
+      "background_lower": 252.6037187934714,
+      "reference": 963,
+      "signed": 1011.0,
+      "enforced": 1255.3962812065286
+    },
+    {
+      "seed": 104,
+      "point_error": 11.0,
+      "total_error": 477,
+      "all_times_enforcement_covers_reference": true,
+      "background_lower": 246.03285139789446,
+      "reference": 977,
+      "signed": 966.0,
+      "enforced": 1207.9671486021055
+    },
+    {
+      "seed": 105,
+      "point_error": 3.0,
+      "total_error": 475,
+      "all_times_enforcement_covers_reference": true,
+      "background_lower": 238.75834523734363,
+      "reference": 987,
+      "signed": 984.0,
+      "enforced": 1223.2416547626563
+    },
+    {
+      "seed": 106,
+      "point_error": 14.0,
+      "total_error": 502,
+      "all_times_enforcement_covers_reference": true,
+      "background_lower": 266.54686023087817,
+      "reference": 977,
+      "signed": 963.0,
+      "enforced": 1212.453139769122
+    },
+    {
+      "seed": 107,
+      "point_error": 50.0,
+      "total_error": 531,
+      "all_times_enforcement_covers_reference": true,
+      "background_lower": 240.9377246982698,
+      "reference": 965,
+      "signed": 1015.0,
+      "enforced": 1255.06227530173
+    },
+    {
+      "seed": 108,
+      "point_error": 2.0,
+      "total_error": 491,
+      "all_times_enforcement_covers_reference": true,
+      "background_lower": 246.76184624624068,
+      "reference": 999,
+      "signed": 1001.0,
+      "enforced": 1243.2381537537594
+    },
+    {
+      "seed": 109,
+      "point_error": 11.0,
+      "total_error": 502,
+      "all_times_enforcement_covers_reference": true,
+      "background_lower": 248.2206671091233,
+      "reference": 936,
+      "signed": 947.0,
+      "enforced": 1189.7793328908767
+    },
+    {
+      "seed": 110,
+      "point_error": 23.0,
+      "total_error": 492,
+      "all_times_enforcement_covers_reference": true,
+      "background_lower": 265.81066152851895,
+      "reference": 998,
+      "signed": 975.0,
+      "enforced": 1224.189338471481
+    },
+    {
+      "seed": 111,
+      "point_error": 52.0,
+      "total_error": 534,
+      "all_times_enforcement_covers_reference": true,
+      "background_lower": 241.66475419115804,
+      "reference": 1016,
+      "signed": 1068.0,
+      "enforced": 1308.335245808842
+    },
+    {
+      "seed": 112,
+      "point_error": 5.0,
+      "total_error": 508,
+      "all_times_enforcement_covers_reference": true,
+      "background_lower": 264.33903499579924,
+      "reference": 983,
+      "signed": 978.0,
+      "enforced": 1226.6609650042008
+    },
+    {
+      "seed": 113,
+      "point_error": 26.0,
+      "total_error": 528,
+      "all_times_enforcement_covers_reference": true,
+      "background_lower": 256.26371392492604,
+      "reference": 1016,
+      "signed": 1042.0,
+      "enforced": 1287.736286075074
+    },
+    {
+      "seed": 114,
+      "point_error": 52.0,
+      "total_error": 530,
+      "all_times_enforcement_covers_reference": true,
+      "background_lower": 238.75834523734363,
+      "reference": 1005,
+      "signed": 1057.0,
+      "enforced": 1296.2416547626563
+    },
+    {
+      "seed": 115,
+      "point_error": 18.0,
+      "total_error": 485,
+      "all_times_enforcement_covers_reference": true,
+      "background_lower": 230.78956622272423,
+      "reference": 1008,
+      "signed": 1026.0,
+      "enforced": 1262.2104337772757
+    },
+    {
+      "seed": 116,
+      "point_error": 1.0,
+      "total_error": 526,
+      "all_times_enforcement_covers_reference": true,
+      "background_lower": 274.66177903480525,
+      "reference": 938,
+      "signed": 937.0,
+      "enforced": 1189.3382209651948
+    },
+    {
+      "seed": 117,
+      "point_error": 10.0,
+      "total_error": 510,
+      "all_times_enforcement_covers_reference": true,
+      "background_lower": 269.4942073363121,
+      "reference": 961,
+      "signed": 951.0,
+      "enforced": 1201.5057926636878
+    },
+    {
+      "seed": 118,
+      "point_error": 27.0,
+      "total_error": 503,
+      "all_times_enforcement_covers_reference": true,
+      "background_lower": 276.88018735295776,
+      "reference": 1018,
+      "signed": 991.0,
+      "enforced": 1244.1198126470422
+    },
+    {
+      "seed": 119,
+      "point_error": 52.0,
+      "total_error": 479,
+      "all_times_enforcement_covers_reference": true,
+      "background_lower": 277.6201496056318,
+      "reference": 1029,
+      "signed": 977.0,
+      "enforced": 1230.379850394368
+    },
+    {
+      "seed": 120,
+      "point_error": 19.0,
+      "total_error": 502,
+      "all_times_enforcement_covers_reference": true,
+      "background_lower": 242.39206705159353,
+      "reference": 988,
+      "signed": 1007.0,
+      "enforced": 1247.6079329484064
+    },
+    {
+      "seed": 121,
+      "point_error": 33.0,
+      "total_error": 481,
+      "all_times_enforcement_covers_reference": true,
+      "background_lower": 265.0747195350543,
+      "reference": 957,
+      "signed": 924.0,
+      "enforced": 1172.9252804649457
+    },
+    {
+      "seed": 122,
+      "point_error": 0.0,
+      "total_error": 515,
+      "all_times_enforcement_covers_reference": true,
+      "background_lower": 265.81066152851895,
+      "reference": 935,
+      "signed": 935.0,
+      "enforced": 1184.189338471481
+    },
+    {
+      "seed": 123,
+      "point_error": 18.0,
+      "total_error": 466,
+      "all_times_enforcement_covers_reference": true,
+      "background_lower": 243.11966240420134,
+      "reference": 1012,
+      "signed": 994.0,
+      "enforced": 1234.8803375957987
+    },
+    {
+      "seed": 124,
+      "point_error": 13.0,
+      "total_error": 511,
+      "all_times_enforcement_covers_reference": true,
+      "background_lower": 253.335179644597,
+      "reference": 1019,
+      "signed": 1032.0,
+      "enforced": 1276.664820355403
+    },
+    {
+      "seed": 125,
+      "point_error": 42.0,
+      "total_error": 501,
+      "all_times_enforcement_covers_reference": true,
+      "background_lower": 225.01659746013192,
+      "reference": 930,
+      "signed": 972.0,
+      "enforced": 1205.9834025398682
+    },
+    {
+      "seed": 126,
+      "point_error": 56.0,
+      "total_error": 484,
+      "all_times_enforcement_covers_reference": true,
+      "background_lower": 284.29076443493693,
+      "reference": 978,
+      "signed": 922.0,
+      "enforced": 1177.709235565063
+    },
+    {
+      "seed": 127,
+      "point_error": 13.0,
+      "total_error": 480,
+      "all_times_enforcement_covers_reference": true,
+      "background_lower": 249.6805905877517,
+      "reference": 1016,
+      "signed": 1003.0,
+      "enforced": 1246.3194094122482
+    },
+    {
+      "seed": 128,
+      "point_error": 25.0,
+      "total_error": 480,
+      "all_times_enforcement_covers_reference": true,
+      "background_lower": 258.4629176966478,
+      "reference": 1012,
+      "signed": 987.0,
+      "enforced": 1233.5370823033522
+    },
+    {
+      "seed": 129,
+      "point_error": 20.0,
+      "total_error": 520,
+      "all_times_enforcement_covers_reference": true,
+      "background_lower": 254.79891021677952,
+      "reference": 975,
+      "signed": 995.0,
+      "enforced": 1240.2010897832206
+    },
+    {
+      "seed": 130,
+      "point_error": 10.0,
+      "total_error": 517,
+      "all_times_enforcement_covers_reference": true,
+      "background_lower": 259.9303765040634,
+      "reference": 1006,
+      "signed": 1016.0,
+      "enforced": 1263.0696234959366
+    },
+    {
+      "seed": 131,
+      "point_error": 30.0,
+      "total_error": 494,
+      "all_times_enforcement_covers_reference": true,
+      "background_lower": 272.4456030587769,
+      "reference": 1018,
+      "signed": 988.0,
+      "enforced": 1239.554396941223
+    },
+    {
+      "seed": 132,
+      "point_error": 3.0,
+      "total_error": 507,
+      "all_times_enforcement_covers_reference": true,
+      "background_lower": 262.1335336121498,
+      "reference": 967,
+      "signed": 964.0,
+      "enforced": 1211.8664663878503
+    },
+    {
+      "seed": 133,
+      "point_error": 19.0,
+      "total_error": 528,
+      "all_times_enforcement_covers_reference": true,
+      "background_lower": 261.3988864176231,
+      "reference": 1009,
+      "signed": 1028.0,
+      "enforced": 1275.601113582377
+    },
+    {
+      "seed": 134,
+      "point_error": 4.0,
+      "total_error": 509,
+      "all_times_enforcement_covers_reference": true,
+      "background_lower": 264.33903499579924,
+      "reference": 1043,
+      "signed": 1039.0,
+      "enforced": 1287.6609650042008
+    },
+    {
+      "seed": 135,
+      "point_error": 19.0,
+      "total_error": 523,
+      "all_times_enforcement_covers_reference": true,
+      "background_lower": 285.77577140350303,
+      "reference": 1013,
+      "signed": 994.0,
+      "enforced": 1250.224228596497
+    },
+    {
+      "seed": 136,
+      "point_error": 51.0,
+      "total_error": 475,
+      "all_times_enforcement_covers_reference": true,
+      "background_lower": 273.92280473414826,
+      "reference": 963,
+      "signed": 912.0,
+      "enforced": 1164.0771952658517
+    },
+    {
+      "seed": 137,
+      "point_error": 20.0,
+      "total_error": 491,
+      "all_times_enforcement_covers_reference": true,
+      "background_lower": 262.8684412800338,
+      "reference": 1010,
+      "signed": 990.0,
+      "enforced": 1238.1315587199663
+    },
+    {
+      "seed": 138,
+      "point_error": 19.0,
+      "total_error": 514,
+      "all_times_enforcement_covers_reference": true,
+      "background_lower": 251.14161001598924,
+      "reference": 988,
+      "signed": 1007.0,
+      "enforced": 1250.8583899840107
+    },
+    {
+      "seed": 139,
+      "point_error": 56.0,
+      "total_error": 557,
+      "all_times_enforcement_covers_reference": true,
+      "background_lower": 255.53117832824367,
+      "reference": 1025,
+      "signed": 1081.0,
+      "enforced": 1326.4688216717564
+    },
+    {
+      "seed": 140,
+      "point_error": 43.0,
+      "total_error": 513,
+      "all_times_enforcement_covers_reference": true,
+      "background_lower": 232.95935729840053,
+      "reference": 1014,
+      "signed": 1057.0,
+      "enforced": 1294.0406427015994
+    },
+    {
+      "seed": 141,
+      "point_error": 26.0,
+      "total_error": 507,
+      "all_times_enforcement_covers_reference": true,
+      "background_lower": 279.1008091845571,
+      "reference": 971,
+      "signed": 945.0,
+      "enforced": 1198.899190815443
+    },
+    {
+      "seed": 142,
+      "point_error": 21.0,
+      "total_error": 531,
+      "all_times_enforcement_covers_reference": true,
+      "background_lower": 262.1335336121498,
+      "reference": 935,
+      "signed": 956.0,
+      "enforced": 1203.8664663878503
+    },
+    {
+      "seed": 143,
+      "point_error": 53.0,
+      "total_error": 523,
+      "all_times_enforcement_covers_reference": true,
+      "background_lower": 232.95935729840053,
+      "reference": 956,
+      "signed": 1009.0,
+      "enforced": 1246.0406427015994
+    },
+    {
+      "seed": 144,
+      "point_error": 18.0,
+      "total_error": 529,
+      "all_times_enforcement_covers_reference": true,
+      "background_lower": 262.8684412800338,
+      "reference": 1010,
+      "signed": 1028.0,
+      "enforced": 1276.1315587199663
+    },
+    {
+      "seed": 145,
+      "point_error": 40.0,
+      "total_error": 490,
+      "all_times_enforcement_covers_reference": true,
+      "background_lower": 276.88018735295776,
+      "reference": 985,
+      "signed": 945.0,
+      "enforced": 1198.1198126470422
+    },
+    {
+      "seed": 146,
+      "point_error": 37.0,
+      "total_error": 492,
+      "all_times_enforcement_covers_reference": true,
+      "background_lower": 276.14047104299533,
+      "reference": 1005,
+      "signed": 968.0,
+      "enforced": 1220.8595289570046
+    },
+    {
+      "seed": 147,
+      "point_error": 9.0,
+      "total_error": 502,
+      "all_times_enforcement_covers_reference": true,
+      "background_lower": 262.8684412800338,
+      "reference": 971,
+      "signed": 962.0,
+      "enforced": 1210.1315587199663
+    },
+    {
+      "seed": 148,
+      "point_error": 42.0,
+      "total_error": 462,
+      "all_times_enforcement_covers_reference": true,
+      "background_lower": 257.729584397881,
+      "reference": 950,
+      "signed": 908.0,
+      "enforced": 1154.270415602119
+    },
+    {
+      "seed": 149,
+      "point_error": 8.0,
+      "total_error": 516,
+      "all_times_enforcement_covers_reference": true,
+      "background_lower": 272.4456030587769,
+      "reference": 995,
+      "signed": 987.0,
+      "enforced": 1238.554396941223
+    },
+    {
+      "seed": 150,
+      "point_error": 30.0,
+      "total_error": 484,
+      "all_times_enforcement_covers_reference": true,
+      "background_lower": 265.0747195350543,
+      "reference": 1012,
+      "signed": 982.0,
+      "enforced": 1230.9252804649457
+    },
+    {
+      "seed": 151,
+      "point_error": 9.0,
+      "total_error": 496,
+      "all_times_enforcement_covers_reference": true,
+      "background_lower": 258.4629176966478,
+      "reference": 988,
+      "signed": 979.0,
+      "enforced": 1225.5370823033522
+    },
+    {
+      "seed": 152,
+      "point_error": 30.0,
+      "total_error": 504,
+      "all_times_enforcement_covers_reference": true,
+      "background_lower": 279.8415051362314,
+      "reference": 998,
+      "signed": 968.0,
+      "enforced": 1222.1584948637687
+    },
+    {
+      "seed": 153,
+      "point_error": 18.0,
+      "total_error": 491,
+      "all_times_enforcement_covers_reference": true,
+      "background_lower": 261.3988864176231,
+      "reference": 1011,
+      "signed": 993.0,
+      "enforced": 1240.601113582377
+    },
+    {
+      "seed": 154,
+      "point_error": 27.0,
+      "total_error": 532,
+      "all_times_enforcement_covers_reference": true,
+      "background_lower": 258.4629176966478,
+      "reference": 941,
+      "signed": 968.0,
+      "enforced": 1214.5370823033522
+    },
+    {
+      "seed": 155,
+      "point_error": 38.0,
+      "total_error": 488,
+      "all_times_enforcement_covers_reference": true,
+      "background_lower": 273.92280473414826,
+      "reference": 1015,
+      "signed": 977.0,
+      "enforced": 1229.0771952658517
+    },
+    {
+      "seed": 156,
+      "point_error": 8.0,
+      "total_error": 515,
+      "all_times_enforcement_covers_reference": true,
+      "background_lower": 259.9303765040634,
+      "reference": 1044,
+      "signed": 1052.0,
+      "enforced": 1299.0696234959366
+    },
+    {
+      "seed": 157,
+      "point_error": 15.0,
+      "total_error": 540,
+      "all_times_enforcement_covers_reference": true,
+      "background_lower": 273.18407917335435,
+      "reference": 1029,
+      "signed": 1044.0,
+      "enforced": 1295.8159208266457
+    },
+    {
+      "seed": 158,
+      "point_error": 24.0,
+      "total_error": 528,
+      "all_times_enforcement_covers_reference": true,
+      "background_lower": 257.729584397881,
+      "reference": 938,
+      "signed": 962.0,
+      "enforced": 1208.270415602119
+    },
+    {
+      "seed": 159,
+      "point_error": 22.0,
+      "total_error": 484,
+      "all_times_enforcement_covers_reference": true,
+      "background_lower": 259.19651532419743,
+      "reference": 1019,
+      "signed": 997.0,
+      "enforced": 1243.8034846758026
+    },
+    {
+      "seed": 160,
+      "point_error": 50.0,
+      "total_error": 525,
+      "all_times_enforcement_covers_reference": true,
+      "background_lower": 236.5815480121261,
+      "reference": 981,
+      "signed": 1031.0,
+      "enforced": 1269.4184519878738
+    },
+    {
+      "seed": 161,
+      "point_error": 7.0,
+      "total_error": 520,
+      "all_times_enforcement_covers_reference": true,
+      "background_lower": 274.66177903480525,
+      "reference": 956,
+      "signed": 949.0,
+      "enforced": 1201.3382209651948
+    },
+    {
+      "seed": 162,
+      "point_error": 27.0,
+      "total_error": 527,
+      "all_times_enforcement_covers_reference": true,
+      "background_lower": 254.79891021677952,
+      "reference": 999,
+      "signed": 1026.0,
+      "enforced": 1271.2010897832206
+    },
+    {
+      "seed": 163,
+      "point_error": 13.0,
+      "total_error": 502,
+      "all_times_enforcement_covers_reference": true,
+      "background_lower": 246.76184624624068,
+      "reference": 1033,
+      "signed": 1046.0,
+      "enforced": 1288.2381537537594
+    },
+    {
+      "seed": 164,
+      "point_error": 33.0,
+      "total_error": 520,
+      "all_times_enforcement_covers_reference": true,
+      "background_lower": 245.3041347347014,
+      "reference": 1016,
+      "signed": 1049.0,
+      "enforced": 1290.6958652652986
+    },
+    {
+      "seed": 165,
+      "point_error": 66.0,
+      "total_error": 538,
+      "all_times_enforcement_covers_reference": true,
+      "background_lower": 234.40735739097354,
+      "reference": 1012,
+      "signed": 1078.0,
+      "enforced": 1315.5926426090264
+    },
+    {
+      "seed": 166,
+      "point_error": 22.0,
+      "total_error": 528,
+      "all_times_enforcement_covers_reference": true,
+      "background_lower": 259.19651532419743,
+      "reference": 1026,
+      "signed": 1048.0,
+      "enforced": 1294.8034846758026
+    },
+    {
+      "seed": 167,
+      "point_error": 34.0,
+      "total_error": 533,
+      "all_times_enforcement_covers_reference": true,
+      "background_lower": 254.06691038734536,
+      "reference": 1018,
+      "signed": 1052.0,
+      "enforced": 1296.9330896126546
+    },
+    {
+      "seed": 168,
+      "point_error": 17.0,
+      "total_error": 501,
+      "all_times_enforcement_covers_reference": true,
+      "background_lower": 243.11966240420134,
+      "reference": 923,
+      "signed": 940.0,
+      "enforced": 1180.8803375957987
+    },
+    {
+      "seed": 169,
+      "point_error": 18.0,
+      "total_error": 506,
+      "all_times_enforcement_covers_reference": true,
+      "background_lower": 272.4456030587769,
+      "reference": 1023,
+      "signed": 1005.0,
+      "enforced": 1256.554396941223
+    },
+    {
+      "seed": 170,
+      "point_error": 18.0,
+      "total_error": 501,
+      "all_times_enforcement_covers_reference": true,
+      "background_lower": 242.39206705159353,
+      "reference": 1045,
+      "signed": 1063.0,
+      "enforced": 1303.6079329484064
+    },
+    {
+      "seed": 171,
+      "point_error": 45.0,
+      "total_error": 463,
+      "all_times_enforcement_covers_reference": true,
+      "background_lower": 260.6645004584823,
+      "reference": 980,
+      "signed": 935.0,
+      "enforced": 1182.3354995415177
+    },
+    {
+      "seed": 172,
+      "point_error": 65.0,
+      "total_error": 460,
+      "all_times_enforcement_covers_reference": true,
+      "background_lower": 273.18407917335435,
+      "reference": 975,
+      "signed": 910.0,
+      "enforced": 1161.8159208266457
+    },
+    {
+      "seed": 173,
+      "point_error": 51.0,
+      "total_error": 492,
+      "all_times_enforcement_covers_reference": true,
+      "background_lower": 286.51863201149513,
+      "reference": 996,
+      "signed": 945.0,
+      "enforced": 1201.4813679885049
+    },
+    {
+      "seed": 174,
+      "point_error": 7.0,
+      "total_error": 493,
+      "all_times_enforcement_covers_reference": true,
+      "background_lower": 244.57569710907933,
+      "reference": 934,
+      "signed": 941.0,
+      "enforced": 1182.4243028909207
+    },
+    {
+      "seed": 175,
+      "point_error": 36.0,
+      "total_error": 488,
+      "all_times_enforcement_covers_reference": true,
+      "background_lower": 272.4456030587769,
+      "reference": 990,
+      "signed": 954.0,
+      "enforced": 1205.554396941223
+    },
+    {
+      "seed": 176,
+      "point_error": 23.0,
+      "total_error": 488,
+      "all_times_enforcement_covers_reference": true,
+      "background_lower": 229.34452252968666,
+      "reference": 977,
+      "signed": 1000.0,
+      "enforced": 1235.6554774703134
+    },
+    {
+      "seed": 177,
+      "point_error": 28.0,
+      "total_error": 470,
+      "all_times_enforcement_covers_reference": true,
+      "background_lower": 253.335179644597,
+      "reference": 975,
+      "signed": 947.0,
+      "enforced": 1191.664820355403
+    },
+    {
+      "seed": 178,
+      "point_error": 51.0,
+      "total_error": 544,
+      "all_times_enforcement_covers_reference": true,
+      "background_lower": 249.6805905877517,
+      "reference": 941,
+      "signed": 992.0,
+      "enforced": 1235.3194094122482
+    },
+    {
+      "seed": 179,
+      "point_error": 31.0,
+      "total_error": 472,
+      "all_times_enforcement_covers_reference": true,
+      "background_lower": 256.9965162113027,
+      "reference": 932,
+      "signed": 901.0,
+      "enforced": 1147.0034837886974
+    },
+    {
+      "seed": 180,
+      "point_error": 13.0,
+      "total_error": 498,
+      "all_times_enforcement_covers_reference": true,
+      "background_lower": 243.84753937909736,
+      "reference": 967,
+      "signed": 980.0,
+      "enforced": 1221.1524606209027
+    },
+    {
+      "seed": 181,
+      "point_error": 27.0,
+      "total_error": 483,
+      "all_times_enforcement_covers_reference": true,
+      "background_lower": 262.1335336121498,
+      "reference": 964,
+      "signed": 937.0,
+      "enforced": 1184.8664663878503
+    },
+    {
+      "seed": 182,
+      "point_error": 21.0,
+      "total_error": 517,
+      "all_times_enforcement_covers_reference": true,
+      "background_lower": 251.87252864612327,
+      "reference": 1000,
+      "signed": 1021.0,
+      "enforced": 1265.1274713538767
+    },
+    {
+      "seed": 183,
+      "point_error": 3.0,
+      "total_error": 500,
+      "all_times_enforcement_covers_reference": true,
+      "background_lower": 252.6037187934714,
+      "reference": 1024,
+      "signed": 1027.0,
+      "enforced": 1271.3962812065286
+    },
+    {
+      "seed": 184,
+      "point_error": 6.0,
+      "total_error": 500,
+      "all_times_enforcement_covers_reference": true,
+      "background_lower": 250.41096372230152,
+      "reference": 1004,
+      "signed": 1010.0,
+      "enforced": 1253.5890362776986
+    },
+    {
+      "seed": 185,
+      "point_error": 27.0,
+      "total_error": 476,
+      "all_times_enforcement_covers_reference": true,
+      "background_lower": 256.9965162113027,
+      "reference": 942,
+      "signed": 915.0,
+      "enforced": 1161.0034837886974
+    },
+    {
+      "seed": 186,
+      "point_error": 42.0,
+      "total_error": 498,
+      "all_times_enforcement_covers_reference": true,
+      "background_lower": 284.29076443493693,
+      "reference": 990,
+      "signed": 948.0,
+      "enforced": 1203.709235565063
+    },
+    {
+      "seed": 187,
+      "point_error": 18.0,
+      "total_error": 475,
+      "all_times_enforcement_covers_reference": true,
+      "background_lower": 249.6805905877517,
+      "reference": 976,
+      "signed": 958.0,
+      "enforced": 1201.3194094122482
+    },
+    {
+      "seed": 188,
+      "point_error": 38.0,
+      "total_error": 477,
+      "all_times_enforcement_covers_reference": true,
+      "background_lower": 265.81066152851895,
+      "reference": 935,
+      "signed": 897.0,
+      "enforced": 1146.189338471481
+    },
+    {
+      "seed": 189,
+      "point_error": 9.0,
+      "total_error": 503,
+      "all_times_enforcement_covers_reference": true,
+      "background_lower": 263.60360866071926,
+      "reference": 933,
+      "signed": 924.0,
+      "enforced": 1172.3963913392809
+    },
+    {
+      "seed": 190,
+      "point_error": 41.0,
+      "total_error": 502,
+      "all_times_enforcement_covers_reference": true,
+      "background_lower": 226.45803039275935,
+      "reference": 998,
+      "signed": 1039.0,
+      "enforced": 1273.5419696072406
+    },
+    {
+      "seed": 191,
+      "point_error": 4.0,
+      "total_error": 488,
+      "all_times_enforcement_covers_reference": true,
+      "background_lower": 243.11966240420134,
+      "reference": 935,
+      "signed": 939.0,
+      "enforced": 1179.8803375957987
+    },
+    {
+      "seed": 192,
+      "point_error": 8.0,
+      "total_error": 512,
+      "all_times_enforcement_covers_reference": true,
+      "background_lower": 257.729584397881,
+      "reference": 971,
+      "signed": 979.0,
+      "enforced": 1225.270415602119
+    },
+    {
+      "seed": 193,
+      "point_error": 66.0,
+      "total_error": 459,
+      "all_times_enforcement_covers_reference": true,
+      "background_lower": 273.18407917335435,
+      "reference": 978,
+      "signed": 912.0,
+      "enforced": 1163.8159208266457
+    },
+    {
+      "seed": 194,
+      "point_error": 50.0,
+      "total_error": 464,
+      "all_times_enforcement_covers_reference": true,
+      "background_lower": 265.0747195350543,
+      "reference": 1001,
+      "signed": 951.0,
+      "enforced": 1199.9252804649457
+    },
+    {
+      "seed": 195,
+      "point_error": 60.0,
+      "total_error": 445,
+      "all_times_enforcement_covers_reference": true,
+      "background_lower": 258.4629176966478,
+      "reference": 1001,
+      "signed": 941.0,
+      "enforced": 1187.5370823033522
+    },
+    {
+      "seed": 196,
+      "point_error": 51.0,
+      "total_error": 538,
+      "all_times_enforcement_covers_reference": true,
+      "background_lower": 245.3041347347014,
+      "reference": 926,
+      "signed": 977.0,
+      "enforced": 1218.6958652652986
+    },
+    {
+      "seed": 197,
+      "point_error": 66.0,
+      "total_error": 542,
+      "all_times_enforcement_covers_reference": true,
+      "background_lower": 237.30685867537454,
+      "reference": 988,
+      "signed": 1054.0,
+      "enforced": 1292.6931413246255
+    },
+    {
+      "seed": 198,
+      "point_error": 9.0,
+      "total_error": 510,
+      "all_times_enforcement_covers_reference": true,
+      "background_lower": 255.53117832824367,
+      "reference": 1013,
+      "signed": 1022.0,
+      "enforced": 1267.4688216717564
+    },
+    {
+      "seed": 199,
+      "point_error": 26.0,
+      "total_error": 480,
+      "all_times_enforcement_covers_reference": true,
+      "background_lower": 259.19651532419743,
+      "reference": 936,
+      "signed": 910.0,
+      "enforced": 1156.8034846758026
+    }
+  ]
+}
