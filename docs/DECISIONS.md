@@ -219,3 +219,10 @@ still need to review authorship and rehearse; no rubric or remote submission is 
 - An optional Wilson-screen mode reproduces the prototype's per-interval formula to explain zero-error enforcement spending. No causal, safety, or superiority guarantee is implied.
 - Includes a live sandbox, independent SLO ledgers, four-policy comparison, glossary, guided explanations, quiz, accessible chart data, and JSON export.
 - Verified nine model checks plus Chrome interactions and desktop/mobile layout. Publication defaults to owner-private.
+
+## Visualizer alignment with the final study — 15 November 2026
+
+- The visualizer's repository mode was the retired v1 per-interval Wilson charge. Added a four-way accounting selector; the default remains the teaching point estimate. Repository v2 (cumulative observed treatment debit, high-water mark) and v2 plus iid background credit port the current Python accounting. The v1 mode is retained only as a labelled contrast with the corrected algorithm.
+- Background credit is ported from `uncertainty.py` with a Lanczos log-gamma; tests compare outputs with the Python implementation to 1e-6 relative. The lab's synthetic background is iid by construction, so the credit's assumptions hold there and are stated as not guaranteed elsewhere.
+- Added a Real study results page generated from `results/curated/final-study-summary.json`; the retained failed attempt, descriptive intervals and limitations are shown. It is deliberately separate from the simulator. Prose findings are paraphrased from `docs/FINAL-RESULTS.md` and flagged for verification against the manuscript.
+- Not ported: multiwindow burn history, telemetry freshness, minimum-traffic gate, and watchdog behavior. These remain explained in text and the glossary only.
