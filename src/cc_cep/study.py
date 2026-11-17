@@ -556,6 +556,10 @@ def execute(directory):
                     "trial exhausted invalid-execution retries; queue halted for diagnosis"
                 )
         persist(state="ANALYZING", active_job=None)
+        if matrix.get("followup"):
+            # Follow-up matrices are analyzed against their frozen base study separately.
+            persist(state="COLLECTION_COMPLETE_ANALYZE_SEPARATELY")
+            return
         analysis = analyze_matrix(directory)
         atomic_json(directory / "analysis-completion.json", analysis)
         persist(

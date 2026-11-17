@@ -17,7 +17,7 @@ def main():
     sim.add_argument("--seed", type=int, default=1)
     sim.add_argument(
         "--policy",
-        choices=["static", "threshold", "open-loop", "closed-loop"],
+        choices=["static", "threshold", "open-loop", "closed-loop", "paced"],
         default="closed-loop",
     )
     sim.add_argument("--family", choices=["abort", "delay"], default="abort")

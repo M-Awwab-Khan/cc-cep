@@ -1,7 +1,7 @@
 # Complete CEP delivery plan
 
 Status: **9 November: 110 selected cluster runs complete; final findings and deliverables prepared.**
-Deadline: **16 November 2026**, supplied by the user; no rubric supplied. The eight-week
+Deadline: **16 November 2026**, supplied by the user; the brief and rubric arrived on 15 November (docs/RUBRIC-MATRIX.md). The eight-week
 schedule below is historical planning, superseded by the 13-day schedule in IMPLEMENTATION.md.
 See IMPLEMENTATION.md for completed checks and corrections, and FULL-STUDY-RUNBOOK.md for the user-selected full-duration study. The measured scope and remaining limitations are in FINAL-RESULTS.md. Student review and viva rehearsal remain before submission.
 Simulation checks and short cluster pilots are not final comparative evaluation.

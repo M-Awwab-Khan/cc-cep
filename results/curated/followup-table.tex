@@ -1,0 +1,14 @@
+\begin{table*}[width=\textwidth,cols=7,pos=t]
+\caption{Budget-paced follow-up over five blocks. Guard overshoot is in requests and exposure in fraction-seconds, on the latency ledger (an abort counts against both ledgers, so abort values are the same for availability). Means for paced runs, and paced minus v7 differences with 95\% block-bootstrap intervals. The pairing is time-separated, not jointly randomized.}\label{tbl:followup}
+\footnotesize
+\begin{tabular*}{\tblwidth}{@{\extracolsep{\fill}}llrrrll@{}}
+\toprule
+Fault & Req/s & Guard overshoot & Exposure & Usable spent & $\Delta$ exposure vs.\ closed-loop & $\Delta$ exposure vs.\ open-loop \\
+\midrule
+abort & 32 & 1.0 & 15.41 & 98\% & $10.95$ [$10.47$, $11.39$] & $2.00$ [$1.35$, $2.64$] \\
+abort & 64 & 1.6 & 15.09 & 100\% & $10.88$ [$10.60$, $11.05$] & $1.69$ [$1.35$, $2.03$] \\
+delay & 32 & 1.0 & 15.03 & 99\% & $0.98$ [$0.06$, $1.59$] & $1.80$ [$1.15$, $2.35$] \\
+delay & 64 & 0.8 & 14.81 & 99\% & $0.76$ [$0.13$, $1.49$] & $1.56$ [$1.30$, $1.87$] \\
+\bottomrule
+\end{tabular*}
+\end{table*}
