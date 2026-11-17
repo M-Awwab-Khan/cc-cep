@@ -255,3 +255,9 @@ still need to review authorship and rehearse; no rubric or remote submission is 
 - Background credit is ported from `uncertainty.py` with a Lanczos log-gamma; tests compare outputs with the Python implementation to 1e-6 relative. The lab's synthetic background is iid by construction, so the credit's assumptions hold there and are stated as not guaranteed elsewhere.
 - Added a Real study results page generated from `results/curated/final-study-summary.json`; the retained failed attempt, descriptive intervals and limitations are shown. It is deliberately separate from the simulator. Prose findings are paraphrased from `docs/FINAL-RESULTS.md` and flagged for verification against the manuscript.
 - Not ported: multiwindow burn history, telemetry freshness, minimum-traffic gate, and watchdog behavior. These remain explained in text and the glossary only.
+
+## Visualizer: budget-paced follow-up — 17 November 2026
+
+- Added `paced` as a fifth simulator policy (simplified port of `Controller.pace`/`_paced_step`: risk, 5 s and 30 s pace, halve/increase rules, same step and cooldown) and a follow-up section on the Real study results page.
+- Follow-up numbers are parsed from the committed `results/curated/followup-table.tex`; the raw follow-up runs are on the workstation and not in this repository. Prose figures (98–100% spent, nine overshoots, seven allocation-guard stops) are taken from the follow-up entry in this file.
+- The page states that the policy was designed after seeing v7, collected later, paired by block ID only, and never pooled; the simulator's paced behaviour is a teaching model, not evidence.
