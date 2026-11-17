@@ -1,0 +1,455 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>SLO-Aware Chaos Engineering · CEP Presentation</title>
+<link rel="stylesheet" href="style.css"></head>
+<body>
+<div id="viewport"><div id="stage">
+<div id="progress"></div><div id="brand">Chaos Engineering CEP · SE-490</div><div id="hint">← → / space to move · N notes · F fullscreen</div><div id="counter"></div>
+
+<!-- 1 TITLE -->
+<section class="slide" data-title="Title">
+ <div class="kicker rv" style="--d:0">Cloud Computing · Complex Engineering Problem · NED University</div>
+ <div class="title-wrap">
+  <h1><span style="--k:0"><i>Break things</i></span><span style="--k:1"><i>on purpose.</i></span><span style="--k:2"><i class="coral">Without going <u class="hl">broke.</u></i></span></h1>
+  <p class="lead rv" style="--d:7;margin-top:40px;max-width:1000px">SLO-Aware Chaos Engineering for Cloud-Native Applications</p>
+  <p class="rv mono muted" style="--d:8;font-size:24px;margin-top:26px">Muhammad Awwab Khan (SE-23051) · Muhammad Abyaz Khalid (SE-23053)</p>
+ </div>
+ <div class="spark"><i style="--k:0;--w:200"></i><i style="--k:1;--w:120"></i><i style="--k:2;--w:260"></i><i style="--k:3;--w:90"></i><i style="--k:4;--w:180"></i></div>
+ <div class="drain rv" style="--d:3"><div class="lvl"></div><div class="res"></div><span class="t1">ERROR BUDGET</span><span class="t2">SAFETY RESERVE</span></div>
+ <aside class="notes"><b>Open:</b> "Our project asks one question: how hard can you test a system by breaking it, before you spend more reliability than you were allowed?" The tank on the right is the error budget. Our controller's job is to drain it on purpose, but never past the red reserve.</aside>
+</section>
+
+<!-- 2 PROBLEM -->
+<section class="slide" data-title="The problem">
+ <div class="kicker rv">The problem</div>
+ <h2 class="rv" style="--d:1">A promise, an allowance, and a test that spends it.</h2>
+ <div class="row">
+  <div style="flex:1.1">
+   <ul class="clean">
+    <li class="rv" style="--d:2"><b>Chaos engineering</b>: break things on purpose to find weaknesses before users do.</li>
+    <li class="rv" style="--d:3"><b>SLO</b>: a measurable promise, e.g. 99% of requests succeed.</li>
+    <li class="rv" style="--d:4"><b>Error budget</b>: the failures that promise allows. At 99%, <span class="lime">1 in 100</span>.</li>
+    <li class="rv" style="--d:5">Test too hard and you spend the budget. Too gently and you learn nothing.</li>
+   </ul>
+   <p class="rv mono lime" style="--d:6;margin-top:26px;font-size:26px">Question: how hard can we test inside the share we were given?</p>
+  </div>
+  <div class="rv" style="--d:3;flex:.9"><div class="chart-title">100 requests · 1 failure allowed</div><div class="dots" id="dots"></div>
+   <div class="legend" style="margin-top:24px"><span style="color:var(--amber)">● our fault</span><span style="color:var(--coral)">● bad outcome</span></div></div>
+ </div>
+ <aside class="notes">Explain the three terms with the 100-dot grid: one red dot is the whole allowance at 99%. Watch the animation: amber dots are injected faults, red dots are the bad outcomes that actually spend budget.</aside>
+</section>
+
+<!-- 3 RQ -->
+<section class="slide" data-title="Research questions">
+ <div class="kicker rv">What we asked</div>
+ <h2 class="rv" style="--d:1">Four falsifiable questions.</h2>
+ <div class="grid g2">
+  <div class="card rv" style="--d:2"><div class="tag">RQ1</div><h3>Does feedback reduce overshoot?</h3><p>Versus static, threshold-stop and calibrated open-loop, at equal workload, allocation and guards.</p></div>
+  <div class="card rv" style="--d:3"><div class="tag">RQ2</div><h3>Does attribution help?</h3><p>Under known background errors, is comparing with a control copy more accurate than counting everything?</p></div>
+  <div class="card rv" style="--d:4"><div class="tag">RQ3</div><h3>Safety vs useful testing?</h3><p>Stopping at once is safe but teaches nothing. What do we keep in exposure?</p></div>
+  <div class="card rv" style="--d:5"><div class="tag">RQ4 · partly open</div><h3>Telemetry lag, load, two SLOs?</h3><p>Load tested at two levels. Delayed telemetry and dual-SLO interaction were <span class="coral">not</span> tested in the cluster.</p></div>
+ </div>
+ <p class="rv muted" style="--d:6;margin-top:30px;font-size:26px">A negative or inconclusive answer is valid evidence. We pre-registered this.</p>
+ <aside class="notes">Be upfront: RQ4 is only partly answered. Say that a negative result is still a result, which sets up the honest findings later.</aside>
+</section>
+
+<!-- 4 TWO COPIES -->
+<section class="slide" data-title="Two copies">
+ <div class="kicker rv">Our idea</div>
+ <h2 class="rv" style="--d:1">Two copies of the app. One gets the fault.</h2>
+ <div class="flow rv" style="--d:2">
+  <svg viewBox="0 0 1680 560" width="1680" height="560" fill="none" stroke-width="3" stroke-dasharray="8 10"><path d="M240 255 C360 255 360 80 480 80" stroke="#4fd8ff" opacity=".5"/><path d="M240 265 C360 265 360 430 480 430" stroke="#ff5b3a" opacity=".5"/><path d="M900 80 C1040 80 1040 250 1180 250" stroke="#4fd8ff" opacity=".5"/><path d="M900 430 C1040 430 1040 270 1180 270" stroke="#ff5b3a" opacity=".5"/></svg>
+  <div class="node" style="left:0;top:205px;width:240px">Users<small>k6 load</small></div>
+  <div class="node ctrl" style="left:480px;top:30px;width:420px">Control copy<small>business as usual</small></div>
+  <div class="node test" style="left:480px;top:380px;width:420px">Test copy<small>Istio injects delay / abort</small></div>
+  <div class="node" style="left:1180px;top:205px;width:500px;border-color:var(--lime)">Controller<small>budget · attribution · intensity</small></div>
+  <i class="pkt" style="--k:0;offset-path:path('M240 255 C360 255 360 80 480 80')"></i><i class="pkt" style="--k:1;offset-path:path('M240 255 C360 255 360 80 480 80')"></i><i class="pkt co" style="--k:2;offset-path:path('M240 265 C360 265 360 430 480 430')"></i><i class="pkt co" style="--k:3;offset-path:path('M240 265 C360 265 360 430 480 430')"></i><i class="pkt" style="--k:4;offset-path:path('M900 80 C1040 80 1040 250 1180 250')"></i><i class="pkt" style="--k:5;offset-path:path('M900 80 C1040 80 1040 250 1180 250')"></i><i class="pkt co" style="--k:0;offset-path:path('M900 430 C1040 430 1040 270 1180 270')"></i><i class="pkt co" style="--k:1;offset-path:path('M900 430 C1040 430 1040 270 1180 270')"></i>
+ </div>
+ <p class="lead rv" style="--d:4;margin-top:-10px">Same traffic, same app. <b class="lime">Test minus control = damage we caused</b>, not background noise.</p>
+ <aside class="notes">Matched-cohort design. Both copies get comparable traffic; only the test copy gets Istio faults. The difference estimates the harm we caused. Caveat to mention: this is valid only if the copies are isolated, and shared dependencies can contaminate the control.</aside>
+</section>
+
+<!-- 5 LEDGERS -->
+<section class="slide" data-title="Two ledgers">
+ <div class="kicker rv">Accounting</div>
+ <h2 class="rv" style="--d:1">Two promises. Two separate ledgers.</h2>
+ <div class="grid g2">
+  <div class="card accent rv" style="--d:2"><div class="tag">Availability SLO</div><h3>99% of requests succeed</h3><p>Allowed bad fraction <span class="mono lime">q = 1%</span>. A failed request is bad.</p><div class="meter" style="--w:100%;margin-top:16px"><i></i></div></div>
+  <div class="card rv" style="--d:3;border-color:rgba(79,216,255,.5)"><div class="tag">Latency SLO</div><h3>95% finish within 500 ms</h3><p>Allowed bad fraction <span class="mono cyan">q = 5%</span>. Slow <i>or failed</i> is bad.</p><div class="meter cy" style="--w:100%;margin-top:16px"><i></i></div></div>
+ </div>
+ <ul class="clean" style="margin-top:36px">
+  <li class="rv" style="--d:4"><b>Delay</b> fault → spends latency budget only. <b>Abort (HTTP 503)</b> → spends both.</li>
+  <li class="rv" style="--d:5">Ledgers are <b>never added together</b>, and we count requests over a threshold, not p99 milliseconds.</li>
+  <li class="rv" style="--d:6">The experiment gets a <b>frozen share</b> <span class="mono">A</span> at admission. Example: 60,000 requests × 1% = 600 bad allowed; the experiment gets part.</li>
+ </ul>
+ <aside class="notes">Stress that a latency error budget counts requests above a threshold. Percentiles like p95/p99 are only supporting metrics. An abort counts against both ledgers because a failed request is also too slow under our conservative definition.</aside>
+</section>
+
+<!-- 6 PRIOR ART -->
+<section class="slide" data-title="Prior art">
+ <div class="kicker rv">Standing on prior art</div>
+ <h2 class="rv" style="--d:1">What exists, and what we don't claim.</h2>
+ <div class="grid g3">
+  <div class="card rv" style="--d:2"><div class="tag">Netflix · ChAP</div><h3>Baseline vs canary</h3><p>Automated platform: baseline and canary clusters get small slices of real traffic. Failures or latency go into the canary only, outcomes are compared, and safety mechanisms stop the experiment.</p></div>
+  <div class="card rv" style="--d:3"><div class="tag">Google · SRE workbook</div><h3>Burn-rate alerting</h3><p>Burn rate = observed bad fraction ÷ allowed fraction. Alert on a <b>long</b> and a <b>short</b> window together so real problems fire and blips don't.</p></div>
+  <div class="card rv" style="--d:4"><div class="tag">Patents · research</div><h3>Close overlap</h3><p>Bertsch US12511222B1: SLO-limited injection rates. Anand &amp; Averdunk US20220308972A1: error-budget tracking. BAHYA: budget-aware placement.</p></div>
+ </div>
+ <div class="card accent rv" style="--d:5;margin-top:30px"><h3>Our contribution is empirical, not a new idea</h3><p>A reproducible study of one accounting and control implementation, with measured safety vs exposure trade-offs. Our search was targeted, not exhaustive.</p></div>
+ <aside class="notes">Be modest on novelty: broad SLO-driven fault injection has close prior art. Our claim is a specific implementation and its measured trade-offs. The ChAP and SRE descriptions come from our primary-source audit in docs/NOVELTY.md.</aside>
+</section>
+
+<!-- 7 ARCHITECTURE -->
+<section class="slide" data-title="What we built">
+ <div class="kicker rv">What we built</div>
+ <h2 class="rv" style="--d:1">A loop that watches the budget.</h2>
+ <div class="pipe rv" style="--d:2">
+  <div class="st">Load<small>k6, outside the fault</small></div><div class="ar">→</div>
+  <div class="st">Istio fault<small>test copy only</small></div><div class="ar">→</div>
+  <div class="st">Accountant<small>per-SLO ledgers</small></div><div class="ar">→</div>
+  <div class="st">Attribution<small>test − control</small></div><div class="ar">→</div>
+  <div class="st" style="border-color:var(--lime)">Controller<small>up · down · stop</small></div>
+ </div>
+ <div class="grid g3" style="margin-top:34px">
+  <div class="card rv" style="--d:3"><div class="tag">Independent safety</div><h3>Watchdog</h3><p>Separately removes the fault if the controller dies or telemetry goes stale.</p></div>
+  <div class="card rv" style="--d:4"><div class="tag">After the run</div><h3>Budget Oracle + evidence</h3><p>Summarises completed runs. Raw data, configs, seeds and failed trials are archived with checksums.</p></div>
+  <div class="card rv" style="--d:5"><div class="tag">Stack</div><h3>kind · Istio · k6 · Python</h3><p>Disposable local Kubernetes cluster, Prometheus and Grafana for support metrics.</p></div>
+ </div>
+ <aside class="notes">Walk the flow left to right. The oracle is descriptive only; it does not predict. Everything ran on a disposable test cluster, never production.</aside>
+</section>
+
+<!-- 8 SAFETY -->
+<section class="slide" data-title="Safety rails">
+ <div class="kicker rv">Safety rails</div>
+ <h2 class="rv" style="--d:1">Guards every policy shares.</h2>
+ <div class="grid g2">
+  <div>
+   <ul class="clean c">
+    <li class="rv" style="--d:2"><b>Total service budget</b>: service bad + reserve reaches its whole budget</li>
+    <li class="rv" style="--d:3"><b>Severe burn</b>: total burn ≥ 20×</li>
+    <li class="rv" style="--d:4"><b>Allocation guard</b>: debit + reserve ≥ allocation</li>
+    <li class="rv" style="--d:5"><b>Duration</b>: 300 s fault window ends</li>
+    <li class="rv" style="--d:6"><b>Stale telemetry</b>: older than 5 s stops the run</li>
+   </ul>
+  </div>
+  <div>
+   <div class="formula rv" style="--d:3">Reserve R = traffic cap × 15 s<small>675 requests at 32 req/s · 1,350 at 64 req/s. Covers the delay between "stop" and "fault really gone".</small></div>
+   <div class="card rv" style="--d:5;margin-top:26px"><h3>Plus operational rules</h3><p>Disposable cluster only, never production or all namespaces · finite fault · minimum traffic · independent cleanup · emergency-stop file.</p></div>
+  </div>
+ </div>
+ <aside class="notes">All policies share these guards so the comparison isolates how each chooses intensity. We do not promise an absolute budget bound; telemetry delay and removal time create unavoidable overshoot, which we measure.</aside>
+</section>
+
+<!-- 9 WILSON -->
+<section class="slide" data-title="The v1 bug">
+ <div class="kicker rv">We found our own bug</div>
+ <h2 class="rv" style="--d:1">Version 1 charged for failures that never happened.</h2>
+ <div class="row">
+  <div class="rv" style="--d:2;flex:1.2">
+   <svg viewBox="-70 -20 920 440" width="1000">
+    <line x1="0" y1="360" x2="800" y2="360" stroke="#3a485c"/><line x1="0" y1="0" x2="0" y2="360" stroke="#3a485c"/>
+    <line x1="0" y1="180" x2="800" y2="180" stroke="#ff5b3a" stroke-dasharray="10 8"/><text x="810" y="186" fill="#ff5b3a" font-size="18" text-anchor="start"> </text>
+    <text x="10" y="166" fill="#ff5b3a" font-size="20">stop boundary (30 of 60)</text>
+    <polyline class="draw" fill="none" stroke="#ff5b3a" stroke-width="5" points="0,360 100,337.4 200,314.7 300,292.1 400,269.4 500,246.8 600,224.2 700,201.5 800,179"/>
+    <line class="draw" x1="0" y1="360" x2="800" y2="360" stroke="#c6ff3d" stroke-width="5"/>
+    <g class="pt" style="--k:8"><circle cx="800" cy="179" r="10" fill="#ff5b3a"/></g>
+    <text x="-60" y="365" fill="#8d9bb0" font-size="18">0</text><text x="-66" y="185" fill="#8d9bb0" font-size="18">30</text>
+    <text x="0" y="395" fill="#8d9bb0" font-size="18">interval 0</text><text x="700" y="395" fill="#8d9bb0" font-size="18">interval 8</text>
+    <text x="520" y="330" fill="#c6ff3d" font-size="22">v2: debit stays 0</text><text x="60" y="316" fill="#ff5b3a" font-size="22" transform="rotate(-12.7 60 316)">v1: ~3.77 charged every interval</text>
+   </svg>
+   <p class="mono muted" style="font-size:20px">Healthy traffic: 0 failures in 200 requests per interval.</p>
+  </div>
+  <div style="flex:.8">
+   <ul class="clean">
+    <li class="rv" style="--d:3">Wilson gives a <b>range</b> for a rate. 0 of 200 failed still allows a rate up to ~1.9%.</li>
+    <li class="rv" style="--d:4">v1 charged <span class="mono coral">200 × 1.9% ≈ 3.77</span> requests <i>every interval</i>.</li>
+    <li class="rv" style="--d:5">8 healthy intervals ≈ <b class="coral">30 requests</b>: stop boundary hit with <b>zero</b> real failures.</li>
+    <li class="rv" style="--d:6">Uncertainty is what we <i>don't know</i>. v1 spent it like real damage.</li>
+   </ul>
+  </div>
+ </div>
+ <aside class="notes">Explain in plain words: Wilson is an honest range for a rate measured from limited data. The mistake was adding that range into the spending every two seconds. This was an algorithmic error, found in the 3 November review and documented in docs/ACCOUNTING-V2.md.</aside>
+</section>
+
+<!-- 10 V2 -->
+<section class="slide" data-title="The v2 fix">
+ <div class="kicker rv">The fix</div>
+ <h2 class="rv" style="--d:1">Version 2: like a bank account.</h2>
+ <div class="grid g3">
+  <div class="card accent rv" style="--d:2"><div class="step-n">1</div><h3>Charge what you see</h3><p>Debit = bad requests actually observed in the test copy. Zero seen → exactly zero charged.</p></div>
+  <div class="card accent rv" style="--d:3"><div class="step-n">2</div><h3>Never refund</h3><p>Debit is a running <b>high-water mark</b>. A later guess cannot give spent budget back.</p></div>
+  <div class="card rv" style="--d:4"><div class="step-n coral">3</div><h3>Optional credit</h3><p>Subtract a cautious <i>lower bound</i> on failures that would have happened anyway, from the control copy.</p></div>
+ </div>
+ <div class="formula rv" style="--d:5;margin-top:32px">D = max over time of  max(0, B_treatment − credit)<small>Uncertainty widths are never consumption increments. Debit never exceeds observed treatment bad events.</small></div>
+ <p class="rv" style="--d:6;margin-top:22px;font-size:26px"><span class="amber">Credit is off by default</span> and valid only if background failures are independent, identical and uncontaminated. Not valid for shared incidents or drift.</p>
+ <aside class="notes">Healthy regression test: 300 observations, exactly zero debit. A cleanup failure is also sticky: later recovery cannot turn a failed run into a successful one. The credit uses a confidence sequence (prior art: Howard et al., 2021); we do not claim a new statistical method.</aside>
+</section>
+
+<!-- 11 DESIGN -->
+<section class="slide" data-title="Experiment design">
+ <div class="kicker rv">The experiment</div>
+ <h2 class="rv" style="--d:1">110 full-length cluster runs.</h2>
+ <div class="grid g3">
+  <div class="card accent rv" style="--d:2"><div class="num lime" data-count="80">0</div><h3>core comparisons</h3><p>2 faults × 2 loads × 4 policies × 5 blocks. <br><span class="muted">Which policy is better?</span></p></div>
+  <div class="card rv" style="--d:3"><div class="num cyan" data-count="10">0</div><h3>no-fault controls</h3><p>2 loads × 5 blocks, controller on, injecting nothing. <br><span class="muted">Does the accounting invent damage?</span></p></div>
+  <div class="card rv" style="--d:4"><div class="num amber" data-count="20">0</div><h3>background-error runs</h3><p>2 loads × 2 accounting modes × 5 blocks, with 0.5% synthetic background errors. <br><span class="muted">Does attribution help?</span></p></div>
+ </div>
+ <div class="rv" style="--d:5;margin-top:34px"><div class="chart-title">Each run: 120 s warm-up · up to 300 s fault · ≥120 s recovery</div>
+  <div style="display:flex;height:46px;border-radius:12px;overflow:hidden;font:500 20px var(--mono)"><div style="flex:120;background:#243040;display:grid;place-items:center">warm-up</div><div style="flex:300;background:linear-gradient(90deg,#7a2a1c,var(--coral));display:grid;place-items:center">fault window</div><div style="flex:120;background:#1c4a5a;display:grid;place-items:center">recovery</div></div></div>
+ <p class="rv muted" style="--d:6;margin-top:22px;font-size:25px">Loads 32 and 64 req/s per copy · 5 replication blocks (seeds 1001–1005) · order randomised within blocks · design frozen before collection.</p>
+ <aside class="notes">Core comparisons answer RQ1. Controls prove the accounting does not create false consumption (that would have caught the v1 bug). Background runs test attribution (RQ2). Total runtime was at least 16.7 hours with no cloud spending.</aside>
+</section>
+
+<!-- 12 POLICIES -->
+<section class="slide" data-title="Five policies">
+ <div class="kicker rv">The policies</div>
+ <h2 class="rv" style="--d:1">Five ways to choose fault intensity <span class="muted">u</span>.</h2>
+ <div class="grid g5" style="gap:18px">
+  <div class="card frag" style="padding:24px"><div class="tag">Static</div><h3>Max, always</h3><p style="font-size:22px">Inject 10% until a guard stops it.</p><div class="formula" style="font-size:22px;padding:12px;margin-top:14px">u = 0.10</div></div>
+  <div class="card frag" style="padding:24px"><div class="tag">Threshold</div><h3>Quit on burn</h3><p style="font-size:22px">Static, but stop if burn gets too high.</p><div class="formula" style="font-size:22px;padding:12px;margin-top:14px">stop if β ≥ 2</div></div>
+  <div class="card frag" style="padding:24px"><div class="tag">Open-loop</div><h3>Plan once</h3><p style="font-size:22px">One rate from a pilot cost. Never adjusts.</p><div class="formula" style="font-size:20px;padding:12px;margin-top:14px">u=(A−R)/(N·c)</div></div>
+  <div class="card frag" style="padding:24px"><div class="tag">Closed-loop</div><h3>Burn-rate feedback</h3><p style="font-size:22px">Halve on high burn or risk; nudge up when calm.</p><div class="formula" style="font-size:20px;padding:12px;margin-top:14px">AIMD on β and ρ</div></div>
+  <div class="card frag warn" style="padding:24px"><div class="tag coral">Paced · follow-up</div><h3>Pace feedback</h3><p style="font-size:22px">Same loop, judged against on-time spending.</p><div class="formula" style="font-size:20px;padding:12px;margin-top:14px">AIMD on π and ρ</div></div>
+ </div>
+ <p class="frag lead" style="margin-top:34px;font-size:32px">Same allocation, reserve, 10% cap, 0.5-point step, 2 s cooldown and guards. <b class="lime">Only the rule for u differs.</b></p>
+ <aside class="notes"><b>Click to reveal each policy.</b> Static and threshold are the baselines. Open-loop is feed-forward: calibrate once, then fixed. Closed-loop is the SRE-style feedback controller. Paced was added after the main study; we flag it as separate.</aside>
+</section>
+
+<!-- 13 OPEN LOOP -->
+<section class="slide" data-title="Open-loop arithmetic">
+ <div class="kicker rv">Open-loop, worked example</div>
+ <h2 class="rv" style="--d:1">One division, done once.</h2>
+ <div class="formula rv" style="--d:2">u = usable allowance ÷ ( requests in fault window × bad requests per faulted request )</div>
+ <p class="muted mono rv" style="--d:3;margin:14px 0 18px;font-size:24px">Abort fault at 32 requests/s</p>
+ <div class="grid g4">
+  <div class="card frag"><div class="tag">Step 1</div><h3 class="lime">480</h3><p>Usable allowance = A − R = 1,155 − 675 bad requests we may cause.</p></div>
+  <div class="card frag"><div class="tag">Step 2</div><h3 class="cyan">9,600</h3><p>Requests in 300 s window = 32 × 300.</p></div>
+  <div class="card frag"><div class="tag">Step 3</div><h3 class="amber">1.122</h3><p>Pilot measured: each faulted request costs ~1.122 bad requests.</p></div>
+  <div class="card frag accent"><div class="tag">Result</div><h3>4.46%</h3><p>480 ÷ (9,600 × 1.122). Held constant for the run.</p></div>
+ </div>
+ <p class="frag lead" style="margin-top:34px;font-size:32px">Check: 4.46% × 300 s = <b class="lime">13.4 fraction-seconds</b>, which matches the measured 13.42. If the pilot cost is wrong, it over- or under-spends.</p>
+ <aside class="notes"><b>Click through the four steps.</b> The measured open-loop exposure in the study at 32 req/s on aborts was 13.42, so the arithmetic matches. Its weakness is dependence on pilot calibration.</aside>
+</section>
+
+<!-- 14 CLOSED LOOP -->
+<section class="slide" data-title="Closed-loop windows">
+ <div class="kicker rv">Closed-loop, short vs long window</div>
+ <h2 class="rv" style="--d:1">Two memories, one decision.</h2>
+ <div class="rv" style="--d:2">
+  <div class="track" id="track"><div class="cur"><div class="wl"></div><div class="ws"></div></div></div>
+  <div class="legend"><span class="s">short window · last 5 s (fast, jumpy)</span><span class="l">long window · last 30 s (steady, slow)</span></div>
+ </div>
+ <div class="grid g2" style="margin-top:30px">
+  <div class="formula rv" style="--d:3;font-size:26px">HALVE u if  ρ &gt; 1  or  (short β &gt; 2 and long β &gt; 2)<small>burn β = (bad ÷ n) ÷ q · risk ρ = D/t_elapsed × t_remaining ÷ (A − D − R)</small></div>
+  <div class="formula rv" style="--d:4;border-left-color:var(--cyan);font-size:26px">RAISE u by 0.5 pt if  ρ &lt; 0.5  and  both β &lt; 1<small>Needs both windows to agree: a real, current problem, not a blip.</small></div>
+ </div>
+ <aside class="notes">The windows slide along the timeline. Requiring both short and long burn to exceed 2× before halving is the same multiwindow idea as Google's SRE alerting. Risk asks: at the current spend rate, will the usable allowance run out before the window ends?</aside>
+</section>
+
+<!-- 15 SCORES -->
+<section class="slide" data-title="The two scores">
+ <div class="kicker rv">How we score</div>
+ <h2 class="rv" style="--d:1">Two numbers: safety and usefulness.</h2>
+ <div class="grid g2">
+  <div class="card warn rv" style="--d:2"><div class="tag coral">Safety</div><h3>Usable-guard overshoot</h3><div class="formula" style="margin:16px 0">max(0, D − (A − R))</div><p>How many requests beyond the usable allowance the experiment spent. <b>Lower is safer.</b> Full-allocation overshoot was zero for every run, so it cannot tell policies apart.</p></div>
+  <div class="card accent rv" style="--d:3"><div class="tag lime">Usefulness</div><h3>Exposure, in fraction-seconds</h3><div class="formula" style="margin:16px 0">exposure = ∫ u(t) dt</div><p>Fault fraction × seconds it was active. <b>Higher means more testing.</b></p><p class="mono lime" style="font-size:24px;margin-top:10px">10% × 300 s = 30 (max) · 5% × 100 s = 5</p></div>
+ </div>
+ <p class="lead rv" style="--d:5;margin-top:34px">Stopping immediately is perfectly safe and perfectly useless. We need both.</p>
+ <aside class="notes">Fraction-seconds captures both how hard and how long we tested. The maximum possible is 30 because the cap is 10% over 300 s.</aside>
+</section>
+
+<!-- 16 RESULTS EXPLORER -->
+<section class="slide" data-title="Main results">
+ <div class="kicker rv">Result · main study (110 runs)</div>
+ <h2 class="rv" style="--d:1;margin-bottom:22px">Safety vs usefulness, by condition.</h2>
+ <div class="tabs rv" style="--d:2" id="tabs-main"></div>
+ <div class="grid g2" style="gap:50px">
+  <div class="rv" style="--d:3"><div class="chart-title">Guard overshoot (requests) · lower is safer</div><div class="bars" id="bars-over-main"></div></div>
+  <div class="rv" style="--d:4"><div class="chart-title">Exposure (fraction-seconds) · higher is more testing</div><div class="bars" id="bars-exp-main"></div></div>
+ </div>
+ <p class="muted rv" style="--d:5;margin-top:26px;font-size:24px">Click a condition. Means over 5 blocks. Source: results/curated/final-study-summary.json.</p>
+ <aside class="notes">Click the tabs to move between fault type and load. Static is highest exposure but overshoots; threshold is safe but barely tests; open-loop and closed-loop have no meaningful overshoot. Notice closed-loop's abort exposure is much lower than its delay exposure.</aside>
+</section>
+
+<!-- 17 VERDICT -->
+<section class="slide" data-title="Verdict">
+ <div class="kicker rv">What it means</div>
+ <h2 class="rv" style="--d:1">No single winner.</h2>
+ <table class="rv" style="--d:2"><thead><tr><th>Policy</th><th>Safety</th><th>Exposure</th><th>Verdict</th></tr></thead><tbody>
+  <tr><td><b>Static</b></td><td class="lo">worst · 4.6–21.6</td><td class="hi">highest ≈ 15–16</td><td>Runs into the guard; overshoot = guard lag</td></tr>
+  <tr><td><b>Threshold</b></td><td class="hi">0</td><td class="lo">0.26–0.86</td><td>Safe but barely tests</td></tr>
+  <tr><td><b>Open-loop</b></td><td class="hi">0</td><td>≈ 13.3</td><td>Competitive when the pilot is accurate</td></tr>
+  <tr><td><b>Closed-loop</b></td><td class="hi">≈ 0</td><td>abort 4.2–4.5 · delay 14.05</td><td>Beats static on safety; not open-loop on abort exposure</td></tr>
+ </tbody></table>
+ <ul class="clean" style="margin-top:30px">
+  <li class="rv" style="--d:4">Closed-loop vs static: guard overshoot lower in all 4 conditions, all intervals exclude zero.</li>
+  <li class="rv" style="--d:5">Static's exposure is partly design: the allowance is half of what static would use, so it always hits the guard.</li>
+ </ul>
+ <p class="lead rv" style="--d:6;margin-top:16px">Feedback traded exposure for safety. <b class="lime">A well-calibrated open-loop rate was competitive.</b></p>
+ <aside class="notes">This is the report's own conclusion. Do not oversell adaptive control. The intervals are descriptive: five blocks, no multiplicity adjustment.</aside>
+</section>
+
+<!-- 18 WHY UNDER-USED -->
+<section class="slide" data-title="Why closed-loop under-used">
+ <div class="kicker rv">Diagnosis</div>
+ <h2 class="rv" style="--d:1">Why did closed-loop use only 30% on aborts?</h2>
+ <div class="grid g2">
+  <div class="rv" style="--d:2">
+   <div class="tag">Abort · 99% SLO · burn = 100 × fault fraction</div>
+   <div class="gauge"><i style="--w:30%;background:linear-gradient(90deg,var(--coral),#c2391f)"></i></div><p class="mono" style="font-size:24px">spent ≈ 30% of usable allowance (142 of 480)</p>
+   <div class="tag" style="margin-top:34px">Delay · 95% SLO · burn = 20 × fault fraction</div>
+   <div class="gauge"><i style="--w:93%"></i></div><p class="mono" style="font-size:24px">spent ≈ 93% (447 of 480)</p>
+  </div>
+  <div>
+   <ul class="clean">
+    <li class="rv" style="--d:3">Halves when burn &gt; 2, raises only when burn &lt; 1.</li>
+    <li class="rv" style="--d:4">With <span class="mono">q = 1%</span>, a 2% abort fault already burns at 2×. Intensity got <b class="coral">pinned to ~0.5–2%</b> no matter how much budget remained.</li>
+    <li class="rv" style="--d:5">SRE burn gates detect <i>unplanned</i> consumption. A chaos experiment <i>means</i> to burn budget.</li>
+   </ul>
+  </div>
+ </div>
+ <p class="lead rv" style="--d:6;margin-top:30px">So we asked: what if the gates were relative to the <b class="lime">experiment's own plan</b>?</p>
+ <aside class="notes">This is the key insight from reading the traces after the main study. It motivated the paced follow-up. The stricter the SLO, the more conservative burn-rate gating makes the controller.</aside>
+</section>
+
+<!-- 19 CONTROLS / BACKGROUND -->
+<section class="slide" data-title="Controls and background">
+ <div class="kicker rv">Controls and attribution</div>
+ <h2 class="rv" style="--d:1">The accounting is honest, and credit is modest.</h2>
+ <div class="grid g2">
+  <div class="card accent rv" style="--d:2"><div class="num lime">10 / 10</div><h3>no-fault controls</h3><p>Zero bad outcomes and zero debit. Healthy traffic costs nothing, unlike v1.</p></div>
+  <div class="card rv" style="--d:3"><h3>20 background-error runs</h3><p><b>Attributed mode:</b> debit = observed bad − background credit from control.</p><p><b>Total mode:</b> debit = all observed bad, including background.</p>
+   <p class="mono" style="font-size:22px;margin-top:12px">Credit: <span class="coral">0</span> at 32 req/s · avg <span class="lime">25.9</span> at 64 req/s</p></div>
+ </div>
+ <ul class="clean" style="margin-top:30px">
+  <li class="rv" style="--d:4">Credit is shrunk twice for caution; with few control requests the margin swallows it, so it is zero at 32 req/s.</li>
+  <li class="rv" style="--d:5">Matched estimates cut absolute error by 66.8 / 134.6 requests, but <b>exposure differences include zero</b>: better estimates did not buy more testing.</li>
+  <li class="rv" style="--d:6">Naive total accounting counts background by construction, so this mostly confirms the arithmetic under an ideal, independent background.</li>
+ </ul>
+ <aside class="notes">Cite 25.9 only from docs/FINAL-RESULTS.md. Say clearly that this tests RQ2 under idealised synthetic conditions, not real correlated incidents.</aside>
+</section>
+
+<!-- 20 FAILURE -->
+<section class="slide" data-title="The failure we kept">
+ <div class="kicker rv">The failure we kept</div>
+ <h2 class="rv" style="--d:1">One attempt failed. We kept it.</h2>
+ <div class="timeline">
+  <div class="ev rv" style="--d:2"><time>8 November · 22:23</time><p>Host went to sleep mid-run.</p></div>
+  <div class="ev rv" style="--d:3"><time>telemetry stale</time><p>Controller stopped as designed. Watchdog removed the fault, API confirmed it was gone.</p></div>
+  <div class="ev bad rv" style="--d:4"><time>22:32</time><p>Draining timed out → attempt stays <b class="coral">FAILED</b> (a sticky failure).</p></div>
+  <div class="ev rv" style="--d:5"><time>predeclared single retry</time><p>Retry completed. Both attempts retained. <b>111 attempts = 110 selected + 1 failed.</b></p></div>
+ </div>
+ <p class="lead rv" style="--d:6;margin-top:20px">No valid unfavourable result was ever retried. The failure tests the safety system, so we show it.</p>
+ <aside class="notes">Rule: retry only for invalid execution, never for an unfavourable outcome. Dropping the failure would hide how the safety mechanisms behaved under stress.</aside>
+</section>
+
+<!-- 21 PACED -->
+<section class="slide" data-title="Paced follow-up">
+ <div class="kicker rv" style="color:var(--coral)">Follow-up · 15 November</div>
+ <h2 class="rv" style="--d:1">Budget-paced policy: spend it on purpose.</h2>
+ <div class="grid g2">
+  <div>
+   <div class="formula rv" style="--d:2">pace π = r ÷ [ (A − D − R) / t_remaining ]<small>r = observed bad requests per second. Denominator = rate that spends the usable allowance exactly on time.</small></div>
+   <ul class="clean" style="margin-top:24px">
+    <li class="rv" style="--d:3"><b>Halve</b> if any ρ &gt; 1, or (short π &gt; 2 and long π &gt; 1)</li>
+    <li class="rv" style="--d:4"><b>Raise</b> 0.5 pt only if all ρ &lt; 0.9 and both π &lt; 1</li>
+    <li class="rv" style="--d:5">No usable allowance left → halve</li>
+   </ul>
+  </div>
+  <div class="card warn rv" style="--d:3"><h3>Honest design notes</h3>
+   <ul class="clean c"><li>Designed <b>after</b> seeing v7 results</li><li>20 runs, collected ~1 week later</li><li>Paired with v7 by block ID only. <b>Not pooled</b>, not jointly randomised</li><li>Original closed-loop unchanged, so v7 still replays</li></ul></div>
+ </div>
+ <p class="lead rv" style="--d:7;margin-top:34px">In simple words: <b class="lime">same loop, but judge spending against the pace that would use the allowance exactly on time</b>, not against the SLO's own limit.</p>
+ <aside class="notes">Simple words: "same loop, but we judge spending against the pace that would use up the remaining allowance exactly on time, not against the SLO's own limit." Stress the post-hoc nature before showing numbers.</aside>
+</section>
+
+<!-- 22 PACED RESULTS -->
+<section class="slide" data-title="Paced vs the four">
+ <div class="kicker rv" style="color:var(--coral)">Paced vs the four</div>
+ <h2 class="rv" style="--d:1;margin-bottom:22px">Near-static exposure, with small overshoot.</h2>
+ <div class="tabs rv" style="--d:2" id="tabs-paced"></div>
+ <div class="grid g2" style="gap:50px">
+  <div class="rv" style="--d:3"><div class="chart-title">Guard overshoot (requests)</div><div class="bars" id="bars-over-paced"></div></div>
+  <div class="rv" style="--d:4"><div class="chart-title">Exposure (fraction-seconds)</div><div class="bars" id="bars-exp-paced"></div></div>
+ </div>
+ <p class="rv mono" style="--d:5;margin-top:22px;font-size:22px;color:var(--lime)">Striped = follow-up (time-separated, not pooled). Paced spent 98–100% of usable allowance; 9 of 20 runs overshot by 1–4 requests.</p>
+ <aside class="notes">Compare paced to each: vs static, ≈same exposure (within 0.62) with far smaller overshoot; vs threshold, far more exposure; vs open-loop, +1.6 to +2.0 exposure but open-loop had zero overshoot; vs closed-loop, +10.9 on aborts and +0.8 to +1.0 on delays.</aside>
+</section>
+
+<!-- 23 PACED TABLE -->
+<section class="slide" data-title="Paced deltas">
+ <div class="kicker rv" style="color:var(--coral)">Paced · differences with 95% intervals</div>
+ <h2 class="rv" style="--d:1">What paced gained, and what it cost.</h2>
+ <table class="rv" style="--d:2"><thead><tr><th>Condition</th><th>Overshoot</th><th>Exposure</th><th>Usable spent</th><th>Δ vs closed-loop</th><th>Δ vs open-loop</th></tr></thead><tbody>
+  <tr><td>abort · 32</td><td>1.0</td><td>15.41</td><td>98%</td><td class="hi">+10.95 [10.47, 11.39]</td><td>+2.00 [1.35, 2.64]</td></tr>
+  <tr><td>abort · 64</td><td>1.6</td><td>15.09</td><td>100%</td><td class="hi">+10.88 [10.60, 11.05]</td><td>+1.69 [1.35, 2.03]</td></tr>
+  <tr><td>delay · 32</td><td>1.0</td><td>15.03</td><td>99%</td><td>+0.98 [0.06, 1.59]</td><td>+1.80 [1.15, 2.35]</td></tr>
+  <tr><td>delay · 64</td><td>0.8</td><td>14.81</td><td>99%</td><td>+0.76 [0.13, 1.49]</td><td>+1.56 [1.30, 1.87]</td></tr>
+ </tbody></table>
+ <div class="grid g3" style="margin-top:34px">
+  <div class="card accent rv" style="--d:4"><h3>Gain</h3><p>Fixes the abort under-use: ≈ +10.9 vs closed-loop.</p></div>
+  <div class="card warn rv" style="--d:5"><h3>Cost</h3><p>9 of 20 runs overshot the usable guard by 1–4. 7 ended by the allocation guard. None exceeded allocation.</p></div>
+  <div class="card rv" style="--d:6"><h3>Claim</h3><p>Promising. <b>Needs a jointly randomised study.</b> Not "paced wins".</p></div>
+ </div>
+ <aside class="notes">Source: results/curated/followup-table.tex. Overshoot for static was 4.6–21.6; paced mean 0.8–1.6. Open-loop had zero overshoot, so on safety it is still ahead.</aside>
+</section>
+
+<!-- 24 EVIDENCE -->
+<section class="slide" data-title="Evidence and visualizer">
+ <div class="kicker rv">Reproducibility and the learning lab</div>
+ <h2 class="rv" style="--d:1">Everything replays.</h2>
+ <div class="grid g3">
+  <div class="card accent rv" style="--d:2"><div class="num lime" data-count="111">0</div><h3>attempts archived</h3><p>Raw k6 data, ledgers, configs, seeds, source snapshots, checksums.</p></div>
+  <div class="card rv" style="--d:3"><div class="num cyan" data-count="110">0</div><h3>runs replayed</h3><p>Independent check: all 173 manifests verified, all analysis outputs matched byte for byte.</p></div>
+  <div class="card rv" style="--d:4"><h3>Interactive learning lab</h3><p>Browser-only simulator with five policies, v2 accounting, glossary, quiz, and a Real results page. <span class="amber">A teaching model, not evidence.</span></p></div>
+ </div>
+ <p class="lead rv" style="--d:5;margin-top:34px">Frozen measurements, versioned algorithms, and failures kept in the open.</p>
+ <aside class="notes">Mention the visualizer was updated twice: after the accounting fix and after the paced follow-up. It reproduces the Python background-credit maths to ~1e-9 in tests, but its simulation is a teaching model.</aside>
+</section>
+
+<!-- 25 LIMITS -->
+<section class="slide" data-title="Limits">
+ <div class="kicker rv">Limits and next steps</div>
+ <h2 class="rv" style="--d:1">What we do not claim.</h2>
+ <div class="grid g2">
+  <div><div class="tag coral">Limits</div><ul class="clean c">
+   <li class="rv" style="--d:2">One shared node; load via port-forward</li>
+   <li class="rv" style="--d:3">Five blocks; intervals descriptive, no multiplicity adjustment</li>
+   <li class="rv" style="--d:4">Synthetic, independent background errors</li>
+   <li class="rv" style="--d:5">Delayed-telemetry and single-SLO ablations not run; no dual-SLO interaction</li>
+   <li class="rv" style="--d:6">Paced is post-hoc and time-separated</li></ul></div>
+  <div><div class="tag lime">Next</div><ul class="clean">
+   <li class="rv" style="--d:3">Jointly randomised paced vs closed-loop vs open-loop</li>
+   <li class="rv" style="--d:4">Real correlated background incidents; contamination tests</li>
+   <li class="rv" style="--d:5">Telemetry-delay ablations; more services and fault types</li>
+   <li class="rv" style="--d:6">Distributed leader lease for the controller</li></ul></div>
+ </div>
+ <aside class="notes">Close on honesty: a reproducible empirical course study with mixed findings, not a general solution.</aside>
+</section>
+
+<!-- 26 QA -->
+<section class="slide" data-title="Likely questions">
+ <div class="kicker rv">Likely questions</div>
+ <h2 class="rv" style="--d:1;margin-bottom:10px">Be ready for these.</h2>
+ <dl class="qa">
+  <dt class="rv" style="--d:2">Why not just report that adaptive wins?</dt><dd class="rv" style="--d:2">It did not beat a calibrated open-loop plan on abort exposure, and the data says so.</dd>
+  <dt class="rv" style="--d:3">Why keep the failed run?</dt><dd class="rv" style="--d:3">Dropping it would hide how the safety system behaved under stress.</dd>
+  <dt class="rv" style="--d:4">Is paced proven better?</dt><dd class="rv" style="--d:4">No. Chosen after seeing results, so it is a hypothesis for a randomised study.</dd>
+  <dt class="rv" style="--d:5">Is the visualizer evidence?</dt><dd class="rv" style="--d:5">No. Only the Real results page shows frozen data; the simulator is a teaching model.</dd>
+  <dt class="rv" style="--d:6">What was wrong with Wilson?</dt><dd class="rv" style="--d:6">We added an uncertainty range to spending every interval; v2 charges only observed bad events.</dd>
+ </dl>
+ <aside class="notes">Rehearse these. If asked about the Netflix/Google details, say they come from our primary-source audit in docs/NOVELTY.md and that our search was not exhaustive.</aside>
+</section>
+
+<!-- 27 THANKS -->
+<section class="slide" data-title="Thank you" style="justify-content:center">
+ <div class="kicker rv">Thank you</div>
+ <h1 class="thanks rv" style="--d:1">Questions?</h1>
+ <p class="lead rv" style="--d:3;margin-top:20px">Small failures. <span class="lime">Better understanding.</span></p>
+ <p class="mono muted rv" style="--d:4;margin-top:24px;font-size:24px">Muhammad Awwab Khan · Muhammad Abyaz Khalid · Source, evidence and learning lab in the project repository</p>
+ <aside class="notes">Invite questions. Keep the Q&amp;A slide handy (press the left arrow once).</aside>
+</section>
+
+<div id="notes"></div>
+</div></div>
+<script src="deck.js"></script>
+</body></html>
